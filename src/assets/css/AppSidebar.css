@@ -1,0 +1,108 @@
+.custom-sidebar {
+  background-color: #212631; /* Dark blue background */
+
+}
+
+.sidebar-brand-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sidebar-brand-full {
+  padding-left: 15px;
+}
+
+.sidebar-brand-narrow {
+  padding-left: 8px; /* Adjust padding for narrow icon */
+}
+
+/* Hide text when sidebar is narrow */
+.sidebar-brand-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-left: 8px;
+  display: none;
+}
+
+/* Show the text only when sidebar is in full view */
+@media (min-width: 992px) {
+  .sidebar-brand-content .sidebar-brand-full + .sidebar-brand-text {
+    display: inline-block;
+  }
+}
+
+/* Link styling */
+
+/* Custom style for sidebar navigation links */
+.custom-nav-link {
+  color: white; /* White text color for inactive links */
+  text-decoration: none; /* Remove underline for links */
+}
+
+.custom-nav-link.active {
+  color: black; /* Dark text color for active links */
+  background-color: rgba(255, 255, 255, 0.2); /* Optional: add background color for active links */
+  font-weight: bold; /* Optional: make active link text bold */
+}
+
+/* Add padding for better spacing if needed */
+.custom-nav-link {
+  padding: 20px 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px; /* Optional: rounded edges */
+}
+
+/* Ensure consistent style for hover */
+.custom-nav-link:hover {
+  color: lightgray; /* Optional: color for hover effect */
+}
+
+
+.sidebar-narrow {
+  padding-left: 10px; /* Adjust padding as needed */
+}
+
+
+
+.custom-nav-badge {
+  background-color: white !important;
+  color: black !important;
+  font-weight: bold;
+}
+
+
+.nav-item {
+  color: white; /* Inactive color */
+}
+
+.nav-item.active {
+  color: dark; /* Active color */
+}
+
+
+.sidebar-brand-content {
+  display: flex;
+  align-items: center;
+  padding: 10px; /* Add padding for better spacing */
+}
+
+.sidebar-brand-content span {
+  margin-left: 10px; /* Add some space between the icon and the text */
+  font-size: 1.2rem; /* Adjust font size */
+}
+
+.text-truncate {
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+  text-overflow: ellipsis; /* Add ellipsis for truncated text */
+}
+
+.sidebar-brand-full,
+.sidebar-brand-narrow {
+  margin-right: 10px; /* Space between logos and text */
+}

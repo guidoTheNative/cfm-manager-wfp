@@ -28,16 +28,16 @@ import {
 import CIcon from '@coreui/icons-react'
 
 import { cilPlus, cilPencil, cilTrash, cilSearch } from '@coreui/icons'
-import '../../assets/css/Cases.css' // Import custom CSS file
+import '../../../assets/css/Cases.css' // Import custom CSS file
 import ReactSelect from 'react-select'
-import { create, getUser, updateUser, deleteUser } from '../../api/authService' // Adjust the path as necessary
+import { create, getUser, updateUser, deleteUser } from '../../../api/authService' // Adjust the path as necessary
 import Swal from 'sweetalert2'
 const initialTableData = []
 
 const priorityOptions = [
-  { value: 'high', label: 'High' },
-  { value: 'medium', label: 'Medium' },
-  { value: 'low', label: 'Low' },
+  { value: 'High', label: 'High' },
+  { value: 'Medium', label: 'Medium' },
+  { value: 'Low', label: 'Low' },
 ]
 const districtOptions = [
   'National',

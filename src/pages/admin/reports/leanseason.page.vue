@@ -348,7 +348,7 @@ const generatePDF = () => {
   doc.addImage(leftHeaderImage, 'JPEG', 18, 7, 25, 20); // Adjust dimensions and position as needed
   doc.addImage(rightHeaderImage, 'JPEG', 160, 2, 30, 30); // Adjust dimensions and position as needed
   doc.setFontSize(12); // Set the title font size
-  doc.text('WFP CFM TRACKER Report', 105, 20, null, null, 'center'); // Centered title
+  doc.text('WFP CASE TRACKER Report', 105, 20, null, null, 'center'); // Centered title
 
   const dataToExport = filteredLoadingPlans.value.length > 0 ? filteredLoadingPlans.value : loadingplans;
 

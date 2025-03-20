@@ -29,13 +29,13 @@
           </button>
           <!-- Admin Text and Location Info -->
           <span class="font-bold text-white mx-4 hidden lg:block"
-            >WFP CFM TRACKER | Call Center
+            >WFP CASE TRACKER | Call Center
             <span class="text-xs font-normal">(v1.0)</span>
           </span>
         </div>
         <!-- Mobile Admin Text -->
         <span class="font-bold text-white mx-4 block lg:hidden"
-          >WFP CFM TRACKER | Call Center
+          >WFP CASE TRACKER | Call Center
           <span class="text-xs font-normal">(v1.0)</span>
         </span>
         <!-- Navigation Items for Desktop -->
@@ -496,6 +496,13 @@ function navigation() {
       icon: IdentificationIcon,
       current: false,
     },
+
+    {
+      name: "Resources",
+      href: "/callcenter/resources",
+      icon: IdentificationIcon,
+      current: false,
+    },
   ];
 
   const currentRouteBase = $router.currentRoute.value.fullPath
@@ -505,9 +512,9 @@ function navigation() {
   navList.forEach((navItem) => {
     const isMatched =
       currentRouteBase === navItem.href ||
-      (navItem.name === "Warehouse Management" &&
-        (currentRouteBase.startsWith("/warehouse/warehouses") ||
-          currentRouteBase.startsWith("/warehouse/stock-management") ||
+      (navItem.name === "Resources" &&
+        (currentRouteBase.startsWith("/callcenter/faqs") ||
+          currentRouteBase.startsWith("/callcenter/sops") ||
           currentRouteBase.startsWith("/warehouse/receipts"))) ||
       (navItem.name === "Project Management" &&
         (currentRouteBase.startsWith("/warehouse/cases") ||
@@ -605,7 +612,13 @@ const getCases = async () => {
     const result = await caseStore.get();
     cases.length = 0;
 
-    cases.push(...result.filter((item) => item.isRejected));
+    cases.push(
+      ...result.filter(
+        (item) =>
+          item.isRejected &&
+          item.submittedBy == user.value.firstname + " " + user.value.lastname
+      )
+    );
 
     newRejectedCaseCount.value = cases.length;
     updateNotifications();

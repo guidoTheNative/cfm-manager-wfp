@@ -14,12 +14,11 @@
           </h2>
         </div>
         <button type="button"
-          class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-600 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+          class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
           @click="generateExcel">
           Export Data
         </button>
       </div>
-
 
       <!-- table  -->
       <div class="align-middle inline-block min-w-full mt-5 shadow-xl rounded-table">
@@ -67,7 +66,7 @@ const Swal = inject("Swal");
 //VARIABLES
 const isLoading = ref(false);
 const breadcrumbs = [
-  { name: "Home", href: "/planner/dashboard", current: false },
+  { name: "Home", href: "/commissioner/dashboard", current: false },
   { name: "Lean Season & Emergency Assistance Losses", href: "#", current: true },
 ];
 
@@ -113,7 +112,8 @@ const columns = ref([
     hidden: false,
     field: row => `<span >ATC#: ${row.atcNumber}</span><br>`
       +
-      `<span>District: ${row.district}</span><br>`,
+      `<span>District: ${row.district}</span><br>`+
+      `<span>Truck #: ${row.truckNumber}</span><br>`,
     sortable: true,
     firstSortType: "asc",
     html: true, // Important for rendering HTML
@@ -127,7 +127,7 @@ const columns = ref([
 
     field: row => `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800" >Dispatched : ${row.originQuantity}MT</span><br>`
       +
-      `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-800">Loss: ${row.totalQuantityAll.toFixed(2)}MT</span><br>`,
+      `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-800">Loss: ${row.totalQuantity?.toFixed(2)}MT</span><br>`,
 
     sortable: true,
     firstSortType: "asc",
@@ -148,7 +148,7 @@ const columns = ref([
   },
 
   {
-    label: "Percentage of Damage",
+    label: "Percentage of Loss",
     field: row => {
       let colorClass = '';
       if (row.damagePercentage < 10) {

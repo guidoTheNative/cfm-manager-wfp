@@ -158,76 +158,73 @@ function prevPage() {
 
 const exportToExcel = () => {
 
-const dataForExport = filteredData.value.map(item => ({
-    'ATC Number': item.loadingPlan?.ATCNumber || 'N/A',
-    'District': item.district || 'N/A',
-    'Activity': item.activity || 'N/A',
-    'Transporter': item.transporter || 'N/A',
-    'Quantity (Mt)': parseFloat(item.loadingPlan?.Quantity || 0).toFixed(2),
-    'Total Dispatched (Mt)': item.dispatches.reduce((sum, dispatch) => sum + parseFloat(dispatch?.totalDispatched || 0), 0).toFixed(2),
-    'Total Received (Mt)': item.dispatches.reduce((sum, dispatch) => sum + parseFloat(dispatch?.receiptStats?.totalReceived || 0), 0).toFixed(2),
-    'Balance (Mt)': parseFloat(item.loadingPlan?.Balance || 0).toFixed(2),
-    'Delivery Notes': item.dispatches.flatMap(dispatch => dispatch?.receiptStats?.physicalDeliveryNotes || []).map(note => note.physicalDeliveryNote || 'N/A').join(', '),
-    'Transported By': item.loadingPlan?.HandledBy || 'N/A'
-}));
-
-// Additional datasets for other sheets (Receipt by FDP, Dispatched per Transporter, etc.)
-const receiptByFDPData = filteredData.value.flatMap(item =>
-    item.dispatches.flatMap(dispatch =>
-        (dispatch.receiptStats?.physicalDeliveryNotes || []).map(note => ({
-            'District': item.district || 'N/A',
-            'ATC Number': item.loadingPlan?.ATCNumber || 'N/A',
-            'Received (Mt)': dispatch.receiptStats?.totalReceived || 0,
-            'FDP': note.finalDestination || 'N/A',
-            'Physical Delivery Note': note.physicalDeliveryNote || 'N/A',
-            'Recipient Name': dispatch.recipientName || 'N/A',
-            'Recieved On': note.receivedOn || 'N/A',
-        }))
-    )
-);
-
-const dispatchedPerTransporterData = filteredData.value.map(item => ({
-    'District': item.district || 'N/A',
-    'ATC Number': item.loadingPlan?.ATCNumber || 'N/A',
-    'Transporter': item.transporter || 'N/A',
-    'Total Transported (Mt)': item.dispatches.reduce((sum, dispatch) => sum + (dispatch.totalDispatched || 0), 0).toFixed(2) || 0,
-}));
-
-const dispatchedPerWarehouseData = filteredData.value
-    .map(item => ({
-        'Warehouse Name': item.warehouse || 'N/A',
-        'Tonnage Drawn (Mt)': item.dispatches.reduce((sum, dispatch) => sum + (dispatch.totalDispatched || 0), 0).toFixed(2) || 0,
-        'District Distributed': item.district || 'N/A',
+    const dataForExport = filteredData.value.map(item => ({
         'ATC Number': item.loadingPlan?.ATCNumber || 'N/A',
-    }))
-    .filter(item => parseFloat(item['Tonnage Drawn (Mt)']) > 0);
+        'District': item.district || 'N/A',
+        'Activity': item.activity || 'N/A',
+        'Transporter': item.transporter || 'N/A',
+        'Quantity (Mt)': parseFloat(item.loadingPlan?.Quantity || 0).toFixed(2),
+        'Total Dispatched (Mt)': item.dispatches.reduce((sum, dispatch) => sum + parseFloat(dispatch?.totalDispatched || 0), 0).toFixed(2),
+        'Total Received (Mt)': item.dispatches.reduce((sum, dispatch) => sum + parseFloat(dispatch?.receiptStats?.totalReceived || 0), 0).toFixed(2),
+        'Balance (Mt)': parseFloat(item.loadingPlan?.Balance || 0).toFixed(2),
+        'Delivery Notes': item.dispatches.flatMap(dispatch => dispatch?.receiptStats?.physicalDeliveryNotes || []).map(note => note.physicalDeliveryNote || 'N/A').join(', '),
+        'Transported By': item.loadingPlan?.HandledBy || 'N/A'
+    }));
 
-// Dispatches by Date Sheet
-const dispatchesByDateData = props.dispatchesdataSummary.map(item => ({
-    'Date': moment(item.dispatchdate).format('YYYY-MM-DD') || 'N/A',
-    'District': item.district || 'N/A',
-    'Transporter': item.transporter || 'N/A',
-    'Commodity': item.commodity || 'N/A',
-    'Total Dispatched (Mt)': item.quantity || 0,
-    'FDP': item.fdp,
-    'ATC #': item.atcnumber,
-    'Handled By': item.handledby,
-}));
+    // Additional datasets for other sheets (Receipt by FDP, Dispatched per Transporter, etc.)
+    const receiptByFDPData = filteredData.value.flatMap(item =>
+        item.dispatches.flatMap(dispatch =>
+            (dispatch.receiptStats?.physicalDeliveryNotes || []).map(note => ({
+                'District': item.district || 'N/A',
+                'ATC Number': item.loadingPlan?.ATCNumber || 'N/A',
+                'Received (Mt)': dispatch.receiptStats?.totalReceived || 0,
+                'FDP': note.finalDestination || 'N/A',
+                'Physical Delivery Note': note.physicalDeliveryNote || 'N/A',
+                'Recipient Name': dispatch.recipientName || 'N/A',     
+                'Recieved On': note.receivedOn || 'N/A',
+            }))
+        )
+    );
 
-// Create a new workbook and add sheets
-const workbook = XLSX.utils.book_new();
-XLSX.utils.book_append_sheet(workbook, XLSX.utils.json_to_sheet(dataForExport), 'Summary');
-XLSX.utils.book_append_sheet(workbook, XLSX.utils.json_to_sheet(receiptByFDPData), 'Receipt by FDP');
-XLSX.utils.book_append_sheet(workbook, XLSX.utils.json_to_sheet(dispatchedPerTransporterData), 'Dispatched per Transporter');
-XLSX.utils.book_append_sheet(workbook, XLSX.utils.json_to_sheet(dispatchedPerWarehouseData), 'Dispatched per Warehouse');
-XLSX.utils.book_append_sheet(workbook, XLSX.utils.json_to_sheet(dispatchesByDateData), 'Dispatches by Date'); // New sheet
+    const dispatchedPerTransporterData = filteredData.value.map(item => ({
+        'District': item.district || 'N/A',
+        'ATC Number': item.loadingPlan?.ATCNumber || 'N/A',
+        'Transporter': item.transporter || 'N/A',
+        'Total Transported (Mt)': item.dispatches.reduce((sum, dispatch) => sum + (dispatch.totalDispatched || 0), 0).toFixed(2) || 0,
+    }));
 
-// Export workbook
-XLSX.writeFile(workbook, `Loading_Plans_and_Dispatch_Summary_Report_${moment().format('YYYY-MM-DD')}.xlsx`);
+    const dispatchedPerWarehouseData = filteredData.value
+        .map(item => ({
+            'Warehouse Name': item.warehouse || 'N/A',
+            'Tonnage Drawn (Mt)': item.dispatches.reduce((sum, dispatch) => sum + (dispatch.totalDispatched || 0), 0).toFixed(2) || 0,
+            'District Distributed': item.district || 'N/A',
+            'ATC Number': item.loadingPlan?.ATCNumber || 'N/A',
+        }))
+        .filter(item => parseFloat(item['Tonnage Drawn (Mt)']) > 0);
+
+    // Dispatches by Date Sheet
+    const dispatchesByDateData = props.dispatchesdataSummary.map(item => ({
+        'Date': moment(item.dispatchdate).format('YYYY-MM-DD') || 'N/A',
+        'District': item.district || 'N/A',
+        'Transporter': item.transporter || 'N/A',
+        'Commodity': item.commodity || 'N/A',
+        'Total Dispatched (Mt)': item.quantity || 0,
+        'FDP': item.fdp,
+        'ATC #': item.atcnumber,
+        'Handled By': item.handledby,
+    }));
+
+    // Create a new workbook and add sheets
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, XLSX.utils.json_to_sheet(dataForExport), 'Summary');
+    XLSX.utils.book_append_sheet(workbook, XLSX.utils.json_to_sheet(receiptByFDPData), 'Receipt by FDP');
+    XLSX.utils.book_append_sheet(workbook, XLSX.utils.json_to_sheet(dispatchedPerTransporterData), 'Dispatched per Transporter');
+    XLSX.utils.book_append_sheet(workbook, XLSX.utils.json_to_sheet(dispatchedPerWarehouseData), 'Dispatched per Warehouse');
+    XLSX.utils.book_append_sheet(workbook, XLSX.utils.json_to_sheet(dispatchesByDateData), 'Dispatches by Date'); // New sheet
+
+    // Export workbook
+    XLSX.writeFile(workbook, `Loading_Plans_and_Dispatch_Summary_Report_${moment().format('YYYY-MM-DD')}.xlsx`);
 };
-
-
-
 
 
 </script>
@@ -264,6 +261,7 @@ tbody tr:nth-child(odd) {
 }
 
 .fixed-width {
-  width: 190px; /* Adjust width as needed */
+    width: 190px;
+    /* Adjust width as needed */
 }
 </style>

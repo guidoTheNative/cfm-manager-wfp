@@ -14,7 +14,7 @@
           </h2>
         </div>
         <button type="button"
-          class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-600 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+          class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
           @click="generateExcel">
           Export Data
         </button>
@@ -111,7 +111,7 @@ const columns = ref([
   {
     label: "Status",
 
-    field: row => `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800" >Dispatched : ${row.originQuantity}MT</span><br>`
+    field: row => `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800" >Dispatched : ${row.originQuantity.toFixed(2)}MT</span><br>`
       +
       `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-800">Loss: ${row.totalQuantity.toFixed(2)}MT</span><br>`,
 
@@ -176,6 +176,7 @@ const generateExcel = (data) => {
   // Export the workbook
   XLSX.writeFile(wb, 'Emergency-losses.xlsx');
 };
+
 
 
 

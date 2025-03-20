@@ -16,35 +16,54 @@
       </div>
       <!-- tabs -->
       <div class="align-middle inline-block min-w-full">
-        <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap pl-0 mb-4 border-b border-blue-300 lg:w-full md:w-40 sm:w-40" id="tabs-menu"
+        <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap pl-0 mb-4 border-b border-blue-300" id="tabs-menu"
           role="tablist">
-          <li class="nav-item md:mr-1" role="presentation">
-            <a href="#user-relief"
-              class="nav-link block font-bold text-xs leading-tight capitalize border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-1 hover:border-transparent hover:bg-blue-100 focus:border-transparent active"
-              id="tabs-user-relief" data-bs-toggle="pill" data-bs-target="#user-relief" role="tab"
-              aria-controls="user-relief" aria-selected="true">Stock Position</a>
+          <li class="nav-item mr-1" role="presentation">
+            <a href="#user-loadings"
+              class="nav-link block font-bold text-xs leading-tight capitalize border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-1hover:border-transparent hover:bg-blue-100 focus:border-transparent active"
+              id="tabs-user-loadings" data-bs-toggle="pill" data-bs-target="#user-loadings" role="tab"
+              aria-controls="user-loadings" aria-selected="true">Lean Season & Emergency Assistance  Delivery Reports</a>
           </li>
-          <li class="nav-item md:mr-1" role="presentation">
+          <li class="nav-item mr-1" role="presentation">
+            <a href="#user-lean"
+              class="nav-link block font-bold text-xs leading-tight capitalize border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-1hover:border-transparent hover:bg-blue-100 focus:border-transparent"
+              id="tabs-user-lean" data-bs-toggle="pill" data-bs-target="#user-lean" role="tab"
+              aria-controls="user-lean" aria-selected="false">Lean Season & Emergency Assistance Dispatch Reports</a>
+          </li>
+
+          <li class="nav-item mr-1" role="presentation">
+            <a href="#user-relief"
+              class="nav-link block font-bold text-xs leading-tight capitalize border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-1hover:border-transparent hover:bg-blue-100 focus:border-transparent"
+              id="tabs-user-relief" data-bs-toggle="pill" data-bs-target="#user-relief" role="tab"
+              aria-controls="user-relief" aria-selected="false">Stock Position</a>
+          </li>
+          <li class="nav-item mr-1" role="presentation">
             <a href="#user-settings"
-              class="nav-link block font-bold text-xs leading-tight capitalize border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-1 hover:border-transparent hover:bg-blue-100 focus:border-transparent"
+              class="nav-link block font-bold text-xs leading-tight capitalize border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-1hover:border-transparent hover:bg-blue-100 focus:border-transparent"
               id="tabs-user-settings" data-bs-toggle="pill" data-bs-target="#user-settings" role="tab"
               aria-controls="user-settings" aria-selected="false">Commodity Distribution Report</a>
           </li>
-          <li class="nav-item md:mr-1" role="presentation">
-            <a href="#user-lean"
-              class="nav-link block font-bold text-xs leading-tight capitalize border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-1 hover:border-transparent hover:bg-blue-100 focus:border-transparent"
-              id="tabs-user-lean" data-bs-toggle="pill" data-bs-target="#user-lean" role="tab"
-              aria-controls="user-settings" aria-selected="false">Lean Season Dispatch Reports</a>
-          </li>
+
+       
+       
         </ul>
+
+        <!-- Tab content -->
         <div class="tab-content" id="tabs-user-options">
-          <div class="tab-pane fade show active mt-3" id="user-relief" role="tabpanel"
+          <div class="tab-pane fade mt-3" id="user-relief" role="tabpanel"
             aria-labelledby="tabs-user-relief">
             <user-relief :data="warehousesinventory" v-on:update="updateOrCreateReliefItems" />
           </div>
-          <div class="tab-pane fade contain" id="user-settings" role="tabpanel" aria-labelledby="tabs-user-settings">
+          <div class="tab-pane fade" id="user-settings" role="tabpanel" aria-labelledby="tabs-user-settings">
             <commodity-distribution-table :data="commodityDistributionData" :screenshotMode="screenshotMode" />
           </div>
+
+          <div class="tab-pane fade show active" id="user-loadings" role="tabpanel" aria-labelledby="tabs-user-loadings">
+            <loading-plan-distribution-table :data="loadingplansdata" 
+            :dispatchesdataSummary="dispatchesdataSummary"
+            :screenshotMode="screenshotMode" :dispatchdata="dispatchesdata" />
+          </div>
+
           <div class="tab-pane fade" id="user-lean" role="tabpanel" aria-labelledby="tabs-user-lean">
             <user-lean :screenshotMode="screenshotMode" />
           </div>
@@ -53,6 +72,7 @@
     </div>
   </main>
 </template>
+
 
 <script setup>
 import { inject, ref, reactive, onMounted } from "vue";
@@ -64,6 +84,7 @@ import UserProfile from "../../../components/pages/users/profile.component.vue";
 import UserLogs from "../../../components/pages/users/logs.component.vue";
 import UserSettings from "../../../components/pages/instruction/settings.component.vue";
 import CommodityDistributionTable from './CommodityDistributionTable.vue';
+import LoadingPlanDistributionTable from './LoadingPlanDistributionTable.vue';
 
 import UserRelief from "./StockPositioning.vue";
 
@@ -78,14 +99,15 @@ import { useInstructedCommoditiesStore } from "../../../stores/instructedCommodi
 
 import { useinstructionstore } from "../../../stores/instructions.store";
 import { userequisitionstore } from "../../../stores/requisition.store";
+import { useloadingplanstore } from "../../../stores/loadingplans.store";
+import { useDispatcherStore } from "../../../stores/dispatch.store";
 
 import { usewarehousestore } from "../../../stores/warehouse.store";
 const requisitionStore = userequisitionstore();
-import { useSessionStore } from "../../../stores/session.store";
 
-const sessionStore = useSessionStore();
-const user = ref(sessionStore.getUser);
+const loadingplanStore = useloadingplanstore();
 
+const dispatchStore = useDispatcherStore();
 //INJENCTIONS
 const $router = useRouter();
 const $route = useRoute();
@@ -94,13 +116,11 @@ const Swal = inject("Swal");
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-
-
 //VARIABLES
 const id = ref(null);
 const isLoading = ref(false);
 const breadcrumbs = [
-  { name: "Home", href: "/receipient/dashboard", current: false },
+  { name: "Home", href: "/commissioner/dashboard", current: false },
   { name: "Report Management", href: "#", current: false },
 ];
 
@@ -119,6 +139,9 @@ const model = ref({
 const instructedCommodities = reactive([]);
 const warehousesinventory = reactive([])
 const commodityDistributionData = ref([])
+const loadingplansdata = ref([])
+const dispatchesdata = ref([])
+const dispatchesdataSummary = ref([])
 
 
 //MOUNTED
@@ -129,7 +152,17 @@ onMounted(async () => {
   getInstructedCommodities();
   try {
     const data = await requisitionStore.getCommodityDistributionSummary();
-    commodityDistributionData.value = [...data.filter(item => item.district == user.value.district)];
+    commodityDistributionData.value = [...data];
+
+    const loadingplandata = await loadingplanStore.getloadingplansDataSummary();
+    loadingplansdata.value = [...loadingplandata];
+
+    const dispatchdata = await dispatchStore.getdispatchSummaryTime();
+    dispatchesdata.value = [...dispatchdata];
+    const dispatchdataSummary = await dispatchStore.getdispatchSummary();
+    dispatchesdataSummary.value = [...dispatchdataSummary.unsummarizedDispatches];
+
+  
   } catch (error) {
     console.error("Failed to load commodity data:", error);
   } finally {
@@ -141,6 +174,9 @@ onMounted(async () => {
 ///FIELDS
 
 //FUNCTIONS
+
+
+
 
 const getWarehouseInventory = async () => {
   isLoading.value = true;
@@ -346,7 +382,7 @@ const printPDF = async () => {
 
   // Add the footer text
   const currentDate = new Date().toLocaleString(); // Get the current date and time
-  const footerText = `WFP CFM TRACKER - ${currentDate}`;
+  const footerText = `WFP CASE TRACKER - ${currentDate}`;
   const footerYPosition = 290; // Adjust this based on the page size
   pdf.setFontSize(10);
   pdf.text(footerText, 10, footerYPosition);
@@ -406,6 +442,4 @@ const logoBase64 = " data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN0AAADkCAMAA
   overflow: hidden;
   /* This is important to apply rounded corners to child elements */
 }
-
-
 </style>

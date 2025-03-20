@@ -104,28 +104,54 @@ const getCases = async () => {
     });
 };
 
+
 const updateCase = async (newValues) => {
   isLoading.value = true;
 
-  caseStore
-    .update(newValues.value)
-    .then((result) => {
-      Swal.fire({
-        title: "Success",
-        text: "updated case details",
-        icon: "success",
-      });
-    })
-    .catch((error) => {
-      Swal.fire({
-        title: "Failed",
-        text: "failed to update case (" + error + ")",
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
-    })
-    .finally(() => {
-      isLoading.value = false;
+  try {
+    newValues.value.id = parseInt(id.value);
+
+    // Set default values for fields if not available
+    newValues.value.cfm_channel = newValues.value.cfm_channel || " ";
+    newValues.value.macro_category = newValues.value.macro_category || " ";
+    newValues.value.cooperaring_partner =
+      newValues.value.cooperaring_partner || " ";
+    newValues.value.transfer_modality =
+      newValues.value.transfer_modality || " ";
+    newValues.value.dateClosed = newValues.value.dateClosed || ""; // Set the current datetime
+
+    // Check if the status is being changed to "closed"
+    if (
+      newValues.value.status &&
+      newValues.value.status.toLowerCase() === "closed"
+    ) {
+      newValues.value.dateClosed = new Date(); // Set the current datetime
+      newValues.value.isEscalated = false; // Force `isEscalated` to false
+      newValues.value.isRejected = false; // Force `isRejected` to false
+      newValues.value.RejectionComments = "";
+    } else {
+      newValues.value.isEscalated = false; // Force `isEscalated` to false
+      newValues.value.isRejected = false; // Force `isRejected` to false
+      newValues.value.RejectionComments = "";
+    }
+
+    // Perform the update
+    await caseStore.update(newValues.value);
+
+    Swal.fire({
+      title: "Success",
+      text: "Updated case details",
+      icon: "success",
     });
+  } catch (error) {
+    Swal.fire({
+      title: "Failed",
+      text: "Failed to update case (" + error + ")",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
+  } finally {
+    isLoading.value = false;
+  }
 };
 </script>

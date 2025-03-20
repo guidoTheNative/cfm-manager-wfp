@@ -2,7 +2,7 @@
   <main class="min-h-screen">
     <!-- Spinner -->
     <spinner-widget v-bind:open="isLoading" />
-    <span class="text-white font-bold">Lean Season Loading Plan Reports</span>
+    <span class="text-white font-bold">Lean Season & Emergency Assistance Loading Plan Reports</span>
 
     <div class="container mx-auto">
 
@@ -81,7 +81,7 @@
 
             <div class="relative inline-block text-left">
               <button type="button" @click="opendropdown = !opendropdown"
-                class="inline-flex justify-center w-full px-4 py-2 bg-gray-500 text-sm font-medium text-white rounded-md hover:bg-blue-400 focus:outline-none"
+                class="inline-flex justify-center w-full px-4 py-2 bg-green-500 text-sm font-medium text-white rounded-md hover:bg-green-400 focus:outline-none"
                 id="menu-button" aria-expanded="true" aria-haspopup="true">
                 Export
                 <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -223,15 +223,54 @@ const columns = ref([
     tdClass: "capitalize"
   },
   {
-    label: "Details",
-    field: row => `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-orange-100 text-orange-800">From: ${row.warehouse?.Name}</span><br>` +
-      `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">To: ${row.district?.Name}</span><br>` +
-      `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800">By: ${row.transporter?.Name}</span>`,
-    sortable: true,
-    firstSortType: "asc",
-    html: true, // This is important to render HTML
-    tdClass: "capitalize"
+  label: "Details",
+  field: row => {
+    // Get the matching warehouse name for 'From' and 'To'
+    const fromWarehouse = warehouses.find(w => w.id === row.moveFromWarehouseId);
+    const toWarehouse = warehouses.find(w => w.id === row.moveToWarehouseId);
+    const warehouseName = row.warehouse?.Name;
+
+    // Build the "From" details
+    let details = `
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-orange-100 text-orange-800">
+        From: ${fromWarehouse ? fromWarehouse.Name : warehouseName || "N/A"}
+      </span><br>
+    `;
+
+    // Add "To" details only if isPrepositioned is true
+    if (row.IsPrepositioned) {
+      details += `
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-semibold bg-blue-100 text-blue-800">
+          To: ${toWarehouse ? toWarehouse.Name : "N/A"}
+        </span><br>
+      `;
+    }
+
+    // Add district and transporter details
+    details += `
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-semibold bg-blue-100 text-blue-800">
+        District: ${row.district?.Name || "Unknown"}
+      </span><br>
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-semibold bg-green-100 text-green-800">
+        TP: ${row.transporter?.Name || "Unknown"}
+      </span><br>
+    `;
+
+    // Add the ATC Number
+    details += `
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-bold bg-gray-100 text-gray-800">
+        ATC #: ${row.ATCNumber || "N/A"}
+      </span>
+    `;
+
+    return details;
   },
+  sortable: true,
+  firstSortType: "asc",
+  html: true, // This is important to render HTML
+  tdClass: "capitalize"
+},
+
 
  
   {
@@ -294,7 +333,7 @@ const reloadPage = async () => {
   await getLoadingplans();
 
   // Navigate to the route after the data has been updated
-  $router.push('/manager/loadingplans');
+  $router.push('/commissioner/loadingplans');
 }
 
 
@@ -307,7 +346,7 @@ const generatePDF = () => {
   doc.addImage(leftHeaderImage, 'JPEG', 18, 7, 25, 20); // Adjust dimensions and position as needed
   doc.addImage(rightHeaderImage, 'JPEG', 160, 2, 30, 30); // Adjust dimensions and position as needed
   doc.setFontSize(12); // Set the title font size
-  doc.text('WFP CFM TRACKER Report', 105, 20, null, null, 'center'); // Centered title
+  doc.text('WFP CASE TRACKER Report', 105, 20, null, null, 'center'); // Centered title
 
   const dataToExport = filteredLoadingPlans.value.length > 0 ? filteredLoadingPlans.value : loadingplans;
 

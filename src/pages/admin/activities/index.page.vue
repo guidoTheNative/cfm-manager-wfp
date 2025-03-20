@@ -45,9 +45,9 @@
               new user
             </button>
           </router-link> -->
-         <create-user-form v-on:create="createUser" />
+    <!--      <create-user-form v-on:create="createUser" />
         
-        </div>
+     -->    </div>
       </div>
       <!-- table  -->
 

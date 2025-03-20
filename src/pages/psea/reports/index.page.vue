@@ -120,7 +120,7 @@ import jsPDF from 'jspdf';
 const id = ref(null);
 const isLoading = ref(false);
 const breadcrumbs = [
-  { name: "Home", href: "/receipient/dashboard", current: false },
+  { name: "Home", href: "/commissioner/dashboard", current: false },
   { name: "Report Management", href: "#", current: false },
 ];
 
@@ -159,10 +159,10 @@ onMounted(async () => {
 
     const dispatchdata = await dispatchStore.getdispatchSummaryTime();
     dispatchesdata.value = [...dispatchdata];
-
     const dispatchdataSummary = await dispatchStore.getdispatchSummary();
     dispatchesdataSummary.value = [...dispatchdataSummary.unsummarizedDispatches];
 
+  
   } catch (error) {
     console.error("Failed to load commodity data:", error);
   } finally {
@@ -382,7 +382,7 @@ const printPDF = async () => {
 
   // Add the footer text
   const currentDate = new Date().toLocaleString(); // Get the current date and time
-  const footerText = `WFP CFM TRACKER - ${currentDate}`;
+  const footerText = `WFP CASE TRACKER - ${currentDate}`;
   const footerYPosition = 290; // Adjust this based on the page size
   pdf.setFontSize(10);
   pdf.text(footerText, 10, footerYPosition);

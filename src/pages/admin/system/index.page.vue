@@ -41,20 +41,24 @@ import breadcrumbWidget from "../../../components/widgets/breadcrumbs/admin.brea
 import {
   OfficeBuildingIcon,
   UserGroupIcon,
+  QuestionMarkCircleIcon,
   ClipboardListIcon,
   UserIcon,
   KeyIcon,
   ArchiveIcon,
   FolderIcon,
+  ClipboardDocumentCheckIcon,
   TrendingUpIcon,
   TruckIcon,
   MailIcon,
   BellIcon,
+  DocumentDownloadIcon,
+  DocumentIcon,
   ChartBarIcon,
   MapIcon,
   ScaleIcon
 } from "@heroicons/vue/outline";
-import { DocumentIcon, DocumentTextIcon } from '@heroicons/vue/solid';
+import { DocumentTextIcon } from '@heroicons/vue/solid';
 
 const isLoading = ref(false); // Example reactive state
 const breadcrumbs = [
@@ -73,6 +77,22 @@ const optionGroups = ref([
       { label: 'Reminders', icon: BellIcon, path: '/admin/reminders' }, // Change to BellIcon
       { label: 'Mailing Groups', icon: MailIcon, path: '/admin/mailinggroups' }, // Change to BellIcon
  */    
+    ],
+  },
+
+
+  {
+    title: 'Case Management',
+    options: [
+    /*   { label: 'Organisations', icon: OfficeBuildingIcon, path: '/admin/organisations' },
+     */  { label: 'CFM Cases', icon: DocumentIcon, path: '/admin/cases' },
+     { label: 'Process Monitoring', icon: ClipboardListIcon, path: '/admin/process' },
+      /*  { label: 'Performance Stats', icon: ChartBarIcon, path: '/admin/performance-stats' }, // Change to ChartBarIcon
+   
+      { label: 'Reminders', icon: BellIcon, path: '/admin/reminders' }, // Change to BellIcon
+      { label: 'Mailing Groups', icon: MailIcon, path: '/admin/mailinggroups' }, // Change to BellIcon
+ */     { label: 'FAQs', icon: QuestionMarkCircleIcon, path: '/admin/faqs' },
+ { label: 'SOPs', icon: DocumentDownloadIcon, path: '/admin/sops' },
     ],
   },
  

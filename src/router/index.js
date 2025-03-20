@@ -6,7 +6,6 @@ import {
 import { saveDataOffline, getDataOffline } from "../services/localbase";
 
 const routes = [
- 
   {
     path: "/",
     component: () => import("../components/layouts/plain.layout.vue"),
@@ -57,6 +56,30 @@ const routes = [
       },
 
       {
+        path: "/admin/cases/create",
+        name: "admin-cases-create",
+        component: () => import("../pages/admin/cases/create-cases.page"),
+      },
+
+      {
+        path: "/admin/process/create",
+        name: "admin-process-create",
+        component: () => import("../pages/admin/process/create-cases.page"),
+      },
+
+      {
+        path: "/admin/faqs",
+        name: "admin-cases-faqs",
+        component: () => import("../pages/admin/cases/create-faqs.page"),
+      },
+
+      {
+        path: "/admin/sops",
+        name: "admin-cases-sops",
+        component: () => import("../pages/admin/cases/create-sops.page"),
+      },
+
+      {
         path: "/admin/dashboard",
         name: "admin-dashboard",
         component: () => import("../pages/admin/dashboard/index.page.vue"),
@@ -73,9 +96,6 @@ const routes = [
         name: "admin-users",
         component: () => import("../pages/admin/users/index.page.vue"),
       },
-
-     
-
 
       {
         path: "/admin/mailinggroups",
@@ -295,6 +315,18 @@ const routes = [
       },
 
       {
+        path: "/admin/cases",
+        name: "admin-cases",
+        component: () => import("../pages/admin/cases/index.page.vue"),
+      },
+
+      {
+        path: "/admin/process",
+        name: "admin-process",
+        component: () => import("../pages/admin/process/index.page.vue"),
+      },
+
+      {
         path: "/admin/project-management",
         name: "admin-project-management",
         component: () => import("../pages/admin/projects/index.page.vue"),
@@ -350,16 +382,89 @@ const routes = [
       {
         path: "/activitymanager/dashboard",
         name: "activitymanager-dashboard",
-        component: () => import("../pages/activitymanager/dashboard/index.page.vue"),
+        component: () =>
+          import("../pages/activitymanager/dashboard/index.page.vue"),
       },
-    
+
+      {
+        path: "/activitymanager/process",
+        name: "activitymanager-process",
+        component: () =>
+          import("../pages/activitymanager/process/index.page.vue"),
+      },
+      {
+        path: "/activitymanager/process/create",
+        name: "activitymanager-process-create",
+        component: () =>
+          import("../pages/activitymanager/process/create-cases.page"),
+      },
+
+      {
+        path: "/activitymanager/resources",
+        name: "activitymanager-resources",
+        component: () =>
+          import("../pages/activitymanager/system/index.page.vue"),
+      },
+
+      {
+        path: "/activitymanager/faqs",
+        name: "activitymanager-faqs",
+        component: () => import("../pages/activitymanager/cases/faqs.page.vue"),
+      },
+
+      {
+        path: "/activitymanager/sops",
+        name: "activitymanager-sops",
+        component: () => import("../pages/activitymanager/cases/sops.page.vue"),
+      },
+
+      {
+        path: "/activitymanager/cases/manage/escalated/:id",
+        name: "activitymanager-cases-manage-escalated",
+        component: () =>
+          import("../pages/activitymanager/cases/manage-escalated.page.vue"),
+      },
+
+      {
+        path: "/activitymanager/cases/escalated",
+        name: "activitymanager-cases-escalated",
+        component: () =>
+          import("../pages/activitymanager/cases/index-escalated.page.vue"),
+      },
+      {
+        path: "/activitymanager/cases/manage/:id",
+        name: "activitymanager-cases-manage",
+        component: () =>
+          import("../pages/activitymanager/cases/manage.page.vue"),
+      },
+
+      {
+        path: "/activitymanager/cases/manage/rejected/:id",
+        name: "activitymanager-cases-manage-rejected",
+        component: () =>
+          import("../pages/activitymanager/cases/manage-rejected.page.vue"),
+      },
+
+      {
+        path: "/activitymanager/cases",
+        name: "activitymanager-cases",
+        component: () =>
+          import("../pages/activitymanager/cases/index.page.vue"),
+      },
+
+      {
+        path: "/activitymanager/cases/rejected",
+        name: "activitymanager-cases-rejected",
+        component: () =>
+          import("../pages/activitymanager/cases/index-rejected.page.vue"),
+      },
 
       {
         path: "/activitymanager/system",
         name: "activitymanager-system",
-        component: () => import("../pages/activitymanager/system/index.page.vue"),
+        component: () =>
+          import("../pages/activitymanager/system/index.page.vue"),
       },
-
 
       {
         path: "/activitymanager/change-password",
@@ -367,8 +472,6 @@ const routes = [
         component: () =>
           import("../components/pages/users/change.password.vue"),
       },
-
-    
 
       {
         path: "/activitymanager/about-system",
@@ -379,7 +482,7 @@ const routes = [
     beforeEnter: (to, from, next) => {
       let role = JSON.parse(sessionStorage.getItem("RLE"));
       if (role != null && typeof role.name != "undefined") {
-        if (role.name == "activitymanager") {
+        if (role.name == "Activity manager") {
           next();
         } else {
           next({ name: "portal-signin" });
@@ -414,14 +517,29 @@ const routes = [
           import("../components/pages/users/change.password.vue"),
       },
 
+      {
+        path: "/callcenter/resources",
+        name: "callcenter-resources",
+        component: () => import("../pages/callcenter/system/index.page.vue"),
+      },
+
+      {
+        path: "/callcenter/faqs",
+        name: "callcenter-faqs",
+        component: () => import("../pages/callcenter/cases/faqs.page.vue"),
+      },
+
+      {
+        path: "/callcenter/sops",
+        name: "callcenter-sops",
+        component: () => import("../pages/callcenter/cases/sops.page.vue"),
+      },
 
       {
         path: "/callcenter/cases/manage/:id",
         name: "callcenter-cases-manage",
-        component: () =>
-          import("../pages/callcenter/cases/manage.page.vue"),
+        component: () => import("../pages/callcenter/cases/manage.page.vue"),
       },
-    
 
       {
         path: "/callcenter/cases/manage/rejected/:id",
@@ -431,20 +549,30 @@ const routes = [
       },
 
       {
-        path: "/callcenter/cases",
-        name: "callcenter-cases",
+        path: "/callcenter/cases/rejected",
+        name: "callcenter-cases-rejected",
         component: () =>
-          import("../pages/callcenter/cases/index.page.vue"),
+          import("../pages/callcenter/cases/index-rejected.page.vue"),
       },
 
-    
+      {
+        path: "/callcenter/cases/create",
+        name: "callcenter-cases-create",
+        component: () => import("../pages/callcenter/cases/create-cases.page"),
+      },
+
+      {
+        path: "/callcenter/cases",
+        name: "callcenter-cases",
+        component: () => import("../pages/callcenter/cases/index.page.vue"),
+      },
+
       {
         path: "/callcenter/cases/rejected",
         name: "callcenter-cases-rejected",
         component: () =>
           import("../pages/callcenter/cases/index-rejected.page.vue"),
       },
-    
 
       {
         path: "/callcenter/about-system",
@@ -483,7 +611,6 @@ const routes = [
         name: "cfmmanager-dashboard",
         component: () => import("../pages/cfmmanager/dashboard/index.page.vue"),
       },
-    
 
       {
         path: "/cfmmanager/about-system",
@@ -505,7 +632,7 @@ const routes = [
     },
   },
 
-  //Dodma
+  //psea
   {
     path: "/hop",
     name: "hop",
@@ -524,21 +651,64 @@ const routes = [
       },
 
       {
+        path: "/hop/resources",
+        name: "hop-resources",
+        component: () => import("../pages/hop/system/index.page.vue"),
+      },
+
+      {
+        path: "/hop/faqs",
+        name: "hop-faqs",
+        component: () => import("../pages/hop/cases/faqs.page.vue"),
+      },
+
+      {
+        path: "/hop/sops",
+        name: "hop-sops",
+        component: () => import("../pages/hop/cases/sops.page.vue"),
+      },
+
+      {
+        path: "/hop/cases/manage/:id",
+        name: "hop-cases-manage",
+        component: () => import("../pages/hop/cases/manage.page.vue"),
+      },
+
+      {
+        path: "/hop/cases/manage/escalated/:id",
+        name: "hop-cases-manage-escalated",
+        component: () => import("../pages/hop/cases/manage-escalated.page.vue"),
+      },
+
+      {
+        path: "/hop/cases/escalated",
+        name: "hop-cases-escalated",
+        component: () => import("../pages/hop/cases/index-escalated.page.vue"),
+      },
+      {
+        path: "/hop/cases/manage/rejected/:id",
+        name: "hop-cases-manage-rejected",
+        component: () => import("../pages/hop/cases/manage-rejected.page.vue"),
+      },
+
+      {
+        path: "/hop/cases",
+        name: "hop-cases",
+        component: () => import("../pages/hop/cases/index.page.vue"),
+      },
+
+      {
+        path: "/hop/process",
+        name: "hop-process",
+        component: () => import("../pages/hop/process/index.page.vue"),
+      },
+
+      {
         path: "/hop/change-password",
         name: "hop-change-password",
         component: () =>
           import("../components/pages/users/change.password.vue"),
       },
-
-    
-
-      {
-        path: "/hop/system",
-        name: "hop-system",
-        component: () => import("../pages/hop/system/index.page.vue"),
-      },
-
-     
 
       {
         path: "/hop/about-system",
@@ -546,10 +716,11 @@ const routes = [
         component: () => import("../pages/about/index.page.vue"),
       },
     ],
+
     beforeEnter: (to, from, next) => {
       let role = JSON.parse(sessionStorage.getItem("RLE"));
       if (role != null && typeof role.name != "undefined") {
-        if (role.name == "hop") {
+        if (role.name == "Head of Programme") {
           next();
         } else {
           next({ name: "portal-signin" });
@@ -579,12 +750,47 @@ const routes = [
       },
 
       {
+        path: "/psea/resources",
+        name: "psea-resources",
+        component: () => import("../pages/psea/system/index.page.vue"),
+      },
+
+      {
+        path: "/psea/faqs",
+        name: "psea-faqs",
+        component: () => import("../pages/psea/cases/faqs.page.vue"),
+      },
+
+      {
+        path: "/psea/sops",
+        name: "psea-sops",
+        component: () => import("../pages/psea/cases/sops.page.vue"),
+      },
+
+      {
+        path: "/psea/cases/manage/:id",
+        name: "psea-cases-manage",
+        component: () => import("../pages/psea/cases/manage.page.vue"),
+      },
+
+      {
+        path: "/psea/cases/manage/rejected/:id",
+        name: "psea-cases-manage-rejected",
+        component: () => import("../pages/psea/cases/manage-rejected.page.vue"),
+      },
+
+      {
+        path: "/psea/cases",
+        name: "psea-cases",
+        component: () => import("../pages/psea/cases/index.page.vue"),
+      },
+
+      {
         path: "/psea/change-password",
         name: "psea-change-password",
         component: () =>
           import("../components/pages/users/change.password.vue"),
       },
-
 
       {
         path: "/psea/about-system",
@@ -596,7 +802,7 @@ const routes = [
     beforeEnter: (to, from, next) => {
       let role = JSON.parse(sessionStorage.getItem("RLE"));
       if (role != null && typeof role.name != "undefined") {
-        if (role.name == "psea") {
+        if (role.name == "PSEA/Gender Focal Point") {
           next();
         } else {
           next({ name: "portal-signin" });
@@ -605,10 +811,7 @@ const routes = [
         next({ name: "portal-signin" });
       }
     },
-
   },
-
-
 
   //Manager
   {
@@ -625,18 +828,76 @@ const routes = [
       {
         path: "/field/dashboard",
         name: "field-dashboard",
-        component: () =>
-          import("../pages/field/dashboard/index.page.vue"),
+        component: () => import("../pages/field/dashboard/index.page.vue"),
       },
 
-    
+      {
+        path: "/field/resources",
+        name: "field-resources",
+        component: () => import("../pages/field/system/index.page.vue"),
+      },
+
+      {
+        path: "/field/faqs",
+        name: "field-faqs",
+        component: () => import("../pages/field/cases/faqs.page.vue"),
+      },
+
+      {
+        path: "/field/sops",
+        name: "field-sops",
+        component: () => import("../pages/field/cases/sops.page.vue"),
+      },
+
+      {
+        path: "/field/change-password",
+        name: "field-change-password",
+        component: () =>
+          import("../components/pages/users/change.password.vue"),
+      },
+
       {
         path: "/field/system",
         name: "field-system",
         component: () => import("../pages/field/system/index.page.vue"),
       },
 
- 
+      {
+        path: "/field/cases/manage/:id",
+        name: "field-cases-manage",
+        component: () => import("../pages/field/cases/manage.page.vue"),
+      },
+
+      {
+        path: "/field/cases/manage/rejected/:id",
+        name: "field-cases-manage-rejected",
+        component: () =>
+          import("../pages/field/cases/manage-rejected.page.vue"),
+      },
+
+      {
+        path: "/field/cases",
+        name: "field-cases",
+        component: () => import("../pages/field/cases/index.page.vue"),
+      },
+
+      {
+        path: "/field/cases/rejected",
+        name: "field-cases-rejected",
+        component: () => import("../pages/field/cases/index-rejected.page.vue"),
+      },
+
+      {
+        path: "/field/process",
+        name: "field-process",
+        component: () => import("../pages/field/process/index.page.vue"),
+      },
+
+      {
+        path: "/field/process/create",
+        name: "field-process-create",
+        component: () => import("../pages/field/process/create-cases.page"),
+      },
 
       {
         path: "/field/about-system",
@@ -647,7 +908,112 @@ const routes = [
     beforeEnter: (to, from, next) => {
       let role = JSON.parse(sessionStorage.getItem("RLE"));
       if (role != null && typeof role.name != "undefined") {
-        if (role.name == "field") {
+        if (role.name == "Field staff") {
+          next();
+        } else {
+          next({ name: "portal-signin" });
+        }
+      } else {
+        next({ name: "portal-signin" });
+      }
+    },
+  },
+
+  //Co-Operating partner
+  {
+    path: "/cp",
+    name: "cp",
+    component: () => import("../components/layouts/cp.layout.vue"),
+    children: [
+      //Dashboard
+      {
+        path: "",
+        name: "cp-home",
+        redirect: { name: "cp-dashboard" },
+      },
+      {
+        path: "/cp/dashboard",
+        name: "cp-dashboard",
+        component: () => import("../pages/cp/dashboard/index.page.vue"),
+      },
+
+      {
+        path: "/cp/resources",
+        name: "cp-resources",
+        component: () => import("../pages/cp/system/index.page.vue"),
+      },
+
+      {
+        path: "/cp/faqs",
+        name: "cp-faqs",
+        component: () => import("../pages/cp/cases/faqs.page.vue"),
+      },
+
+      {
+        path: "/cp/sops",
+        name: "cp-sops",
+        component: () => import("../pages/cp/cases/sops.page.vue"),
+      },
+
+      {
+        path: "/cp/change-password",
+        name: "cp-change-password",
+        component: () =>
+          import("../components/pages/users/change.password.vue"),
+      },
+
+      {
+        path: "/cp/system",
+        name: "cp-system",
+        component: () => import("../pages/cp/system/index.page.vue"),
+      },
+
+      {
+        path: "/cp/cases/manage/:id",
+        name: "cp-cases-manage",
+        component: () => import("../pages/cp/cases/manage.page.vue"),
+      },
+
+      {
+        path: "/cp/cases/create",
+        name: "cp-cases-create",
+        component: () => import("../pages/cp/cases/create-cases.page"),
+      },
+
+      {
+        path: "/cp/cases/manage/rejected/:id",
+        name: "cp-cases-manage-rejected",
+        component: () => import("../pages/cp/cases/manage-rejected.page.vue"),
+      },
+
+      {
+        path: "/cp/cases",
+        name: "cp-cases",
+        component: () => import("../pages/cp/cases/index.page.vue"),
+      },
+
+      {
+        path: "/cp/cases",
+        name: "cp-cases",
+        component: () => import("../pages/cp/cases/index.page.vue"),
+      },
+
+      {
+        path: "/cp/cases/rejected",
+        name: "cp-cases-rejected",
+        component: () => import("../pages/cp/cases/index-rejected.page.vue"),
+      },
+
+      {
+        path: "/cp/about-system",
+        name: "cp-about-system",
+        component: () => import("../pages/about/index.page.vue"),
+      },
+    ],
+    beforeEnter: (to, from, next) => {
+      let role = JSON.parse(sessionStorage.getItem("RLE"));
+      if (role != null && typeof role.name != "undefined") {
+        if (role.name == "Co-operating Partner") {
           next();
         } else {
           next({ name: "portal-signin" });

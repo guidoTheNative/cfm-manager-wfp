@@ -120,7 +120,7 @@
                             <!-- Red badge with percentage -->
                             <span class="px-2 py-1 bg-red-500 text-white font-bold text-xs rounded"
                                 aria-label="Possible excess receipt">
-                                {{ Number(row.receiptCompletion).toFixed(2)}}%
+                                {{ Number(row.receiptCompletion).toFixed(2) }}%
                             </span>
 
                             <!-- Tooltip -->
@@ -132,6 +132,8 @@
                         <span v-else>{{ Number(row.receiptCompletion).toFixed(2) }}%</span>
                      
                     </td>
+
+                    
                 </tr>
             </tbody>
         </table>
@@ -277,6 +279,7 @@ const getActivities = async () => {
 };
 
 
+
 const getCommodities = async () => {
     let commoditydata = await commoditystore.get()
     commodities.length = 0
@@ -287,7 +290,7 @@ const getCommodities = async () => {
 const getDistricts = async () => {
     let districtsdata = await districtstore.get()
     districts.length = 0
-    districts.push(...districtsdata)
+    districts.push(...districtsdata.slice().sort((a, b) => a.Name.localeCompare(b.Name)))
     return districts
 }
 </script>

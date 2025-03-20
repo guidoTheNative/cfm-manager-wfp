@@ -21,9 +21,9 @@
           <!-- Page Content -->
           <div class="lg:col-span-12 xl:col-span-12 bg-white p-8 rounded-lg shadow-lg">
             <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">About the System</h2>
-            <p class="text-gray-700 mb-4">The WFP Community Feedback Case Management (CFM) system was developed by the World Food Programme (WFP) to improve the management and response to community feedback during food assistance programs. This system is designed to efficiently track and resolve feedback cases raised by beneficiaries, ensuring transparency and accountability in WFP operations.</p>
+            <p class="text-gray-700 mb-4">The WFP Case Tracker system was developed by the World Food Programme (WFP) to improve the management and response to community feedback during food assistance programs. This system is designed to efficiently track and resolve feedback cases raised by beneficiaries, ensuring transparency and accountability in WFP operations.</p>
             <p class="text-gray-700 mb-4">The CFM system enhances the visibility and traceability of feedback cases, enabling WFP to act quickly on beneficiary concerns and improve program effectiveness. By leveraging technology, the system supports better decision-making and promotes community engagement throughout the project lifecycle.</p>
-            <p class="text-gray-700">For more information, please contact the WFP Malawi Country Office or the WFP Community Feedback Management team.</p>
+            <p class="text-gray-700">For more information, please contact the WFP Malawi Country Office or the WFP M&E team.</p>
             <div class="flex justify-center mt-8">
               <img class="img-fluid mx-2" style="height: 100px;" src="../../assets/images/wfp-logo.png" alt="WFP Logo" />
             </div>
@@ -53,7 +53,7 @@ import {
 const isLoading = ref(false); // Example reactive state
 const breadcrumbs = [
   { name: "Home", href: "/callcenter/dashboard", current: false },
-  { name: "WFP CFM TRACKER v1.0", href: "#", current: true },
+  { name: "WFP CASE TRACKER v1.0", href: "#", current: true },
 ];
 const optionGroups = ref([
   {

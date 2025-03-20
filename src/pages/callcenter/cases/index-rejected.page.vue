@@ -12,7 +12,6 @@
             Rejected Cases
           </h2>
         </div>
-        
       </div>
 
       <!-- table -->
@@ -71,16 +70,26 @@
               </p>
               <p><strong>Priority:</strong> {{ selectedCase.priority }}</p>
               <p><strong>Status:</strong> {{ selectedCase.status }}</p>
-              <p><strong>Date Closed:</strong> {{ selectedCase.dateClosed }}</p>
-              
-              <p><strong>Rejection Reason:</strong> {{ selectedCase.RejectionComments }}</p>
+              <p>
+                <strong>Date Closed:</strong>
+                {{
+                  formatDate(selectedCase.created) == "Invalid date"
+                    ? ""
+                    : formatDate(selectedCase.created)
+                }}
+              </p>
+
+              <p>
+                <strong>Rejection Reason:</strong>
+                {{ selectedCase.RejectionComments }}
+              </p>
               <!-- Add more fields as necessary -->
             </div>
             <div class="mt-4 text-right">
               <button
-              style="background-color: #096eb4;"
+                style="background-color: #096eb4"
                 @click="closeDialog"
-                class="font-body inline-block px-6 py-2.5  text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-blue-500 focus:outline-none"
+                class="font-body inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-blue-500 focus:outline-none"
               >
                 Close
               </button>
@@ -102,7 +111,12 @@ import { useCaseStore } from "../../../stores/case.store";
 import { EyeIcon } from "@heroicons/vue/solid";
 const $router = useRouter();
 const Swal = inject("Swal");
+import moment from "moment"; // Import Moment.js
 
+import { useSessionStore } from "../../../stores/session.store";
+
+const sessionStore = useSessionStore();
+const user = ref(sessionStore.getUser);
 const isLoading = ref(false);
 const breadcrumbs = [
   { name: "Home", href: "/callcenter/dashboard", current: false },
@@ -111,12 +125,11 @@ const breadcrumbs = [
 const caseStore = useCaseStore();
 const cases = reactive([]);
 const columns = ref([
-  { label: "ID", field: "id", sortable: true },
-  { label: "Agent Name", field: "agentName", sortable: true },
+  { label: "Agent Name", field: "submittedBy", sortable: true },
   { label: "District", field: "district", sortable: true },
   { label: "Priority", field: "priority", sortable: true },
   { label: "Status", field: "status", sortable: true },
-  { label: "Date", field: "dateClosed", sortable: true },
+  { label: "Date", field: "created", sortable: true },
   { label: "Options", field: "id", sortable: false },
 ]);
 
@@ -124,12 +137,30 @@ onMounted(() => {
   getCases();
 });
 
+const formatDate = (date) => {
+  return moment(date).format("DD-MM-YYYY");
+};
+
 const getCases = async () => {
   isLoading.value = true;
   try {
     const result = await caseStore.get();
     cases.length = 0;
-    cases.push(...result.filter((item) => item.isRejected));
+    cases.push(
+      ...result
+        .filter(
+          (item) =>
+            item.isRejected &&
+            item.submittedBy == user.value.firstname + " " + user.value.lastname
+        )
+        .map((caseItem) => ({
+          ...caseItem,
+          created: moment(caseItem.created).format("DD-MM-YYYY"), // Format the date here
+          rawCreatedDate: moment(caseItem.created), // Store the raw date for sorting
+        }))
+    );
+    // Sort by rawCreatedDate in descending order
+    cases.sort((a, b) => b.rawCreatedDate - a.rawCreatedDate);
   } catch (error) {
     Swal.fire({
       title: "Case Retrieval Failed",

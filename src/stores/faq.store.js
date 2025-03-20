@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import FaqService from "../services/api/faq.service";
+import FaqService from "../services/api/faqs.service";
 const faqService = new FaqService();
 
 export const usefaqstore = defineStore({

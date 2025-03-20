@@ -15,7 +15,7 @@
             <MenuIcon class="h-6 w-6 text-white" />
           </button>
           <!-- Admin Text and Location Info -->
-          <span class="font-bold text-white mx-4 hidden lg:block">WFP CFM TRACKER | CFM Manager
+          <span class="font-bold text-white mx-4 hidden lg:block">WFP CASE TRACKER | CFM Manager
             <span class="text-xs font-normal">(v1.0)</span>
           </span>
           <div class="flex items-center ml-2 hidden lg:flex">
@@ -26,7 +26,7 @@
           </div>
         </div>
         <!-- Mobile Admin Text -->
-        <span class="font-bold text-white mx-4 block lg:hidden">WFP CFM TRACKER | CFM Manager
+        <span class="font-bold text-white mx-4 block lg:hidden">WFP CASE TRACKER | CFM Manager
           <span class="text-xs font-normal">(v1.0)</span>
         </span>
         <!-- Navigation Items for Desktop -->

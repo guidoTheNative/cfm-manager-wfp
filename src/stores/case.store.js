@@ -33,6 +33,111 @@ export const useCaseStore = defineStore({
         });
     },
 
+    
+
+    async getfieldofficerSummary() {
+      return await caseService
+        .getfieldofficerSummary()
+        .then((result) => {
+          if (result) {
+            var response = result;
+            return response;
+          }
+        })
+        .catch((error) => {
+          switch (error.statusCode) {
+            default:
+              throw error.message;
+          }
+        });
+    },
+
+
+    async getfieldofficerDistrictSummary(district) {
+      return await caseService
+        .getfieldofficerDistrictSummary(district)
+        .then((result) => {
+          if (result) {
+            var response = result;
+            return response;
+          }
+        })
+        .catch((error) => {
+          switch (error.statusCode) {
+            default:
+              throw error.message;
+          }
+        });
+    },
+
+    async getadminofficerSummary() {
+      return await caseService
+        .getadminofficerSummary()
+        .then((result) => {
+          if (result) {
+            var response = result;
+            return response;
+          }
+        })
+        .catch((error) => {
+          switch (error.statusCode) {
+            default:
+              throw error.message;
+          }
+        });
+    },
+
+    async getpseaofficerSummary() {
+      return await caseService
+        .getpseaofficerSummary()
+        .then((result) => {
+          if (result) {
+            var response = result;
+            return response;
+          }
+        })
+        .catch((error) => {
+          switch (error.statusCode) {
+            default:
+              throw error.message;
+          }
+        });
+    },
+
+    async getactivityofficerSummary() {
+      return await caseService
+        .getactivityofficerSummary()
+        .then((result) => {
+          if (result) {
+            var response = result;
+            return response;
+          }
+        })
+        .catch((error) => {
+          switch (error.statusCode) {
+            default:
+              throw error.message;
+          }
+        });
+    },
+
+    async getCallcenterSummary() {
+      return await caseService
+        .getCallcenterSummary()
+        .then((result) => {
+          if (result) {
+            var response = result;
+            return response;
+          }
+        })
+        .catch((error) => {
+          switch (error.statusCode) {
+            default:
+              throw error.message;
+          }
+        });
+    },
+
     async getProviders() {
       return await caseService
         .getProviders()
@@ -82,6 +187,28 @@ export const useCaseStore = defineStore({
           }
         });
     },
+
+    async remindersSend(data) {
+      return await caseService
+        .remindersSend(data)
+        .then((result) => {
+          if (result) {
+            return result;
+          }
+        })
+        .catch((error) => {
+          switch (error.statusCode) {
+            case 409:
+              throw new Error(
+                "this email is already in use , please enter another one "
+              );
+              break;
+            default:
+              throw error.message;
+          }
+        });
+    },
+
     async update(data) {
       return await caseService
         .update(data)
@@ -122,7 +249,6 @@ export const useCaseStore = defineStore({
         });
     },
 
-
     async changepassnew(data) {
       return await caseService
         .changepasswordnew(data)
@@ -161,8 +287,6 @@ export const useCaseStore = defineStore({
         });
     },
 
-
-    
     async resetpassword(data) {
       return await caseService
         .resetpassword(data)
@@ -181,7 +305,6 @@ export const useCaseStore = defineStore({
           }
         });
     },
-
 
     async remove(id) {
       return await caseService

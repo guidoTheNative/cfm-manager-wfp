@@ -24,8 +24,8 @@ module.exports = {
         mode: 'webapp', // 'webapp' or 'light' or 'auto' - automatically chooses the best mode
         devMode: 'webapp', // 'webapp' or 'light' or 'auto' - same as above but for development mode
         favicons: {
-          appName: 'WFP CFM TRACKER',
-          appDescription: 'WFP CFM TRACKER APP',
+          appName: 'WFP CASE TRACKER',
+          appDescription: 'WFP CASE TRACKER APP',
           developerName: 'John Chalera <chalera4@gmail.com>',
           developerURL: null, // prevent retrieving from the nearest package.json
           background: '#ddd',

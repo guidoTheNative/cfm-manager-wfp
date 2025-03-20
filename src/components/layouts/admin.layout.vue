@@ -15,13 +15,13 @@
             <MenuIcon class="h-6 w-6 text-white" />
           </button>
           <!-- Admin Text and Location Info -->
-          <span class="font-bold text-white mx-4 hidden lg:block">WFP CFM TRACKER | Admin
+          <span class="font-bold text-white mx-4 hidden lg:block">WFP CASE TRACKER | Admin
             <span class="text-xs font-normal">(v1.0)</span>
           </span>
 
         </div>
         <!-- Mobile Admin Text -->
-        <span class="font-bold text-white mx-4 block lg:hidden">WFP CFM TRACKER | Admin
+        <span class="font-bold text-white mx-4 block lg:hidden">WFP CASE TRACKER | Admin
           <span class="text-xs font-normal">(v1.0)</span>
         </span>
         <!-- Navigation Items for Desktop -->
@@ -393,7 +393,9 @@ function navigation() {
 */  /*  { name: "Receipts", href: "/admin/receipt-management", icon: DocumentDuplicateIcon, current: false },
          */
     { name: "System", href: "/admin/system", icon: AdjustmentsIcon, current: false },
+
  
+  
   ];
 
   const currentRouteBase = $router.currentRoute.value.fullPath.split("/").slice(0, 3).join("/");
@@ -403,13 +405,15 @@ function navigation() {
       ||
       (navItem.name === "Receipts" && currentRouteBase.startsWith("/admin/receipts"))
       ||
+      (navItem.name === "Resources" && currentRouteBase.startsWith("/admin/faqs"))
+      ||
       (navItem.name === "System" && (currentRouteBase.startsWith("/admin/userroles") || currentRouteBase.startsWith("/admin/mailinggroups") || currentRouteBase.startsWith("/admin/reminders")   ||  currentRouteBase.startsWith("/admin/receipts/leanseason") ||  currentRouteBase.startsWith("/admin/usage-stats") || currentRouteBase.startsWith("/admin/performance-stats") || currentRouteBase.startsWith("/admin/users") || currentRouteBase.startsWith("/admin/logs")
         || currentRouteBase.startsWith("/admin/districts")
         || currentRouteBase.startsWith("/admin/organisations")
         || currentRouteBase.startsWith("/admin/commodity-types")
-        || currentRouteBase.startsWith("/admin/commodity-management" 
-          
-        )
+        || currentRouteBase.startsWith("/admin/commodity-management") ||  currentRouteBase.startsWith("/admin/faqs") 
+        || currentRouteBase.startsWith("/admin/sops")
+
       ));
     navItem.current = isMatched;
   });

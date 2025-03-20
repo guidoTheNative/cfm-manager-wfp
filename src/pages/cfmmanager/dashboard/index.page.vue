@@ -254,7 +254,7 @@
 
                     </div>
                     <div class="text-center mt-1 ml-6">
-                      <h1 class="text-lg font-bold text-white">WFP CFM TRACKER</h1>
+                      <h1 class="text-lg font-bold text-white">WFP CASE TRACKER</h1>
                     </div>
                   </div>
 

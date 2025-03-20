@@ -14,7 +14,7 @@
           </h2>
         </div>
         <button type="button"
-          class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-600 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+          class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
           @click="generateExcel">
           Export Data
         </button>
@@ -22,27 +22,19 @@
       <!-- table  -->
       <div class="align-middle inline-block min-w-full mt-5 shadow-xl rounded-table">
         <vue-good-table :columns="columns" :rows="dispaches" :search-options="{ enabled: true }"
-                  style="font-weight: bold; color: #096eb4;" :pagination-options="{ enabled: true }" theme="polar-bear"
-                  styleClass="vgt-table striped" compactMode>
-                  <template #table-actions> </template>
-                  <template #table-row="props">
-                    <span v-if="props.column.label == 'Options'">
+          style="font-weight: bold; color: blue;" :pagination-options="{
+      enabled: true,
+    }" theme="polar-bear" styleClass=" vgt-table striped " compactMode>
+
+        </vue-good-table>
+
+        <!-- Edit Loading Plan Dialog -->
+        <EditDispatchDialog :isOpen="isEditDialogOpen" :Dispatch="selectedDispatch" @close="closeEditDialog"
+          v-on:update="reloadPage" />
 
 
-
-
-                      <button @click="openDispatchDialog(props.row)"
-                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-green-600 hover:text-green-900 bg-white rounded-md border border-gray-200 hover:bg-gray-100">
-                        <PlusCircleIcon class="h-5 w-5 mr-1" />
-                        Create Receipt
-                      </button>
-                    </span>
-                  </template>
-                </vue-good-table>
-
-                <ReceiptLoadingPlanDialog :isOpen="isReceiptDialogOpen" :dispatch="selectedDispatch"
-                  @close="closeReceiptDialog" v-on:update="createLeanReceipt"
-                  :close="closeModal" />
+        <ReceiptLoadingPlanDialog :isOpen="isReceiptDialogOpen" :dispatch="selectedDispatch" @close="closeReceiptDialog"
+          v-on:update="reloadPage" />
 
       </div>
     </div>
@@ -54,51 +46,28 @@
 
 import { inject, ref, reactive, onMounted } from "vue";
 import { useRouter } from "vue-router";
-
 import {
-  AcademicCapIcon,
-  TemplateIcon, // Assuming this is for Dashboard
-  ChartBarIcon, // Assuming this is for Charts
-  BadgeCheckIcon,
-  DocumentDownloadIcon, // or an alternative if this specific icon doesn't exist
-  CameraIcon,
-  BellIcon,
-  CashIcon,
-  CheckCircleIcon,
-  PlusCircleIcon,
-  InformationCircleIcon,
-  LocationMarkerIcon,
-  ClockIcon,
-  MenuIcon,
-  ReceiptRefundIcon,
-  UsersIcon,
-  XIcon,
-  TruckIcon,
-  DocumentDuplicateIcon,
-  CollectionIcon,
-  IdentificationIcon,
+  SearchIcon,
+  ChevronLeftIcon,
   DocumentTextIcon,
-  OfficeBuildingIcon,
-  DocumentIcon, ClipboardListIcon, ExclamationCircleIcon, ExclamationIcon, ArrowUpIcon, ArrowDownIcon
-} from "@heroicons/vue/outline";
-import { SearchIcon } from "@heroicons/vue/solid";
+  ChevronRightIcon,
+} from "@heroicons/vue/solid";
 //COMPONENTS
 import spinnerWidget from "../../../components/widgets/spinners/default.spinner.vue";
 import breadcrumbWidget from "../../../components/widgets/breadcrumbs/admin.breadcrumb.vue";
 
 
-import ReceiptLoadingPlanDialog from "../../../components/pages/dispatches/create.receipt-recipient.component.vue";
+import ReceiptLoadingPlanDialog from "../../../components/pages/dispatches/create.receipt.component.vue";
+
 
 import EditDispatchDialog from "../../../components/pages/dispatches/edit-dispatch.component.vue";
 
 
-import { usereceiptstore } from "../../../stores/receipt.store";
 
 import createListingForm from "../../../components/pages/catalogue/create.component.vue";
 //SCHEMA//AND//STORES
 import { useListingStore } from "../../../stores/catalogue.store";
 
-import eventBus from '../../../services/events/eventbus';
 
 import { useSessionStore } from "../../../stores/session.store";
 //INJENCTIONS
@@ -108,9 +77,8 @@ const Swal = inject("Swal");
 //VARIABLES
 const isLoading = ref(false);
 const breadcrumbs = [
-  { name: "Home", href: "/receipient/dashboard", current: false },
-  { name: "Expected Dispatches", href: "#", current: true },
-  { name: "Lean Season Response & Emergency Assistance", href: "#", current: true },
+  { name: "Home", href: "/admin/dashboard", current: false },
+  { name: "Dispatches", href: "#", current: true },
 ];
 
 
@@ -120,7 +88,6 @@ import { useDispatcherStore } from "../../../stores/dispatch.store";
 
 const dispatchStore = useDispatcherStore();
 const dispaches = reactive([]);
-const recieptStore = usereceiptstore();
 
 
 import * as XLSX from 'xlsx';
@@ -145,6 +112,7 @@ const columns = ref([
     label: "Quantity",
     hidden: false,
     field: row => `
+    <span >${row.NoBags !== null && row.NoBags !== undefined ? row.NoBags + " Bags" : "Not specified"} </span><br>
     <span >${row.Quantity !== null ? row.Quantity + " MT" : "Pending"}</span>`,
     sortable: true,
     firstSortType: "asc",
@@ -156,9 +124,11 @@ const columns = ref([
   {
     label: "Details",
     hidden: false,
-    field: row => `<span >D.N: ${row.DeliveryNote}</span><br>`
+    field: row => `<span >D.N: ${row.DeliveryNote}</span><br>` +
+      `<span>L.P: ${row.loadingPlanId !== null ? row.loadingPlanId : "N/A"}</span><br>`
       +
-      `<span>To: ${row.FinalDestinationPoint !== null ? row.FinalDestinationPoint : "N/A"}</span><br>`,
+      `<span>To: ${row.FinalDestinationPoint !== null ? row.FinalDestinationPoint : "N/A"}</span><br>` +
+      `<span>On: ${moment(row.Date).format("DD/MM/YYYY") !== null ? moment(row.Date).format("DD/MM/YYYY") : "N/A"}</span><br>`,
     sortable: true,
     firstSortType: "asc",
     html: true, // Important for rendering HTML
@@ -184,29 +154,22 @@ const columns = ref([
       const endDate = moment(row.loadingPlan?.EndDate);
 
       if (row.IsArchived) {
-        return "<span class='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800'>Expensed</span>";
+        return "<span class='text-green-600'>Expensed</span>";
       } else if (!row.IsArchived && endDate.isBefore(today)) {
         const diffDays = today.diff(endDate, 'days');
         if (diffDays <= 3) {
-          return "<span class='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800'>Delayed</span>";
+          return "<span class='text-yellow-600'>Delayed</span>";
         } else {
-          return "<span class='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-800'>Long Overdue</span>";
+          return "<span class='text-red-600'>Not Delivered</span>";
         }
       } else {
-        return "<span class='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-800'>Pending</span>";
+        return "<span class='text-blue-400'>Pending</span>";
       }
     },
     sortable: true,
     firstSortType: "asc",
     html: true,
     tdClass: "capitalize"
-  }
-  ,
-
-  {
-    label: "Options",
-    field: row => row,
-    sortable: false
   }
 
 
@@ -238,7 +201,6 @@ const isReceiptDialogOpen = ref(false);
 const openDispatchDialog = (dispatch) => {
   selectedDispatch.value = dispatch;
   isReceiptDialogOpen.value = true;
-
 };
 
 // Function to close the edit dialog
@@ -254,10 +216,10 @@ const generateExcel = () => {
 
   // Assuming dispaches is an array of objects
   // Map over dispaches and exclude certain fields
-  const dataForExport = dispaches.map(({ CreatedOn, UpdatedOn, DispatcherId, loadingPlanId, Dispatcher, loadingPlan, InstructionId, ...keepAttrs }) => keepAttrs);
+  const dataForExport = dispaches.map(({ CreatedOn, UpdatedOn, DispatcherId, loadingPlanId, Dispatcher, loadingPlan, ...keepAttrs }) => keepAttrs);
 
   // Create a worksheet from the filtered data array
-  const ws = XLSX.utils.json_to_sheet(dispaches);
+  const ws = XLSX.utils.json_to_sheet(dataForExport);
   XLSX.utils.book_append_sheet(wb, ws, wsName);
 
   // Export the workbook
@@ -275,76 +237,71 @@ onMounted(() => {
 
 
 const getDispatches = async () => {
-
-
+  isLoading.value = true;
   dispatchStore
-    .expected(user.value.district)
-    .then((result) => {
+    .get()
+    .then(result => {
+      // for (let i = 0; i < 100; i++) {
+      //   users.push(...result);
+      // }
       dispaches.length = 0; //empty array
-      let sorteddata = result.reverse();
+      let sorteddata = result.reverse()
       dispaches.push(...sorteddata);
-    })
-    .catch((error) => {
+
 
     })
+
+
+    .finally(() => {
+      isLoading.value = false;
+    });
 
 }
 
 
+const deleteItem = async (id) => {
+  // First, ask for confirmation
+  try {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    });
 
-const createReceipts = async (item) => {
+    // If confirmed, proceed to delete
+    if (result.isConfirmed) {
+      isLoading.value = true;
 
-// Wait for all promises to complete
-await recieptStore.create(item);
+      await dispatchStore.remove(id);
 
+      // Show success message
+      await Swal.fire("Deleted!", "Your Dispatch has been deleted.", "success");
 
-getDispatches();
-eventBus.emit('leaseasonDispatchesArchived', item.id);
-  eventBus.emit('emergencyDispatchesArchived', item.id);
-};
-
-
-const createLeanReceipt = async (originalModel) => {
-
-// Separate relief items from the original model
-
-try {
-  // Create the dispatch without the relief items
-
-  // Pass the dispatch ID and the original relief items to create dispatched commodities
-
-  for (const item of originalModel) {
-    await createReceipts(item);
+      // Refresh the loading plans
+      await getDispatches();
+    }
+  } catch (error) {
+    // Handle errors here
+    Swal.fire({
+      title: "Failed",
+      text: "Failed to remove Dispatch (" + error.message + ")",
+      icon: "error",
+      confirmButtonText: "Ok"
+    });
+  } finally {
+    isLoading.value = false;
   }
-
-  Swal.fire({
-    title: "Success",
-    text: "Created receipt(s) successfully",
-    icon: "success",
-    confirmButtonText: "Ok"
-  });
-  await recieptStore.get();
-
-  $router.push({ path: '/receipient/receipts/leanseason' });
-} catch (error) {
-  Swal.fire({
-    title: "Creation Failed",
-    text: `Failed to create receipt(s): Contact Administrator for support! ${error}`,
-    icon: "error",
-    confirmButtonText: "Ok"
-  });
-} finally {
-  isLoading.value = false;
-}
 };
-
-
 
 
 
 </script>
 
-<style scoped>
+<style>
 .rounded-table {
   border-radius: 10px;
   /* Adjust the radius as needed */

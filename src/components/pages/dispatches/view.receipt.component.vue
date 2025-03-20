@@ -234,7 +234,7 @@ const printPDF = async () => {
   pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
 
   const currentDate = new Date().toLocaleString();
-  const footerText = `WFP CFM TRACKER - ${currentDate}`;
+  const footerText = `WFP CASE TRACKER - ${currentDate}`;
   const footerYPosition = 290;
 
   pdf.setFontSize(14);

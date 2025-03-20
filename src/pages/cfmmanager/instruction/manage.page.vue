@@ -433,7 +433,7 @@ const printPDF = async () => {
 
   // Add the footer text
   const currentDate = new Date().toLocaleString(); // Get the current date and time
-  const footerText = `WFP CFM TRACKER - ${currentDate}`;
+  const footerText = `WFP CASE TRACKER - ${currentDate}`;
   const footerYPosition = 290; // Adjust this based on the page size
   pdf.setFontSize(10);
   pdf.text(footerText, 10, footerYPosition);

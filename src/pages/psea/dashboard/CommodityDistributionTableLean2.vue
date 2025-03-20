@@ -20,7 +20,7 @@
                     </select>
                 </div>
 
-             <!--    <div>
+                <!--    <div>
                     <span class="mr-2 font-bold">Handled By:</span>
                     <select v-model="selectedHandleBy"
                         class="focus:ring-gray-500 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -56,18 +56,18 @@
                 </div>
 
                 <div class="flex space-x-4">
-                   
-                    
+
+
                     <button @click="resetFilters"
                         class="bg-gray-200 mt-5 hover:bg-gray-300 text-black font-medium py-1 px-2 text-sm rounded">
                         Reset
-                      </button>
+                    </button>
 
-                      <button @click="exportToExcel"
+                    <button @click="exportToExcel"
                         class="bg-green-500 mt-5 hover:bg-green-300 text-white font-medium py-1 px-2 text-sm rounded">
                         Export to Excel
-                      </button>
-                  
+                    </button>
+
                 </div>
             </div>
         </div>
@@ -120,7 +120,7 @@
                             <!-- Red badge with percentage -->
                             <span class="px-2 py-1 bg-red-500 text-white font-bold text-xs rounded"
                                 aria-label="Possible excess receipt">
-                                {{ Number(row.receiptCompletion).toFixed(2)}}%
+                                {{ Number(row.receiptCompletion).toFixed(2) }}%
                             </span>
 
                             <!-- Tooltip -->
@@ -129,9 +129,11 @@
                                 Possible excess receipt
                             </span>
                         </span>
-                        <span v-else>{{ Number(row.receiptCompletion).toFixed(2)}}%</span>
+                        <span v-else>{{ Number(row.receiptCompletion).toFixed(2) }}%</span>
                      
                     </td>
+
+
                 </tr>
             </tbody>
         </table>
@@ -218,7 +220,7 @@ const filteredData = computed(() => {
     const filtered = data.filter(item => {
         return (!selectedDistrict.value || item.district === selectedDistrict.value) &&
             (!selectedCommodity.value || item.commodity === selectedCommodity.value) &&
-            (!selectedActivity.value || item.activity === selectedActivity.value)&&
+            (!selectedActivity.value || item.activity === selectedActivity.value) &&
             (!selectedHandleBy.value || item.HandledBy === selectedHandleBy.value);
     });
 
@@ -276,7 +278,6 @@ const getActivities = async () => {
     return activities;
 };
 
-
 const getCommodities = async () => {
     let commoditydata = await commoditystore.get()
     commodities.length = 0
@@ -287,7 +288,7 @@ const getCommodities = async () => {
 const getDistricts = async () => {
     let districtsdata = await districtstore.get()
     districts.length = 0
-    districts.push(...districtsdata)
+    districts.push(...districtsdata.slice().sort((a, b) => a.Name.localeCompare(b.Name)))
     return districts
 }
 </script>

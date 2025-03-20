@@ -2,7 +2,7 @@
   <main class="min-h-screen">
     <!-- Spinner -->
     <spinner-widget v-bind:open="isLoading" />
-    <span class="text-white font-bold">Lean Season Loading Plan Reports</span>
+    <span class="text-white font-bold">Lean Season & Emergency Assistance Loading Plan Reports</span>
 
     <div class="container mx-auto">
 
@@ -271,6 +271,7 @@ const columns = ref([
   tdClass: "capitalize"
 },
 
+
  
   {
     label: "Stocks",
@@ -332,7 +333,7 @@ const reloadPage = async () => {
   await getLoadingplans();
 
   // Navigate to the route after the data has been updated
-  $router.push('/manager/loadingplans');
+  $router.push('/commissioner/loadingplans');
 }
 
 
@@ -345,7 +346,7 @@ const generatePDF = () => {
   doc.addImage(leftHeaderImage, 'JPEG', 18, 7, 25, 20); // Adjust dimensions and position as needed
   doc.addImage(rightHeaderImage, 'JPEG', 160, 2, 30, 30); // Adjust dimensions and position as needed
   doc.setFontSize(12); // Set the title font size
-  doc.text('WFP CFM TRACKER Report', 105, 20, null, null, 'center'); // Centered title
+  doc.text('WFP CASE TRACKER Report', 105, 20, null, null, 'center'); // Centered title
 
   const dataToExport = filteredLoadingPlans.value.length > 0 ? filteredLoadingPlans.value : loadingplans;
 

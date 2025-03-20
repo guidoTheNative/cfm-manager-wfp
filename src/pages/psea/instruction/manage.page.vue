@@ -18,29 +18,31 @@
       <div class="align-middle inline-block min-w-full">
         <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap pl-0 mb-4 border-b border-blue-300" id="tabs-menu"
           role="tablist">
+          <!-- <li class="nav-item" role="presentation">
+            <a
+              href="#user-profile"
+              class="nav-link block  font-bold text-xs leading-tight capitalize border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-1hover:border-transparent hover:bg-blue-100 focus:border-transparent active"
+              id="tabs-user-profile"
+              data-bs-toggle="pill"
+              data-bs-target="#user-profile"
+              role="tab"
+              aria-controls="user-profile"
+              aria-selected="true"
+              >Profile</a
+            >
+          </li> -->
           <li class="nav-item mr-1" role="presentation">
-            <a href="#user-relief"
-              class="nav-link block font-bold text-xs leading-tight capitalize border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-1hover:border-transparent hover:bg-blue-100 focus:border-transparent active"
-              id="tabs-user-relief" data-bs-toggle="pill" data-bs-target="#user-relief" role="tab"
-              aria-controls="user-relief" aria-selected="true">Relief Items</a>
-          </li>
-          <li class="nav-item" role="presentation">
             <a href="#user-settings"
-              class="nav-link block font-bold text-xs leading-tight capitalize border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-1hover:border-transparent hover:bg-blue-100 focus:border-transparent"
+              class="nav-link block font-bold text-xs leading-tight capitalize border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-1hover:border-transparent hover:bg-blue-100 focus:border-transparent active"
               id="tabs-user-settings" data-bs-toggle="pill" data-bs-target="#user-settings" role="tab"
               aria-controls="user-settings" aria-selected="false">Instruction Management</a>
           </li>
-          <li class="nav-item" role="presentation">
-            <a href="#user-file"
-              class="nav-link block ml-1 font-bold text-xs leading-tight capitalize border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-1hover:border-transparent hover:bg-blue-100 focus:border-transparent"
-              id="tabs-user-file" data-bs-toggle="pill" data-bs-target="#user-file" role="tab" aria-controls="user-file"
-              aria-selected="false">File Management</a>
-          </li>
+
           <li class="nav-item ml-auto mb-4" role="presentation">
-            <!--  <button @click="showPrintModal = true"
-              class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md">
+            <button @click="showPrintModal = true"
+              class="bg-blue-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md">
               Print Goods Release Instruction
-            </button> -->
+            </button>
 
             <div v-if="showPrintModal"
               class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
@@ -111,13 +113,12 @@
                         <td class="border border-gray-400 p-2">{{ item.instruction.warehouse.Name }}</td>
                         <td class="border border-gray-400 p-2">{{ model.VehicleRegNo }}</td>
                         <td class="border border-gray-400 p-2">{{ item.commodity.Name }}</td>
-                        <td class="border border-gray-400 p-1">
+                        <td class="border border-gray-400 p-2">
 
                           {{ item.commodity.PackSize }}
 
                           {{ item.commodity.Unit }}</td>
-                        <td class="border border-gray-400 p-1">{{ item.Quantity }} {{ item.commodity.Unit == 'Kg' ?
-                          "MT" : item.commodity.Unit }} ({{ item.NoBags }} {{ item.commodity?.Container_type }})</td>
+                        <td class="border border-gray-400 p-2">{{ item.Quantity }}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -136,13 +137,13 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="border border-gray-400 p-2">{{ model.ApprovedBy || 'Not Available' }}</td>
-                        <td class="border border-gray-400 p-2">
-                          {{
-                            model.ApprovedBy
-                              ? model.ApprovedBy.split(/\s+/).map(word => word.charAt(0).toUpperCase()).join('')
-                              : 'N/A'
-                          }}
+                        <td class="border border-gray-400 p-2">{{ model.ApprovedBy }}</td>
+                        <td class="border border-gray-400 p-2">{{ model.ApprovedBy.split(/\s+/).map(word =>
+      word.charAt(0).toUpperCase()).join('') }}</td>
+                        <td class="border border-gray-400 p-2">{{
+      moment(model.UpdatedOn).format("MM-DD-YYYY")
+    }}
+
                         </td>
                       </tr>
                     </tbody>
@@ -162,19 +163,25 @@
 
         </ul>
         <div class="tab-content" id="tabs-user-options">
+          <!-- <div
+            class="tab-pane fade show active"
+            id="user-profile"
+            role="tabpanel"
+            aria-labelledby="tabs-user-profile"
+          >
+            <user-profile v-bind:model="model" v-on:update="updateInstruction" :key="model.id+'profile'"/>
+          </div> -->
+          <div class="tab-pane fade show active" id="user-settings" role="tabpanel"
+            aria-labelledby="tabs-user-settings">
+            <user-settings v-bind:model="model" v-on:update="updateInstruction" :key="model.id + 'settings'" />
+          </div>
+
+
           <div class="tab-pane fade show active mt-3" id="user-relief" role="tabpanel"
             aria-labelledby="tabs-user-relief">
             <user-relief v-bind:model="model" v-on:update="updateOrCreateReliefItems" :key="model.id + 'relief'" />
           </div>
-          <div class="tab-pane fade" id="user-settings" role="tabpanel" aria-labelledby="tabs-user-settings">
 
-            <user-settings v-bind:model="model" v-on:update="updateInstruction" :key="model.id + 'settings'" />
-          </div>
-
-          <div class="tab-pane fade" id="user-file" role="tabpanel" aria-labelledby="tabs-user-file">
-            <user-files v-bind:model="files" :key="refresh + 'File'" v-on:refresh="getFiles()" />
-
-          </div>
 
 
         </div>
@@ -182,7 +189,6 @@
     </div>
   </main>
 </template>
-
 
 <script setup>
 import { inject, ref, reactive, onMounted } from "vue";
@@ -193,8 +199,6 @@ import breadcrumbWidget from "../../../components/widgets/breadcrumbs/admin.brea
 import UserProfile from "../../../components/pages/users/profile.component.vue";
 import UserLogs from "../../../components/pages/users/logs.component.vue";
 import UserSettings from "../../../components/pages/instruction/settings.component.vue";
-
-import UserFiles from "../../../components/pages/instruction/file.component.vue";
 
 import UserRelief from "../../../components/pages/instruction/relief.component.vue";
 //SCHEMA//AND//STORES
@@ -229,10 +233,6 @@ const model = ref({
 
 });
 
-import { useFileStore } from "../../../stores/file.store";
-
-const fileStore = useFileStore();
-const files = reactive([]);
 // Instruction header and details
 
 const instructedCommodities = reactive([]);
@@ -242,7 +242,6 @@ const instructedCommodities = reactive([]);
 onMounted(() => {
   id.value = $route.params.id;
   getInstruction();
-  getFiles()
   getInstructedCommodities();
 });
 ///FORM
@@ -250,7 +249,6 @@ onMounted(() => {
 ///FIELDS
 
 //FUNCTIONS
-
 
 
 const getInstructedCommodities = async () => {
@@ -271,26 +269,6 @@ const getInstructedCommodities = async () => {
     .finally(() => {
       isLoading.value = false;
     });
-};
-
-
-const getFiles = async () => {
-
-  fileStore
-    .getByReference({ id: id.value, type: "DOCUMENT" })
-    .then((result) => {
-      files.length = 0;
-      files.push(...result);
-    })
-    .catch((error) => {
-      /*   Swal.fire({
-          title: "Failed",
-          text: "failed to get files error (" + error + ")",
-          icon: "error",
-          confirmButtonText: "Ok",
-        }); */
-    })
-
 };
 
 const getInstruction = async () => {
@@ -315,24 +293,14 @@ const getInstruction = async () => {
 
 const updateInstruction = async (newValues) => {
   isLoading.value = true;
-
-
   InstructionStore
     .update(newValues)
     .then((result) => {
-
       Swal.fire({
-        text: 'Successfully updated instruction',
-        icon: 'success',
-        toast: true,
-        position: 'top-right',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
+        title: "Success",
+        text: "Successfully instruction",
+        icon: "success",
       });
-
-
-      getInstruction();
     })
     .catch((error) => {
       Swal.fire({
@@ -341,13 +309,12 @@ const updateInstruction = async (newValues) => {
         icon: "error",
         confirmButtonText: "Ok",
       });
-
-      getInstruction();
     })
     .finally(() => {
       isLoading.value = false;
     });
 };
+
 
 
 const updateOrCreateReliefItems = async (items) => {
@@ -363,53 +330,27 @@ const updateOrCreateReliefItems = async (items) => {
         // Check if the item has an `id` receipient to determine if it's an existing item
         if (cleanedItem.id) {
           // Update the existing relief item (using the `id` for updates)
-          await InstructedCommoditiesStore.update(cleanedItem);
-          getInstruction();
-          getFiles()
-          getInstructedCommodities();
+
+
+          return InstructedCommoditiesStore.update(cleanedItem);
         } else {
           // Create a new relief item if there's no `id` receipient
-          await InstructedCommoditiesStore.create(cleanedItem);
-          getInstruction();
-          getFiles()
-          getInstructedCommodities();
+          return InstructedCommoditiesStore.create(cleanedItem);
         }
       })
     );
 
-    await InstructedCommoditiesStore.get();
-    getInstruction();
-    getFiles()
-    getInstructedCommodities();
     // Notify the user of the successful operation
     Swal.fire({
       title: "Success",
       text: "Successfully updated/added the relief item list",
       icon: "success",
-      showCancelButton: true,
-      confirmButtonText: "Continue",
-      cancelButtonText: "Go back to Requisition list"
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        // Action to perform on Ok
-
-        await  getInstruction();
-        await getFiles()
-        await getInstructedCommodities();
-        Swal.close();
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        // Action to perform when the "Go back to instruction list" button is clicked
-        await getInstruction();
-        await getFiles()
-        await getInstructedCommodities();
-        await goToInstructionList();
-      }
     });
   } catch (error) {
     // Notify the user in case of any errors during processing
     Swal.fire({
       title: "Failed",
-      text: `Failed to update/create the relief item list (Inventory might be insufficient)`,
+      text: `Failed to update/create the relief item list (${error.message})`,
       icon: "error",
       confirmButtonText: "Ok",
     });
@@ -417,12 +358,6 @@ const updateOrCreateReliefItems = async (items) => {
     // Reset the loading state once processing is complete
     isLoading.value = false;
   }
-};
-
-// Define the function to go back to the instruction list
-const goToInstructionList = () => {
-
-  $router.push({ name: 'planner-requisition-management' });
 };
 
 
@@ -498,7 +433,7 @@ const printPDF = async () => {
 
   // Add the footer text
   const currentDate = new Date().toLocaleString(); // Get the current date and time
-  const footerText = `WFP CFM TRACKER - ${currentDate}`;
+  const footerText = `WFP CASE TRACKER - ${currentDate}`;
   const footerYPosition = 290; // Adjust this based on the page size
   pdf.setFontSize(10);
   pdf.text(footerText, 10, footerYPosition);

@@ -6,7 +6,7 @@
            <img class="h-24" src="../../assets/images/wfp-logo-emblem-white.png" alt="WFP" />
         </div>
         <h2 class="mt-6 text-md font-extrabold text-gray-700 text-center">
-          WFP CFM TRACKER
+          WFP CASE TRACKER
           <span class="text-sm font-normal">(v1.0)</span>
         </h2>
       </div>

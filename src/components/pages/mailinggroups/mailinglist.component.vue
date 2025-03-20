@@ -11,7 +11,7 @@
           </div>
         </div>
         <div class="text-right mt-4">
-          <button type="submit" class="py-2 px-4 bg-gray-500 text-white rounded-md hover:bg-gray-600">
+          <button type="submit" class="py-2 px-4 bg-gray-500 text-white rounded-md hover:bg-gray-400">
             Update
           </button>
         </div>
@@ -39,7 +39,7 @@
             <option value="ADMIN8">Warehouse Officers</option>
           </select>
         </div>
-        <button class="flex items-center space-x-2 py-2 px-4 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+        <button class="flex items-center space-x-2 py-2 px-4 bg-gray-500 text-white rounded-md hover:bg-gray-400"
           @click="importMailingList">
           <span>Import Members</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">

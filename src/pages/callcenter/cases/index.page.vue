@@ -13,7 +13,14 @@
           </h2>
         </div>
         <div class="mt-4 flex-shrink-0 flex md:mt-0 md:ml-4">
-          <create-cases-form v-on:create="createCase" />
+          <router-link :to="{ path: '/callcenter/cases/create/' }">
+            <a
+              href="#"
+              class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+            >
+              New Case
+            </a>
+          </router-link>
         </div>
       </div>
 
@@ -70,7 +77,7 @@
               </button>
             </div>
             <div class="mt-4">
-              <p><strong>Agent Name:</strong> {{ selectedCase.agentName }}</p>
+              <p><strong>Agent Name:</strong> {{ selectedCase.submittedBy }}</p>
               <p><strong>District:</strong> {{ selectedCase.district }}</p>
 
               <p><strong>Gender:</strong> {{ selectedCase.gender }}</p>
@@ -80,7 +87,14 @@
               </p>
               <p><strong>Priority:</strong> {{ selectedCase.priority }}</p>
               <p><strong>Status:</strong> {{ selectedCase.status }}</p>
-              <p><strong>Date Closed:</strong> {{ selectedCase.dateClosed }}</p>
+              <p>
+                <strong>Date Created:</strong>
+                {{
+                  formatDate(selectedCase.created) == "Invalid date"
+                    ? ""
+                    : formatDate(selectedCase.created)
+                }}
+              </p>
               <!-- Add more fields as necessary -->
             </div>
             <div class="mt-4 text-right">
@@ -105,12 +119,18 @@ import { useRouter } from "vue-router";
 import spinnerWidget from "../../../components/widgets/spinners/default.spinner.vue";
 import breadcrumbWidget from "../../../components/widgets/breadcrumbs/admin.breadcrumb.vue";
 import createCasesForm from "../../../components/pages/cases/create.component.vue";
+
+import { useSessionStore } from "../../../stores/session.store";
 import { useCaseStore } from "../../../stores/case.store";
 import { EyeIcon } from "@heroicons/vue/solid";
 const $router = useRouter();
 const Swal = inject("Swal");
 
+const sessionStore = useSessionStore();
+const user = ref(sessionStore.getUser);
 const isLoading = ref(false);
+import moment from "moment"; // Import Moment.js
+
 const breadcrumbs = [
   { name: "Home", href: "/callcenter/dashboard", current: false },
   { name: "Cases", href: "#", current: true },
@@ -118,12 +138,11 @@ const breadcrumbs = [
 const caseStore = useCaseStore();
 const cases = reactive([]);
 const columns = ref([
-  { label: "ID", field: "id", sortable: true },
-  { label: "Agent Name", field: "agentName", sortable: true },
+  { label: "Agent Name", field: "submittedBy", sortable: true },
   { label: "District", field: "district", sortable: true },
   { label: "Priority", field: "priority", sortable: true },
   { label: "Status", field: "status", sortable: true },
-  { label: "Date", field: "dateClosed", sortable: true },
+  { label: "Date", field: "created", sortable: true },
   { label: "Options", field: "id", sortable: false },
 ]);
 
@@ -131,13 +150,24 @@ onMounted(() => {
   getCases();
 });
 
+const formatDate = (date) => {
+  return moment(date).format("DD-MM-YYYY");
+};
+
 const getCases = async () => {
   isLoading.value = true;
   try {
     const result = await caseStore.get();
     cases.length = 0;
-    cases.push(...result);
-    cases.sort((a, b) => new Date(b.date) - new Date(a.date));
+    cases.push(
+      ...result.map((caseItem) => ({
+        ...caseItem,
+        created: moment(caseItem.created).format("DD-MM-YYYY"), // Format the date here
+        rawCreatedDate: moment(caseItem.created), // Store the raw date for sorting
+      }))
+    );
+    // Sort by rawCreatedDate in descending order
+    cases.sort((a, b) => b.rawCreatedDate - a.rawCreatedDate);
   } catch (error) {
     Swal.fire({
       title: "Case Retrieval Failed",
@@ -152,6 +182,9 @@ const getCases = async () => {
 
 const createCase = async (model) => {
   isLoading.value = true;
+  model.submittedBy = user.value.firstname + " " + user.value.lastname;
+  model.created = moment().toDate(); // This will set the current date and time
+
   try {
     await caseStore.create(model);
     Swal.fire({

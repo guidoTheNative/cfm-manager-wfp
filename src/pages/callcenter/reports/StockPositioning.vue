@@ -312,7 +312,7 @@ const exportToExcel = () => {
     background-color: #6b7280;
 }
 
-.bg-gray-600 {
+.bg-gray-400 {
     background-color: #4b5563;
 }
 </style>

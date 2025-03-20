@@ -42,6 +42,142 @@ export default class CaseService {
     }
   }
 
+
+
+  getCallcenterSummary() {
+      return axios
+        .get(resource + `/callcenter-stats`, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-type": "Application/json",
+            Authorization: `Bearer ${sessionStorage.getItem("JWT")}`,
+          },
+        })
+        .then((response) => {
+          var result = response.data;
+          return result;
+        })
+        .catch((error) => {
+          if (error.response) {
+            throw error.response.data.error;
+          }
+        });
+  
+  }
+
+  getfieldofficerSummary() {
+    return axios
+      .get(resource + `/fieldstaff-stats`, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-type": "Application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("JWT")}`,
+        },
+      })
+      .then((response) => {
+        var result = response.data;
+        return result;
+      })
+      .catch((error) => {
+        if (error.response) {
+          throw error.response.data.error;
+        }
+      });
+
+}
+
+
+
+getfieldofficerDistrictSummary(district) {
+  return axios
+    .get(resource + `/fieldstaff-stats/` + district, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-type": "Application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("JWT")}`,
+      },
+    })
+    .then((response) => {
+      var result = response.data;
+      return result;
+    })
+    .catch((error) => {
+      if (error.response) {
+        throw error.response.data.error;
+      }
+    });
+
+}
+
+
+getadminofficerSummary() {
+  return axios
+    .get(resource + `/admin-stats`, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-type": "Application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("JWT")}`,
+      },
+    })
+    .then((response) => {
+      var result = response.data;
+      return result;
+    })
+    .catch((error) => {
+      if (error.response) {
+        throw error.response.data.error;
+      }
+    });
+
+}
+
+
+getpseaofficerSummary() {
+  return axios
+    .get(resource + `/psea-stats`, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-type": "Application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("JWT")}`,
+      },
+    })
+    .then((response) => {
+      var result = response.data;
+      return result;
+    })
+    .catch((error) => {
+      if (error.response) {
+        throw error.response.data.error;
+      }
+    });
+
+}
+
+
+getactivityofficerSummary() {
+  return axios
+    .get(resource + `/activity-stats`, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-type": "Application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("JWT")}`,
+      },
+    })
+    .then((response) => {
+      var result = response.data;
+      return result;
+    })
+    .catch((error) => {
+      if (error.response) {
+        throw error.response.data.error;
+      }
+    });
+
+}
+
+
+
+
   getProviders(id) {
     if (id == null) {
       return axios
@@ -67,6 +203,27 @@ export default class CaseService {
   create(data) {
     return axios
       .post(resource, data, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-type": "Application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("JWT")}`,
+        },
+      })
+      .then((response) => {
+        var result = response.data;
+        return result;
+      })
+      .catch((error) => {
+        if (error.response) {
+          throw error.response.data.error;
+        }
+      });
+  }
+
+
+  remindersSend(data) {
+    return axios
+      .post(resource + "/notify-district-teams", {
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Content-type": "Application/json",

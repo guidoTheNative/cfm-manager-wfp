@@ -4,7 +4,7 @@
    <hook type="after_prepare" src="../node_modules/vue-cli-plugin-cordova/serve-config-hook.js" />
 
     <name>ctsapp</name>
-    <description>WFP CFM TRACKER</description>
+    <description>WFP CASE TRACKER</description>
     <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
         John Guido Chalera
     </author>

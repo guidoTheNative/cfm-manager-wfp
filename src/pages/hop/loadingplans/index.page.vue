@@ -14,9 +14,13 @@
           </h2>
         </div>
 
+
+        <!--  <div class="mt-5 flex mr-4 justify-center sm:mt-0">
+          <create-report-form v-on:create="createReport" />
+        </div> -->
         <!-- Export Data Button -->
         <button type="button"
-          class="font-body inline-flex items-center px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-700 transition duration-150 ease-in-out capitalize"
+          class="font-body inline-flex items-center px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-700 transition duration-150 ease-in-out capitalize"
           @click="generateExcel()">
           <i class="fas fa-file-export mr-2"></i> <!-- Icon (Font Awesome used as an example) -->
           Export Data
@@ -24,7 +28,7 @@
 
 
 
-     
+
 
       </div>
       <!-- table  -->
@@ -32,14 +36,52 @@
         <vue-good-table :columns="columns" :rows="loadingplans" :search-options="{ enabled: true }"
           style="font-weight: bold; color: #096eb4;" :pagination-options="{ enabled: true }" theme="polar-bear"
           styleClass="vgt-table striped" compactMode>
-        
+
+
+          <template #table-actions> </template>
+
+          <template #table-row="props">
+
+            <span v-if="props.column.label == 'Approval'">
+
+              <div class="flex space-x-2">
+
+                <!-- Create Instruction Button -->
+
+
+                <div>
+                  <div v-if="props.row.isApproved">
+                    <span
+                      class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+                      Approved
+                    </span>
+                  </div>
+                  <div v-else>
+
+
+                    <create-approval-loadingplan :row-id="props.row.id" v-on:create="updateApproval"
+                      :emergencyResponseInstructions="props.row" :commodity="commodity"
+                      v-on:reject="rejectLoadingPlan" />
+
+                  </div>
+                </div>
+
+
+
+              </div>
+            </span>
+          </template>
+
+
         </vue-good-table>
 
         <!-- Edit Loading Plan Dialog -->
-        <EditLoadingPlanDialog :isOpen="isEditDialogOpen" :loadingPlan="selectedLoadingPlan" @close="closeEditDialog"  v-on:update="reloadPage"/>
+        <EditLoadingPlanDialog :isOpen="isEditDialogOpen" :loadingPlan="selectedLoadingPlan" @close="closeEditDialog"
+          v-on:update="reloadPage" />
 
         <DispatchLoadingPlanDialog :isOpen="isDispatchDialogOpen" :loadingPlan="selectedLoadingPlan"
           @close="closeDispatchDialog" v-on:update="reloadPage" />
+
 
 
       </div>
@@ -50,6 +92,8 @@
 
 <script setup>
 // import the styles
+import eventBus from '../../../services/events/eventbus';
+
 
 import { inject, ref, reactive, onMounted } from "vue";
 import { useRouter } from "vue-router";
@@ -68,6 +112,8 @@ import { useListingStore } from "../../../stores/catalogue.store";
 
 import createDispatchForm from "../../../components/pages/dispatch/create.component.vue";
 
+
+
 import createReportForm from "../../../components/pages/reports/create.component.vue";
 
 
@@ -75,6 +121,7 @@ import EditLoadingPlanDialog from "../../../components/pages/reports/edit-loadin
 
 
 import DispatchLoadingPlanDialog from "../../../components/pages/reports/create.dispatch.component.vue";
+import createApprovalLoadingplan from '../../../components/pages/instruction/instructionApprovalER.component.vue';
 
 import { useSessionStore } from "../../../stores/session.store";
 //INJENCTIONS
@@ -84,8 +131,9 @@ const Swal = inject("Swal");
 //VARIABLES
 const isLoading = ref(false);
 const breadcrumbs = [
-  { name: "Home", href: "/receipient/dashboard", current: false },
+  { name: "Home", href: "/commissioner/dashboard", current: false },
   { name: "Loading Plans", href: "#", current: true },
+  { name: "Lean Season Response & Emergency Assistance", href: "#", current: true },
 ];
 
 
@@ -114,35 +162,73 @@ const columns = ref([
   },
   {
     label: "Commodity",
-    field: row => row.commodity?.Name,
+    field: row => row.commodityName,
     sortable: true,
     firstSortType: "asc",
     tdClass: "capitalize"
   },
   {
     label: "Details",
-    field: row => `<span class="from-color">From: ${row.warehouse?.Name}</span><br>` +
-      `<span class="to-color">To: ${row.district?.Name}</span><br>` +
-      `<span class="by-color">By: ${row.transporter?.Name}</span>`,
+    field: (row) => {
+      const atcNumber = `<span style="color: #096eb4; font-weight: bold;">ATCNUMBER: ${row.ATCNUMBER}</span>`;
+      const district = `<span style="color: green;">District: ${row.district}</span>`;
+      const plannedBy = `<span style="color: #0b8ad8;">Planned By: ${row.plannedBy}</span>`;
+      const date = `<span style="color: #555;">Date: ${new Date(row.date).toLocaleDateString()}</span>`;
+
+      return `${atcNumber}<br/>${district}<br/>${plannedBy}<br/>${date}`;
+    },
     sortable: true,
     firstSortType: "asc",
-    html: true, // This is important to render HTML
-    tdClass: "capitalize"
+    tdClass: "whitespace-normal break-words", // Ensure wrapping and breaking words
+    thClass: "w-1/6", // Set width to 1/6th of the table
+    html: true,
+    tdAttr: { "v-html": true },
   },
-
   {
     label: "Stocks",
     hidden: false,
-    field: row => `<span class="from-color">Qty: ${row.Quantity} MT</span><br>` +
-      `<span class="to-color">Bal: ${row.Balance !== null ? row.Balance + " MT" : "Pending"}</span>`,
+    field: row => `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-lg font-bold bg-blue-100 text-blue-800">Qty: ${row.totalQuantity.toFixed(2)} MT</span><br>`,
     sortable: true,
     firstSortType: "asc",
     html: true, // Important for rendering HTML
     tdClass: "capitalize"
+  },
+  // Status column
+  /*   {
+      label: "Status",
+      field: row => {
+        const currentDate = new Date();
+        const endDate = new Date(row.EndDate);
+        const startDate = new Date(row.StartDate);
+  
+        if (row.Balance !== 0 && currentDate > endDate) {
+          return `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-800">Extremely Delayed</span>`;
+        } else if (row.Balance > 0 && currentDate <= endDate && currentDate >= startDate) {
+          return `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800">Pending</span>`;
+        } else if (row.Balance === 0) {
+          return `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800">Completed</span>`;
+        } else if (row.Balance > 0 && currentDate > endDate) {
+          return `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-orange-100 text-orange-800">Delayed</span>`;
+        }
+        return '';
+      },
+      sortable: true,
+      firstSortType: "asc",
+      html: true,
+      tdClass: "capitalize"
+    }, */
+  // Approve/Disapprove column
+
+  {
+    label: "Approval",
+    field: row => row,
+    sortable: false,
+    thClass: "w-1/6", // Set width to 1/6th of the table
   }
 
-
 ]);
+
+
 
 const isEditDialogOpen = ref(false);
 
@@ -187,50 +273,157 @@ const reloadPage = async () => {
   await getLoadingplans();
 
   // Navigate to the route after the data has been updated
-  $router.push('/manager/loadingplans');
+  $router.push('/commissioner/loadingplans');
 }
+
+
+
+const updateApproval = async (newValues) => {
+  isLoading.value = true;
+
+  try {
+    // Fetch all loading plans
+    const allLoadingPlans = await loadingplansStore.get();
+
+    // Filter loading plans where ATCNumber matches newValues.ATCNUMBER
+    const loadingPlans = allLoadingPlans.filter(plan => plan.ATCNumber === newValues.ATCNumber);
+
+    // Check if any loading plans were found
+    if (loadingPlans.length === 0) {
+      throw new Error("No loading plans found with the specified ATCNUMBER.");
+    }
+
+    // Sequentially update each loading plan with the details from newValues
+    for (const loadingPlan of loadingPlans) {
+      console.log("Updating loading plan", loadingPlan);
+      
+      // Create an updated object that includes the loading plan ID and new values
+      const updatedLoadingPlan = { id: loadingPlan.id, ...newValues };
+
+      // Await each update one by one
+      await loadingplansStore.update(updatedLoadingPlan);
+    }
+
+    Swal.fire({
+      title: "Success",
+      text: "Successfully approved loading plans",
+      icon: "success",
+    });
+
+    eventBus.emit('loadingplanArchived', newValues.id);
+
+    getLoadingPlans();
+  } catch (error) {
+    Swal.fire({
+      title: "Failed",
+      text: "Failed to approve loading plans (" + error.message + ")",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+
+const rejectLoadingPlan = async (newValues) => {
+  isLoading.value = true;
+
+  try {
+    // Fetch all loading plans
+    const allLoadingPlans = await loadingplansStore.get();
+
+    // Filter loading plans where ATCNumber matches newValues.ATCNUMBER
+    const loadingPlans = allLoadingPlans.filter(plan => plan.ATCNumber === newValues.ATCNumber);
+
+    // Check if any loading plans were found
+    if (loadingPlans.length === 0) {
+      throw new Error("No loading plans found with the specified ATCNUMBER.");
+    }
+
+    // Sequentially reject each loading plan
+    for (const loadingPlan of loadingPlans) {
+      console.log("Rejecting loading plan", loadingPlan);
+      
+      // Create an updated object that includes the loading plan ID and new values for rejection
+      const updatedLoadingPlan = { id: loadingPlan.id, ...newValues };
+
+      // Await the rejection one by one
+      await loadingplansStore.update(updatedLoadingPlan);
+    }
+
+    Swal.fire({
+      title: "Success",
+      text: "Loading Plans rejected!",
+      icon: "success",
+    });
+
+    eventBus.emit('loadingplanArchived', newValues.id);
+
+    getLoadingPlans();
+  } catch (error) {
+    Swal.fire({
+      title: "Failed",
+      text: "Failed to reject loading plans (" + error.message + ")",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
+  } finally {
+    isLoading.value = false;
+  }
+};
 
 
 const getLoadingplans = async () => {
   isLoading.value = true;
+  loadingPlanStore
+    .getloadingplansByATC()
+    .then(result => {
+      loadingplans.length = 0; // Clear existing loadingplans array
 
-  try {
-    const result = await loadingPlanStore.get();
-
-    // Reverse the order of the results
-    const reversedLoadingPlans = result.reverse();
-
-    // Empty the loadingplans array and then push the reversed results
-    loadingplans.length = 0;
-    loadingplans.push(...reversedLoadingPlans);
-
-  } catch (error) {
-    // Handle any errors that occur during the get or reverse
-    console.error('Failed to fetch and reverse loading plans:', error);
-  } finally {
-    isLoading.value = false;
-  }
+      // Filter non-rejected plans and sort them in descending order
+      loadingplans.push(
+        ...result
+          .filter(item => !item.isRejected)
+          .sort((a, b) => b.createdOn - a.createdOn) 
+      );
+    })
+    .catch(error => {
+      Swal.fire({
+        title: "Loading Plan Retrieval Failed",
+        text: "failed to get loadingplans (Please refresh to try again)",
+        icon: "error",
+        confirmButtonText: "Ok"
+      });
+    })
+    .finally(() => {
+      isLoading.value = false;
+    });
 };
 
 const generateExcel = () => {
   const wb = XLSX.utils.book_new();
   const wsName = 'Loading Plan';
 
-  // Map over the array to flatten each object
-  const flattenedData = loadingplans.reverse().map(plan => ({
-    id: plan.id,
-    CreatedOn: plan.CreatedOn,
-    UpdatedOn: plan.UpdatedOn,
-    LoadingPlanNumber: plan.LoadingPlanNumber,
-    Quantity: plan.Quantity,
-    Balance: plan.Balance,
-    StartDate: plan.StartDate,
-    EndDate: plan.EndDate,
-    "Commodity": plan.commodity?.Name,
-    "From": plan.warehouse?.Name,
-    "Transporter Name": plan.transporter?.Name,
-    "To": plan.district?.Name
-  }));
+  // Flatten the dataset to include relevant fields for export
+  const flattenedData = loadingplans.map(item => {
+    return item.loadingPlans.map(plan => ({
+      ATCNUMBER: plan.ATCNumber,
+      district: item.district,
+      plannedBy: item.plannedBy,
+      date: item.date,
+      commodityName: item.commodityName,
+      warehouseName: item.warehouseName,
+      isApproved: plan.IsApproved ? 'Approved' : 'Not Approved',
+      isRejected: plan.IsRejected ? 'Rejected' : 'Not Rejected',
+      LoadingPlanNumber: plan.LoadingPlanNumber,
+      CreatedOn: plan.CreatedOn,
+      StartDate: plan.StartDate,
+      EndDate: plan.EndDate,
+      Quantity: plan.Quantity,
+      Balance: plan.Balance
+    }));
+  }).flat(); // Flatten the array of arrays to a single array
 
   // Create a worksheet from the flattened data array
   const ws = XLSX.utils.json_to_sheet(flattenedData);
@@ -244,14 +437,38 @@ const generateExcel = () => {
 const createReport = async (model) => {
   isLoading.value = true;
 
-  // Format the StartDate and EndDate using moment.js
   model.userId = user.value.id
+
+  model.Balance = model.Quantity
   if (model.StartDate) {
     model.StartDate = moment(model.StartDate).toISOString();
   }
   if (model.EndDate) {
     model.EndDate = moment(model.EndDate).toISOString();
   }
+  // List of required fields
+  const requiredFields = ['StartDate', 'EndDate', 'Quantity', /* other required fields */];
+
+  // Check if all required fields are filled
+  for (const field of requiredFields) {
+    if (!model[field]) {
+      Swal.fire({
+        title: "Missing Information",
+        text: `Please fill in the ${field}.`,
+        icon: "error",
+        confirmButtonText: "Ok"
+      }).then(() => {
+        isLoading.value = false; // Stop loading
+      });
+      return; // Stop the function
+    }
+  }
+
+  // Format the StartDate and EndDate using moment.js
+  model.userId = user.value.id;
+  model.Balance = model.Quantity;
+  model.StartDate = moment(model.StartDate).toISOString();
+  model.EndDate = moment(model.EndDate).toISOString();
 
   loadingPlanStore
     .create(model)
@@ -263,15 +480,14 @@ const createReport = async (model) => {
         confirmButtonText: "Ok"
       });
 
-      $router.push('/admin/loadingplans'); // Use the router's push method to navigate
-
+      $router.push('/planner/loadingplans'); // Navigate to loading plans
     })
     .catch(error => {
       // Handling error
     })
     .finally(() => {
       isLoading.value = false;
-      getLoadingplans();
+      reloadPage();
     });
 };
 
@@ -320,7 +536,7 @@ const deleteItem = async (id) => {
 
 </script>
 
-<style scoped>
+<style>
 .rounded-table {
   border-radius: 10px;
   /* Adjust the radius as needed */

@@ -39,7 +39,7 @@
            <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">
+          <h3 class="text-lg font-bold leading-6 text-gray-900">
             Delete catalogue
           </h3>
           <p class="mt-1 text-sm text-gray-500">Delete catalogue</p>
@@ -48,7 +48,7 @@
           <div class="px-4 py-3 text-right sm:px-6">
             <button
               type="button"
-              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-red-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-bold text-red-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
             @click="deletecatalogue()"
             >
               Delete catalogue

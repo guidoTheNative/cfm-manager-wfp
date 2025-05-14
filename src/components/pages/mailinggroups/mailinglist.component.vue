@@ -5,7 +5,7 @@
       <form @submit.prevent="onSubmit">
         <div class="grid grid-cols-6 gap-6">
           <div class="col-span-6 sm:col-span-3">
-            <label for="name" class="block text-sm font-medium text-gray-700">Mailing Group Name</label>
+            <label for="name" class="block text-sm font-bold text-gray-700">Mailing Group Name</label>
             <input type="text" v-model="name" id="name" autocomplete="given-name"
               class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
           </div>
@@ -20,12 +20,12 @@
 
     <!-- Mailing Group Members -->
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
-      <h3 class="text-lg font-medium leading-6 text-gray-900">Mailing Group Members</h3>
+      <h3 class="text-lg font-bold leading-6 text-gray-900">Mailing Group Members</h3>
       <p class="mt-1 text-sm text-gray-500">Manage the members of this mailing group.</p>
 
       <div class="mt-4 flex items-center justify-between">
         <div>
-          <label for="role" class="block text-sm font-medium text-gray-700">Select User Role</label>
+          <label for="role" class="block text-sm font-bold text-gray-700">Select User Role</label>
           <select v-model="selectedRole" id="role"
             class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             <option value="" disabled>Select a role</option>
@@ -53,7 +53,7 @@
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+              <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">
                 <input type="checkbox" @change="toggleSelectAll" />
               </th>
               <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Email</th>
@@ -83,7 +83,7 @@
           </tbody>
         </table>
 
-        <div v-if="paginatedMailingList.length === 0" class="text-center font-medium text-gray-500 mt-4">
+        <div v-if="paginatedMailingList.length === 0" class="text-center font-bold text-gray-500 mt-4">
           No members found for this mailing group.
         </div>
 
@@ -111,7 +111,7 @@
         <!-- Bulk Delete -->
         <div class="flex justify-end mt-4">
           <button
-            class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-red-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+            class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-bold text-red-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
             @click="bulkDelete">
             <span>Deleted All Selected</span>
 
@@ -143,7 +143,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">
+          <h3 class="text-lg font-bold leading-6 text-gray-900">
             Delete Mailing Group
           </h3>
           <p class="mt-1 text-sm text-gray-500">
@@ -153,7 +153,7 @@
         <div class="mt-5 md:mt-0 md:col-span-2">
           <div class="px-4 py-3 text-right sm:px-6">
             <button type="button"
-              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-red-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-bold text-red-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
               @click="deleteMailinglistStore()">
               Delete Mailing Group
 

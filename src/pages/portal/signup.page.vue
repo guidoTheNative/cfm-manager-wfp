@@ -43,7 +43,7 @@
           </div>
 
           <div class="sm:col-span-6 my-5">
-            <label for="useracc" class="font-body block text-sm font-medium leading-6 text-gray-900">Account Type</label>
+            <label for="useracc" class="font-body block text-sm font-bold leading-6 text-gray-900">Account Type</label>
             <div class="mt-2">
               <select id="useracc" v-model="useracc" autocomplete="useracc"
                 class="font-body block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:max-w-xs sm:text-sm sm:leading-6">
@@ -57,7 +57,7 @@
         <form @submit="onSubmit" :validation-schema="schema" class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
           v-if="useracc == 'Customer'">
           <div>
-            <label for="first-name" class="font-body block text-sm font-medium text-gray-700">First name</label>
+            <label for="first-name" class="font-body block text-sm font-bold text-gray-700">First name</label>
             <div class="mt-1">
               <input type="text" v-model="firstName" name="first-name" id="first-name" autocomplete="off"
                 class="font-body py-3 px-4 block w-full shadow-sm focus:ring-gray-500 focus:border-blue-400 border-gray-300 rounded-md" />
@@ -67,7 +67,7 @@
             </div>
           </div>
           <div>
-            <label for="last-name" class="block text-sm font-medium text-gray-700 font-body">Last name</label>
+            <label for="last-name" class="block text-sm font-bold text-gray-700 font-body">Last name</label>
             <div class="mt-1">
               <input type="text" v-model="lastName" name="last-name" autocomplete="off" id="last-name"
                 class="font-body py-3 px-4 block w-full shadow-sm focus:ring-gray-500 focus:border-blue-400 border-gray-300 rounded-md" />
@@ -77,7 +77,7 @@
             </div>
           </div>
           <div class="sm:col-span-2">
-            <label for="email" class="block text-sm font-medium text-gray-700 font-body">Email</label>
+            <label for="email" class="block text-sm font-bold text-gray-700 font-body">Email</label>
             <div class="mt-1">
               <input id="email" v-model="email" name="email" autocomplete="off" type="email"
                 class="font-body py-3 px-4 block w-full shadow-sm focus:ring-gray-500 focus:border-blue-400 border-gray-300 rounded-md" />
@@ -85,7 +85,7 @@
             </div>
           </div>
           <div class="sm:col-span-2">
-            <label for="phone-number" class="block text-sm font-medium text-gray-700 font-body">Phone Number</label>
+            <label for="phone-number" class="block text-sm font-bold text-gray-700 font-body">Phone Number</label>
             <div class="mt-1">
               <input type="text" v-model="phone" name="phone-number" id="phone-number" autocomplete="off"
                 class="font-body py-3 px-4 block w-full shadow-sm focus:ring-gray-500 focus:border-blue-400 border-gray-300 rounded-md"
@@ -94,7 +94,7 @@
             </div>
           </div>
           <!-- <div class="sm:col-span-2">
-            <label for="country" class="block text-sm font-medium text-gray-700"
+            <label for="country" class="block text-sm font-bold text-gray-700"
               >Country</label
             >
             <select
@@ -118,7 +118,7 @@
             </p>
           </div> -->
           <div class="sm:col-span-2">
-            <label for="password" class="font-body block text-sm font-medium text-gray-700">Password</label>
+            <label for="password" class="font-body block text-sm font-bold text-gray-700">Password</label>
             <div class="mt-1">
               <input id="password" name="password" type="password" v-model="password" autocomplete="off"
                 class="font-body py-3 px-4 block w-full shadow-sm focus:ring-gray-500 focus:border-blue-400 border-gray-300 rounded-md" />
@@ -129,7 +129,7 @@
           </div>
 
           <div class="sm:col-span-2">
-            <label for="password" class="block text-sm font-medium text-gray-700 font-body">Confirm Password</label>
+            <label for="password" class="block text-sm font-bold text-gray-700 font-body">Confirm Password</label>
             <div class="mt-1">
               <input id="confirm-password" name="confirm-password" type="password" v-model="confirmPassword"
                 autocomplete="off"
@@ -159,11 +159,11 @@
                 <p class="text-base text-gray-500 font-body">
                   By selecting this, you agree to the
                   {{ " " }}
-                  <a href="#" class="font-medium text-gray-700 underline font-body">Privacy Policy</a>
+                  <a href="#" class="font-bold text-gray-700 underline font-body">Privacy Policy</a>
                   {{ " " }}
                   and
                   {{ " " }}
-                  <a href="#" class="font-medium text-gray-700 underline font-body">Cookie Policy</a>.
+                  <a href="#" class="font-bold text-gray-700 underline font-body">Cookie Policy</a>.
                 </p>
                 <p class="text-red-500 text-xs italic pt-1 font-body">
                   {{ iAcceptTermsError }}
@@ -173,7 +173,7 @@
           </div>
           <div class="sm:col-span-2">
             <button type="submit"
-              class="font-body w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-400 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+              class="font-body w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-bold text-white bg-blue-400 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
               Submit
             </button>
           </div>
@@ -182,7 +182,7 @@
         <form @submit="onSubmit" :validation-schema="schema" v-if="useracc == 'Service Provider'"
           class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
           <div class="col-span-full">
-            <label for="business-name" class="block text-sm font-medium text-gray-700 font-body">Service Provider
+            <label for="business-name" class="block text-sm font-bold text-gray-700 font-body">Service Provider
               Name</label>
             <div class="mt-1">
               <input type="text" v-model="nameOfOrg" name="nameOfOrg" id="nameOfOrg" autocomplete="off"
@@ -193,7 +193,7 @@
             </div>
           </div>
           <div class="sm:col-span-2">
-            <label for="email" class="block text-sm font-medium text-gray-700 font-body">Service Provider Email</label>
+            <label for="email" class="block text-sm font-bold text-gray-700 font-body">Service Provider Email</label>
             <div class="mt-1">
               <input id="email" v-model="email" name="email" autocomplete="off" type="email"
                 class="py-3 px-4 block w-full shadow-sm focus:ring-gray-500 focus:border-blue-400 border-gray-300 rounded-md font-body" />
@@ -201,7 +201,7 @@
             </div>
           </div>
           <div class="sm:col-span-2">
-            <label for="phone-number" class="block text-sm font-medium text-gray-700 font-body">Service Provider
+            <label for="phone-number" class="block text-sm font-bold text-gray-700 font-body">Service Provider
               Number</label>
             <div class="mt-1">
               <input type="text" v-model="phone" name="phone-number" id="phone-number" autocomplete="off"
@@ -213,7 +213,7 @@
 
 
           <div class="sm:col-span-2">
-            <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+            <label for="location" class="block text-sm font-bold text-gray-700">Location</label>
             <select id="location" name="location" v-model="location" autocomplete="location"
               class="mt-1 focus:ring-blue-400 focus:border-blue-400 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               <option v-for="location in malawiDistricts" :key="location" :value="location" class="uppercase">
@@ -227,7 +227,7 @@
 
 
           <div class="sm:col-span-2">
-            <label for="providertypes" class="block text-sm font-medium text-gray-700">Service Provider Type</label>
+            <label for="providertypes" class="block text-sm font-bold text-gray-700">Service Provider Type</label>
             <select id="providertypes" name="providertypes" v-model="providertypesId" autocomplete="providertypes"
               class="mt-1 focus:ring-blue-400 focus:border-blue-400 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               <option v-for="item in providertypes" :key="item.id" :value="item.id" class="uppercase">
@@ -239,7 +239,7 @@
             </p>
           </div>
           <div class="sm:col-span-2">
-            <label for="providertypes" class="block text-sm font-medium text-gray-700">Service Provider SubType</label>
+            <label for="providertypes" class="block text-sm font-bold text-gray-700">Service Provider SubType</label>
 
             <div class="col-span-6 sm:col-span-6" v-if="filteredSubTypes.length > 0">
               <div class="flex items-center">
@@ -267,7 +267,7 @@
             </div>
           </div>
           <div class="sm:col-span-2">
-            <label for="password" class="block text-sm font-medium text-gray-700 font-body">Password</label>
+            <label for="password" class="block text-sm font-bold text-gray-700 font-body">Password</label>
             <div class="mt-1">
               <input id="password" name="password" type="password" v-model="password" autocomplete="off"
                 class="font-body py-3 px-4 block w-full shadow-sm focus:ring-gray-500 focus:border-blue-400 border-gray-300 rounded-md" />
@@ -278,7 +278,7 @@
           </div>
 
           <div class="sm:col-span-2">
-            <label for="password" class="block text-sm font-medium text-gray-700 font-body">Confirm Password</label>
+            <label for="password" class="block text-sm font-bold text-gray-700 font-body">Confirm Password</label>
             <div class="mt-1">
               <input id="confirm-password" name="confirm-password" type="password" v-model="confirmPassword"
                 autocomplete="off"
@@ -308,11 +308,11 @@
                 <p class="text-base text-gray-500 font-body">
                   By selecting this, you agree to the
                   {{ " " }}
-                  <a href="#" class="font-medium text-gray-700 underline font-body">Privacy Policy</a>
+                  <a href="#" class="font-bold text-gray-700 underline font-body">Privacy Policy</a>
                   {{ " " }}
                   and
                   {{ " " }}
-                  <a href="#" class="font-medium text-gray-700 underline font-body">Cookie Policy</a>.
+                  <a href="#" class="font-bold text-gray-700 underline font-body">Cookie Policy</a>.
                 </p>
                 <p class="text-red-500 text-xs italic pt-1 font-body">
                   {{ iAcceptTermsError }}
@@ -322,14 +322,14 @@
           </div>
           <div class="sm:col-span-2">
             <button type="submit"
-              class="font-body w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-400 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+              class="font-body w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-bold text-white bg-blue-400 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
               Submit
             </button>
           </div>
         </form>
         <div class="mt-6">
           <router-link :to="{ name: 'portal-signin' }">
-            <a class="text-base font-medium text-gray-500 hover:text-gray-500 font-body">Go back to sign in page<span
+            <a class="text-base font-bold text-gray-500 hover:text-gray-500 font-body">Go back to sign in page<span
                 aria-hidden="true"> &rarr;</span></a>
           </router-link>
         </div>

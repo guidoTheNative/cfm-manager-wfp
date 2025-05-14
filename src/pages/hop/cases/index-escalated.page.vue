@@ -8,7 +8,7 @@
       </div>
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
+          <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate">
             Escalated Cases
           </h2>
         </div>
@@ -33,7 +33,7 @@
               <router-link
                 :to="{ path: '/hop/cases/manage/escalated/' + props.row.id }"
               >
-                <a href="#" class="text-blue-400 text-sm hover:text-green-900"
+                <a href="#" class="text-[#096eb4] text-sm hover:text-green-900"
                   >Manage</a
                 >
               </router-link>
@@ -82,7 +82,7 @@
               <button
               style="background-color: #096eb4;"
                 @click="closeDialog"
-                class="font-body inline-block px-6 py-2.5  text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-blue-500 focus:outline-none"
+                class="font-body inline-block px-6 py-2.5  text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-blue-500 focus:outline-none"
               >
                 Close
               </button>

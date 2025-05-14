@@ -1,7 +1,7 @@
 <template>
   <div>
     <button type="button"
-      class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+      class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
       @click="open = true">
       new commodity stock
     </button>
@@ -25,7 +25,7 @@
               class="font-body flex text-base text-left transform transition w-full md:inline-block md:max-w-2xl md:px-4 md:my-8 md:align-middle lg:max-w-2xl">
               <div
                 class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-white">
-                <h5 class="text-md font-medium leading-normal text-gray-800" id="formModalLabel">
+                <h5 class="text-md font-bold leading-normal text-gray-800" id="formModalLabel">
                   Create Stock
                 </h5>
                 <button type="button"
@@ -45,7 +45,7 @@
 
 
                     <div class="col-span-6 sm:col-span-3">
-                      <label for="user-district" class="block text-sm font-medium text-gray-700">
+                      <label for="user-district" class="block text-sm font-bold text-gray-700">
                         Select Commodity</label>
                       <select id="commodity" name="commodity" v-model="commodityId" autocomplete="commodity-name"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">
-                      <label for="user-district" class="block text-sm font-medium text-gray-700">
+                      <label for="user-district" class="block text-sm font-bold text-gray-700">
                         Select Warehouse</label>
                       <select id="warehouse" name="warehouse" v-model="warehouseId" autocomplete="warehouse-name"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -77,7 +77,7 @@
 
 
                     <div class="col-span-6 sm:col-span-3">
-                      <label for="batch" class="block text-sm font-medium text-gray-700">Batch #</label>
+                      <label for="batch" class="block text-sm font-bold text-gray-700">Batch #</label>
                       <input type="text" v-model="BatchNumber" Name="BatchNumber" id="BatchNumber" autocomplete="off"
                         placeholder="BatchNumber"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">
-                      <label for="quantity" class="block text-sm font-medium text-gray-700">Quantity</label>
+                      <label for="quantity" class="block text-sm font-bold text-gray-700">Quantity</label>
                       <input type="number" v-model="Quantity" Name="quantity" id="quantity" autocomplete="off"
                         placeholder="Quantity"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
@@ -97,7 +97,7 @@
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">
-                      <label for="ExpiryDate" class="block text-sm font-medium text-gray-700">Expiry Date</label>
+                      <label for="ExpiryDate" class="block text-sm font-bold text-gray-700">Expiry Date</label>
                       <input type="date" v-model="ExpiryDate" name="ExpiryDate" id="ExpiryDate" autocomplete="off"
                         placeholder="Expiry Date"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
@@ -111,7 +111,7 @@
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button type="submit" style="background-color: #096eb4;"
-                    class="`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                    class="`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
                     Save
                   </button>
                 </div>

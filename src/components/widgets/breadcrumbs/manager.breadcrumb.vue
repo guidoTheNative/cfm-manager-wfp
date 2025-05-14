@@ -8,7 +8,7 @@
             flex
             items-center
             text-sm
-            font-medium
+            font-bold
             text-white
             hover:text-blue-300
           "
@@ -27,7 +27,7 @@
           <div class="flex">
           
               <router-link :to="{ name: 'manager-dashboard' }">
-                <a class="text-sm font-medium text-gray-500 hover:text-blue-300"
+                <a class="text-sm font-bold text-gray-500 hover:text-blue-300"
                   >Home</a
                 >
               </router-link>
@@ -51,7 +51,7 @@
                 class="
                   ml-1
                   text-sm
-                  font-medium
+                  font-bold
                   text-white
                   hover:text-blue-300
                 "

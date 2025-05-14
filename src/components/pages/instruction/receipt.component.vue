@@ -3,7 +3,7 @@
   <spinner-widget v-bind:open="isLoading" />
   <div>
     <button @click="open = true"
-      class="inline-flex items-center px-3 py-2 text-sm font-medium text-green-600 hover:text-green-900 bg-white rounded-md border border-gray-200 hover:bg-gray-100">
+      class="inline-flex items-center px-3 py-2 text-sm font-bold text-green-600 hover:text-green-900 bg-white rounded-md border border-gray-200 hover:bg-gray-100">
       <PlusCircleIcon class="h-5 w-5 mr-1" />
       Create Receipt
     </button>
@@ -27,7 +27,7 @@
             :class="{'max-h-screen overflow-y-auto': true}">
               <div class="modal-header flex items-center justify-between p-4 border-b border-gray-200 bg-gray-50">
                 <h5 class="text-lg font-bold text-gray-800">Emergency Response Dispatch</h5>
-                <h5 class="text-md font-medium text-gray-800">Create Receipt for Instruction (ID: {{ props.rowId }})
+                <h5 class="text-md font-bold text-gray-800">Create Receipt for Instruction (ID: {{ props.rowId }})
                 </h5>
                 <button type="button" class="text-gray-500 hover:text-gray-700" @click="open = false">
                   <XIcon class="h-6 w-6" />
@@ -41,15 +41,15 @@
                   
                   <p class="mb-1"><strong>Purpose:</strong> {{ dispatch.instruction?.Purpose }}</p>
                   <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-blue-400 mb-4">Summary of Dispatched Goods:</h3>
+                    <h3 class="text-lg font-semibold text-[#096eb4] mb-4">Summary of Dispatched Goods:</h3>
                     <table class="min-w-full divide-y divide-gray-200">
                       <thead class="bg-gray-50">
                         <tr>
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Commodity</th>
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Quantity</th>
                         </tr>
                       </thead>
@@ -74,7 +74,7 @@
 
                   <!-- Destination Points -->
                   <div class="mb-6">
-                    <label for="multiple-destinations" class="block text-sm font-bold text-blue-400">
+                    <label for="multiple-destinations" class="block text-sm font-bold text-[#096eb4]">
                       Select Multiple Final Destination Points
                     </label>
                     <div class="flex items-center mt-2">
@@ -96,7 +96,7 @@
 
                   <!-- Inside the destination loop -->
                   <div v-for="(destination, index) in destinations" :key="index" class="mb-4">
-                    <label :for="'destination-' + index" class="block text-sm font-medium text-gray-700">FDP {{
+                    <label :for="'destination-' + index" class="block text-sm font-bold text-gray-700">FDP {{
                       multipleDestinations ? index +
                         1 : "" }}</label>
                     <div class="flex items-center space-x-2">
@@ -104,7 +104,7 @@
                         placeholder="Enter Final Destination Point"
                         class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400 sm:text-sm">
                       <button type="button" @click="removeDestination(index)"
-                        class="inline-flex items-center p-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                        class="inline-flex items-center p-2 text-sm font-bold text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                         v-if="multipleDestinations">
                         <MinusCircleIcon class="h-5 w-5" />
                       </button>
@@ -114,10 +114,10 @@
                       <thead class="bg-gray-50">
                         <tr>
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Commodity</th>
                           <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Remarks</th>
                         </tr>
                       </thead>
@@ -130,7 +130,7 @@
                             <div class="space-y-2">
                               <div v-for="(remark, i) in item.remarks" :key="i" class="flex items-center space-x-2">
                                 <div class="col-span-6 sm:col-span-3">
-                                  <label class="text-sm font-medium text-gray-700">Select Remark</label>
+                                  <label class="text-sm font-bold text-gray-700">Select Remark</label>
                                   <select name="Remarks" v-model="remark.remark" id="Remarks"
                                     class="mt-2 block w-60 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400 sm:text-sm">
                                     <option value="">Select Remark</option>
@@ -144,7 +144,7 @@
                                   </select>
                                 </div>
                                 <div class="col-span-6 sm:col-span-3" v-if="remark.remark === 'received but damaged'">
-                                  <label for="quantity" class="text-sm font-medium text-gray-700"> Extend of damage
+                                  <label for="quantity" class="text-sm font-bold text-gray-700"> Extend of damage
 
                                     <select name="Extent" v-model="remark.extentofdamage" id="Remarks"
                                       class="mt-2 block w-60 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400 sm:text-sm">
@@ -155,14 +155,14 @@
                                   </label>
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
-                                  <label for="quantity" class="text-sm font-medium text-gray-700">Quantity ({{
+                                  <label for="quantity" class="text-sm font-bold text-gray-700">Quantity ({{
                                     item.commodity.Container_type }})</label>
                                   <input type="number" v-model.number="remark.quantity" min="0"
                                     placeholder="Qty Received"
                                     class="mt-2 block w-40 p-1 border border-gray-300 rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400 sm:text-sm">
                                 </div>
                                 <button @click="removeRemark(index, itemIndex, i)" type="button"
-                                  class="ml-2 mt-6 inline-flex items-center p-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                  class="ml-2 mt-6 inline-flex items-center p-2 text-sm font-bold text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                                   <MinusCircleIcon class="h-5 w-5" />
                                 </button>
                                 <textarea v-if="remark.remark === 'other'" v-model="remark.Comments" id="CustomRemark"
@@ -174,7 +174,7 @@
 
                             </div>
                             <button @click="addRemark(index, itemIndex)" type="button"
-                              class="mt-2 inline-flex items-center px-3 py-2 text-sm font-medium text-green-600 hover:text-green-900 bg-white rounded-md border border-gray-200 hover:bg-gray-100">
+                              class="mt-2 inline-flex items-center px-3 py-2 text-sm font-bold text-green-600 hover:text-green-900 bg-white rounded-md border border-gray-200 hover:bg-gray-100">
                               <PlusCircleIcon class="h-5 w-5 mr-1" />
                               Add Remark
                             </button>
@@ -184,7 +184,7 @@
                     </table>
                   </div>
                   <button type="button" @click="addDestination" v-if="multipleDestinations"
-                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-green-600 hover:text-green-900 bg-white rounded-md border border-gray-200 hover:bg-gray-100">
+                    class="inline-flex items-center px-3 py-2 text-sm font-bold text-green-600 hover:text-green-900 bg-white rounded-md border border-gray-200 hover:bg-gray-100">
                     <PlusCircleIcon class="h-5 w-5 mr-1" />
                     Add Destination
                   </button>
@@ -193,18 +193,18 @@
                 <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
                   <div class="flex justify-end space-x-3">
                     <!--  <button type="button" @click="saveProgress"
-                      class="inline-flex items-center px-3 py-2 text-sm font-medium text-green-600 hover:text-green-900 bg-white rounded-md border border-gray-300 hover:bg-gray-100">
+                      class="inline-flex items-center px-3 py-2 text-sm font-bold text-green-600 hover:text-green-900 bg-white rounded-md border border-gray-300 hover:bg-gray-100">
                       <SaveIcon class="h-5 w-5 mr-1" />
                       Save Progress
                     </button> -->
 
                     <button type="submit"
-                      class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-400 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                      class="inline-flex items-center px-3 py-2 text-sm font-bold text-white bg-blue-400 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
                       <CheckCircleIcon class="h-5 w-5 mr-1" />
                       Submit Receipt
                     </button>
                     <button type="button" @click="open = false"
-                      class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 bg-white rounded-md border border-gray-300 hover:bg-gray-100">
+                      class="inline-flex items-center px-3 py-2 text-sm font-bold text-gray-600 hover:text-gray-900 bg-white rounded-md border border-gray-300 hover:bg-gray-100">
                       Cancel
                     </button>
                   </div>

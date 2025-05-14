@@ -3,7 +3,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">Enquiries</h3>
+          <h3 class="text-lg font-bold leading-6 text-gray-900">Enquiries</h3>
           <p class="mt-1 text-sm text-gray-500"> List of enquiries made on catalogue item</p>
         </div>
         <div class="mt-5 md:mt-0 md:col-span-2">
@@ -13,25 +13,25 @@
                 <tr>
                   <th
                     scope="col"
-                    class="text-sm font-medium font-bold text-gray-900 px-6 py-4 text-left"
+                    class="text-sm font-bold font-bold text-gray-900 px-6 py-4 text-left"
                   >
                     Enquiry #
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium font-bold text-gray-900 px-6 py-4 text-left"
+                    class="text-sm font-bold font-bold text-gray-900 px-6 py-4 text-left"
                   >
                     Client Name
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium font-bold text-gray-900 px-6 py-4 text-left"
+                    class="text-sm font-bold font-bold text-gray-900 px-6 py-4 text-left"
                   >
                     Date Enquired
                   </th>
                   <!-- <th
                     scope="col"
-                    class="text-sm font-medium font-bold text-gray-900 px-6 py-4 text-left"
+                    class="text-sm font-bold font-bold text-gray-900 px-6 py-4 text-left"
                   >
                     Options
                   </th> -->
@@ -44,7 +44,7 @@
                   class="border-b"
                 >
                   <td
-                    class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                    class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900"
                   >
                     {{ index + 1 }}
                   </td>

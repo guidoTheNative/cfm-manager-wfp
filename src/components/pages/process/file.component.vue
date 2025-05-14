@@ -3,7 +3,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">Documents</h3>
+          <h3 class="text-lg font-bold leading-6 text-gray-900">Documents</h3>
           <p class="mt-1 text-sm text-gray-500">Upload and manage SOP documents</p>
         </div>
 
@@ -20,7 +20,7 @@
               <tbody>
                 <tr v-for="(file, index) in files" :key="file.id" class="border-b">
                   <td class="px-4 py-2 text-gray-900 border border-gray-300">
-                    <span class="text-gray-700 font-medium">{{ file.name }}</span>
+                    <span class="text-gray-700 font-bold">{{ file.name }}</span>
                   </td>
                   <td class="px-4 py-2 text-gray-900 border border-gray-300">
                     {{ getFileType(file.mimetype) }}
@@ -49,7 +49,7 @@
               v-show="!open"
               @click="open = true"
               type="button"
-              class="mt-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600"
+              class="mt-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-600"
             >
               Add SOP
             </button>
@@ -59,7 +59,7 @@
             <form @submit.prevent="onSubmit" enctype="multipart/form-data">
               <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6">
-                  <label class="block text-sm font-medium text-gray-700">File Name</label>
+                  <label class="block text-sm font-bold text-gray-700">File Name</label>
                   <input
                     type="text"
                     v-model="fileName"
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="col-span-6">
-                  <label class="block text-sm font-medium text-gray-700">Select Files</label>
+                  <label class="block text-sm font-bold text-gray-700">Select Files</label>
                   <input
                     type="file"
                     multiple
@@ -86,14 +86,14 @@
               <div class="mt-4 text-right">
                 <button
                   type="submit"
-                  class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600"
+                  class="py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-600"
                 >
                   Upload Files
                 </button>
                 <button
                   type="button"
                   @click="open = false"
-                  class="ml-2 py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md bg-white hover:bg-gray-100"
+                  class="ml-2 py-2 px-4 border border-gray-300 shadow-sm text-sm font-bold rounded-md bg-white hover:bg-gray-100"
                 >
                   Cancel
                 </button>

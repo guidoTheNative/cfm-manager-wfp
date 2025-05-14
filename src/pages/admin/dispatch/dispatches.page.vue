@@ -9,12 +9,12 @@
       </div>
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
+          <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate">
             Dispatches
           </h2>
         </div>
         <button type="button"
-          class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+          class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
           @click="generateExcel">
           Export Data
         </button>
@@ -29,7 +29,7 @@
           <template #table-row="props">
             <span v-if="props.column.label == 'Options'">
               <button type="button" @click="openDispatchDialog(props.row)"
-                class="font-heading inline-flex items-center px-6 py-2.5 border border-blue-400 text-blue-400 font-bold text-xs rounded shadow-md hover:bg-blue-300 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:border-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize">
+                class="font-heading inline-flex items-center px-6 py-2.5 border border-blue-400 text-[#096eb4] font-bold text-xs rounded shadow-md hover:bg-blue-300 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:border-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize">
                 <DocumentTextIcon class="h-5 w-5 mr-2" />
                 Receive
               </button>
@@ -187,7 +187,7 @@ const columns = ref([
           return "<span class='text-red-600'>Not Delivered</span>";
         }
       } else {
-        return "<span class='text-blue-400'>Pending</span>";
+        return "<span class='text-[#096eb4]'>Pending</span>";
       }
     },
     sortable: true,

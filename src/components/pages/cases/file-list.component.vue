@@ -3,7 +3,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">Documents</h3>
+          <h3 class="text-lg font-bold leading-6 text-gray-900">Documents</h3>
           <p class="mt-1 text-sm text-gray-500">SOP documents</p>
         </div>
 
@@ -20,7 +20,7 @@
               <tbody>
                 <tr v-for="(file, index) in files" :key="file.id" class="border-b">
                   <td class="px-4 py-2 text-gray-900 border border-gray-300">
-                    <span class="text-gray-700 font-medium">{{ file.name }}</span>
+                    <span class="text-gray-700 font-bold">{{ file.name }}</span>
                   </td>
                   <td class="px-4 py-2 text-gray-900 border border-gray-300">
                     {{ getFileType(file.mimetype) }}

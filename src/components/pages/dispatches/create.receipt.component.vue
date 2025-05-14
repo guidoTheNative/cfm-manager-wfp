@@ -21,7 +21,7 @@
 
                   <!-- Left Side: Form for Receipt Creation -->
                   <div class="flex-grow p-4 bg-white">
-                    <h2 class="text-xl font-semibold mb-4 text-blue-400">Create a Receipt</h2>
+                    <h2 class="text-xl font-semibold mb-4 text-[#096eb4]">Create a Receipt</h2>
 
                     <div class="col-span-6 sm:col-span-3">
                       <label for="quantity" class="block text-sm font-bold text-gray-700 mb-2  mt-2">Final Destination
@@ -77,11 +77,11 @@
 
                     <div class="flex justify-end mt-4">
                       <button @click="resetReceipt()"
-                        class="px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 active:bg-red-700 transition ease-in-out duration-150">
+                        class="px-4 py-2 border border-transparent text-sm font-bold rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 active:bg-red-700 transition ease-in-out duration-150">
                         Reset
                       </button>
                       <button @click="submitReceipt()"
-                        class="ml-3 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-400 hover:bg-blue-400 focus:outline-none focus:border-blue-400 focus:ring focus:ring-blue-200 active:bg-blue-400 transition ease-in-out duration-150">
+                        class="ml-3 px-4 py-2 border border-transparent text-sm font-bold rounded-md text-white bg-blue-400 hover:bg-blue-400 focus:outline-none focus:border-blue-400 focus:ring focus:ring-blue-200 active:bg-blue-400 transition ease-in-out duration-150">
                         Submit
                       </button>
                     </div>
@@ -92,7 +92,7 @@
 
                   <!-- Right Side: Loading Plan Details -->
                   <div class="flex-initial w-96 p-4 bg-white">
-                    <h2 class="text-xl font-semibold mb-4 text-blue-400">Receipt Details - ID
+                    <h2 class="text-xl font-semibold mb-4 text-[#096eb4]">Receipt Details - ID
                       {{ dispatch.id }}</h2>
                     <!-- ... Loading Plan Details ... -->
 
@@ -142,7 +142,7 @@
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse">
               <button type="button"
-                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 sm:w-auto sm:text-sm"
+                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white text-base font-bold text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 sm:w-auto sm:text-sm"
                 @click="closeDialog">
                 Close
               </button>

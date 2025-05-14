@@ -3,7 +3,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900 capitalize">
+          <h3 class="text-lg font-bold leading-6 text-gray-900 capitalize">
             Profile
           </h3>
           <p class="mt-1 text-sm text-gray-500">
@@ -29,7 +29,7 @@
                     <p class="text-gray-700">Draw Down From: {{ selectedWarehouses?.map(warehouse => warehouse?.Name).join(', ') }}</p>
               </div>
              
-                    <label for="user-role"  class="block text-sm font-medium text-gray-700">
+                    <label for="user-role"  class="block text-sm font-bold text-gray-700">
                       Select Warehouse</label>
                     <multiselect v-model="selectedWarehouseIds" tag-placeholder="Add this as new warehouse"
                       placeholder="Search or reselect a warehouses to draw from" label="Name" track-by="id" :options="warehouses"
@@ -39,7 +39,7 @@
                   </div>
                   <hr>
                   <div class="col-span-12 sm:col-span-12">
-                    <label for="user-role" class="block text-sm font-medium text-gray-700">
+                    <label for="user-role" class="block text-sm font-bold text-gray-700">
                       Select Transporter</label>
 
 

@@ -7,7 +7,7 @@
       <!-- Header -->
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold text-3xl text-blue-400 py-4">Dashboard</h2>
+          <h2 class="font-bold text-3xl text-[#096eb4] py-4">Dashboard</h2>
         </div>
         <!-- Filters -->
         <div class="flex space-x-4">
@@ -59,17 +59,17 @@
           class="shadow rounded-lg p-4 flex items-center justify-between bg-white"
         >
           <div>
-            <h3 class="text-lg font-medium text-blue-600">Pending Actions</h3>
+            <h3 class="text-lg font-bold text-blue-600">Pending Actions</h3>
             <p class="text-2xl font-bold text-blue-600">
               {{ stats.pendingActions }}
             </p>
           </div>
-          <i class="fas fa-tasks text-4xl text-blue-400"></i>
+          <i class="fas fa-tasks text-4xl text-[#096eb4]"></i>
         </div>
 
         <!-- Cases by District -->
         <div class="shadow rounded-lg p-4 bg-white">
-          <h3 class="text-lg font-medium text-green-600">Cases by District</h3>
+          <h3 class="text-lg font-bold text-green-600">Cases by District</h3>
           <ul class="mt-2">
             <li
               v-for="(count, district) in filteredData.casesByDistrict"
@@ -84,7 +84,7 @@
 
         <!-- Cases by Status -->
         <div class="shadow rounded-lg p-4 bg-white">
-          <h3 class="text-lg font-medium text-red-600">Cases by Status</h3>
+          <h3 class="text-lg font-bold text-red-600">Cases by Status</h3>
           <ul class="mt-2">
             <li
               v-for="(count, status) in filteredData.casesByStatus"
@@ -99,7 +99,7 @@
 
         <!-- Cases by Month -->
         <div class="shadow rounded-lg p-4 bg-white">
-          <h3 class="text-lg font-medium text-purple-600">Cases by Month</h3>
+          <h3 class="text-lg font-bold text-purple-600">Cases by Month</h3>
           <ul class="mt-2">
             <li
               v-for="(count, month) in filteredData.casesByMonth"

@@ -31,27 +31,27 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         District
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         Commodity
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         Required (Mt)
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         Distributed (Mt)
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         Balance (Mt)
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         % Distributed
                     </th>
                 </tr>
@@ -94,14 +94,14 @@
                 <ChevronLeftIcon class="w-5 h-5 mr-2" />
                 Prev
             </button>
-            <span class="px-4 py-2 font-body font-medium">Page {{ currentPage }} of {{ totalPages }}</span>
+            <span class="px-4 py-2 font-body font-bold">Page {{ currentPage }} of {{ totalPages }}</span>
             <button @click="nextPage" :disabled="currentPage >= totalPages"
                 class="flex items-center px-4 py-2 mx-1 text-gray-600 bg-white border border-gray-300 rounded hover:bg-gray-100 disabled:opacity-50">
                 <ChevronRightIcon class="w-5 h-5 mr-2" />
                 Next
             </button>
 
-            <span class="mr-2 font-medium mt-2">Rows per page:</span>
+            <span class="mr-2 font-bold mt-2">Rows per page:</span>
             <select v-model="pageSize" class="border-gray-300 rounded-md">
                 <option value="5">5</option>
                 <option value="10">10</option>

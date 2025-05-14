@@ -20,7 +20,7 @@
           </span>
           <div class="flex items-center ml-2 hidden lg:flex">
             <LocationMarkerIcon class="h-5 w-5 text-white mr-2" />
-            <span class="text-white font-medium text-sm">
+            <span class="text-white font-bold text-sm">
               {{ user?.district }}
             </span>
           </div>
@@ -36,7 +36,7 @@
               item.current
                 ? 'bg-white text-black'
                 : 'text-gray-50 hover:text-gray-50 hover:bg-blue-400',
-              'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+              'group flex items-center px-2 py-2 text-sm font-bold rounded-md',
             ]" :aria-current="item.current ? 'page' : undefined">
               {{ item.name }}
               <div v-if="item.name === 'Instructions' && newInstructionsCount > 0" class="relative ml-2 mx-4">
@@ -52,7 +52,7 @@
 
           <!--      <div class="relative">
             <button @click="toggleDropdown" @mouseenter="toggleDropdown"
-              class="text-gray-50 hover:text-gray-50 hover:bg-blue-400 px-2 py-2 text-xs font-medium rounded-md">
+              class="text-gray-50 hover:text-gray-50 hover:bg-blue-400 px-2 py-2 text-xs font-bold rounded-md">
               More...
             </button>
             <div v-if="isDropdownOpen" @mouseleave="closeDropdown" @focusout="closeDropdown"
@@ -73,7 +73,7 @@
         <!-- Notification Button -->
         <div class="relative hidden lg:block">
           <button @click="toggleNotifications"
-            class="text-gray-50 hover:text-gray-50 hover:bg-blue-400 px-2 py-2 text-sm font-medium rounded-md">
+            class="text-gray-50 hover:text-gray-50 hover:bg-blue-400 px-2 py-2 text-sm font-bold rounded-md">
             <BellIcon class="h-6 w-6 text-white" aria-hidden="true" />
             <span v-if="notificationsCount > 0"
               class="absolute top-0 right-0 flex items-center justify-center h-4 w-4 text-xs font-bold text-white bg-red-600 rounded-full">
@@ -85,7 +85,7 @@
               <p v-if="notifications.length === 0">No new notifications</p>
               <ul v-else>
                 <li v-for="(notification, index) in notifications" :key="index" class="py-1 border-b border-gray-200">
-                  <router-link :to="notification.href" class="text-blue-400 hover:underline">
+                  <router-link :to="notification.href" class="text-[#096eb4] hover:underline">
                     {{ notification.message }}
                   </router-link>
                 </li>
@@ -102,7 +102,7 @@
                 <span class="sr-only">Open user menu</span>
                 <span class="lowercase m-2 text-white">{{ user?.username.replace(/\./g, ' ') }}</span>
                 <span style="background-color: gray"
-                  class="inline-flex items-center px-3 rounded-full text-sm font-medium text-white uppercase">
+                  class="inline-flex items-center px-3 rounded-full text-sm font-bold text-white uppercase">
                   {{ user?.username.match(/\b(\w)/g).join("") }}
                 </span>
               </MenuButton>
@@ -144,14 +144,14 @@
       <div v-if="isMobileMenuOpen" class="lg:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <router-link v-for="item in navItems" :key="item.name" @click="toggleMobileMenu()" :to="item.href"
-            class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-blue-400">
+            class="block px-3 py-2 rounded-md text-base font-bold text-white hover:bg-blue-400">
             {{ item.name }}
           </router-link>
         </div>
         <!-- Notification Button -->
         <div class="relative px-2 pt-2 pb-3 sm:px-3">
           <button @click="toggleNotifications"
-            class="text-gray-50 hover:text-gray-50 hover:bg-blue-400 px-2 py-2 text-sm font-medium rounded-md">
+            class="text-gray-50 hover:text-gray-50 hover:bg-blue-400 px-2 py-2 text-sm font-bold rounded-md">
             <BellIcon class="h-6 w-6 text-white" aria-hidden="true" />
             <span v-if="notificationsCount > 0"
               class="absolute top-0 right-0 flex items-center justify-center h-4 w-4 text-xs font-bold text-white bg-red-600 rounded-full">
@@ -163,7 +163,7 @@
               <p v-if="notifications.length === 0">No new notifications</p>
               <ul v-else>
                 <li v-for="(notification, index) in notifications" :key="index" class="py-1 border-b border-gray-200">
-                  <router-link :to="notification.href" class="text-blue-400 hover:underline">
+                  <router-link :to="notification.href" class="text-[#096eb4] hover:underline">
                     {{ notification.message }}
                   </router-link>
                 </li>
@@ -180,7 +180,7 @@
                 <span class="sr-only">Open user menu</span>
                 <span class="lowercase m-2 text-white">{{ user?.username.replace(/\./g, ' ') }}</span>
                 <span style="background-color: gray"
-                  class="inline-flex items-center px-3 rounded-full text-sm font-medium text-white uppercase">
+                  class="inline-flex items-center px-3 rounded-full text-sm font-bold text-white uppercase">
                   {{ user?.username.match(/\b(\w)/g).join("") }}
                 </span>
               </MenuButton>
@@ -230,7 +230,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="text-blue-400 text-center p-4" style="background-color: #f9f9f9;">
+    <footer class="text-[#096eb4] text-center p-4" style="background-color: #f9f9f9;">
       <span class="inline-block align-middle text-sm">
         © WFP Malawi M&E Unit 
       </span>
@@ -454,7 +454,7 @@ const remainingItems = computed(() => mainItems.value.slice(5));
 
 const itemClasses = (item) => [
   item.current ? 'bg-white text-black' : 'text-gray-50 hover:text-gray-50 hover:bg-blue-400',
-  'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+  'group flex items-center px-2 py-2 text-sm font-bold rounded-md'
 ];
 
 const onSignout = async () => {

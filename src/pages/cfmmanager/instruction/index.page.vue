@@ -11,7 +11,7 @@
           <h2 class="
               font-bold
               leading-7
-              text-blue-400
+              text-[#096eb4]
               sm:text-2xl sm:truncate
             ">
             Instructions

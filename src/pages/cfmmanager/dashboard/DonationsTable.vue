@@ -3,7 +3,7 @@
       <div class="mb-4 mt-4">Donations Update</div>
       <div class="absolute top-0 right-0 p-4 flex items-center" :class="{'hidden': screenshotMode}">
         <!-- District Selector -->
-        <span class="mr-3 font-medium">District:</span>
+        <span class="mr-3 font-bold">District:</span>
         <select v-model="selectedDistrict"
           class="mb-2 mr-2 focus:ring-gray-500 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
           <option value="">All Districts</option>
@@ -13,31 +13,31 @@
         </select>
         <!-- Reset Button -->
         <button @click="resetFilters"
-          class="ml-2 mb-2 bg-red-500 hover:bg-red-700 text-white font-medium py-2 px-4 rounded">
+          class="ml-2 mb-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
           Reset Filters
         </button>
       </div>
       <table class="min-w-full divide-y divide-gray-200 mt-8">
         <thead class="bg-gray-50">
           <tr>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
               Goods Receive Note
             </th>
             
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
               Date
             </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
               District
             </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
               Warehouse
             </th>
           
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
               Donor
             </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
               Actions
             </th>
           </tr>
@@ -64,13 +64,13 @@
           <ChevronLeftIcon class="w-5 h-5 mr-2" />
           Prev
         </button>
-        <span class="px-4 py-2 font-body font-medium">Page {{ currentPage }} of {{ totalPages }}</span>
+        <span class="px-4 py-2 font-body font-bold">Page {{ currentPage }} of {{ totalPages }}</span>
         <button @click="nextPage" :disabled="currentPage >= totalPages"
           class="flex items-center px-4 py-2 mx-1 text-gray-600 bg-white border border-gray-300 rounded hover:bg-gray-100 disabled:opacity-50">
           <ChevronRightIcon class="w-5 h-5 mr-2" />
           Next
         </button>
-        <span class="mr-2 font-medium mt-2">Rows per page:</span>
+        <span class="mr-2 font-bold mt-2">Rows per page:</span>
         <select v-model="pageSize" class="border-gray-300 rounded-md">
           <option value="5">5</option>
           <option value="10">10</option>
@@ -90,7 +90,7 @@
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div class="sm:flex sm:items-start">
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                  <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                  <h3 class="text-lg leading-6 font-bold text-gray-900" id="modal-title">
                     Donation Details
                   </h3>
                   <div class="mt-2">
@@ -100,7 +100,7 @@
                     <p class="text-sm text-gray-500">District: {{ selectedRow.district?.Name }}</p>
                     <p class="text-sm text-gray-500">Warehouse: {{ selectedRow.warehouse?.Name }}</p>
                     <p class="text-sm text-gray-500">Donor: {{ selectedRow.organisation?.Name }}</p>
-                    <h4 class="text-md leading-6 font-medium text-gray-900 mt-4">Donated Commodities</h4>
+                    <h4 class="text-md leading-6 font-bold text-gray-900 mt-4">Donated Commodities</h4>
                     <ul class="list-disc list-inside">
                        <li v-for="(commodity, index) in selectedRow.donatedCommodities" :key="index" class="text-sm text-gray-500">
                         {{ commodity.commodity.Name }} - {{ commodity.Quantity }}
@@ -114,7 +114,7 @@
               </div>
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-              <button @click="showModal = false" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+              <button @click="showModal = false" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-bold text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                 Close
               </button>
             </div>

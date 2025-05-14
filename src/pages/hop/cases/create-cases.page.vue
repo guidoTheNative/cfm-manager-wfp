@@ -8,7 +8,7 @@
       </div>
       <div class="mt-2 md:flex md:items-center md:justify-between mb-3">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
+          <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate">
             Create Case
           </h2>
         </div>
@@ -40,7 +40,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="district"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >District</label
                       >
                       <select
@@ -62,7 +62,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="ta"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >T/A</label
                       >
                       <select
@@ -81,7 +81,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="gvh"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >GVH</label
                       >
                       <input
@@ -96,7 +96,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="village"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Village</label
                       >
                       <input
@@ -110,7 +110,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="name_of_caller"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Name of Caller</label
                       >
                       <input
@@ -125,7 +125,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="idNumber"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >ID Number</label
                       >
                       <input
@@ -140,7 +140,7 @@
                     <div class="col-span-12 sm:col-span-12">
                       <label
                         for="issueDescription"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Issue Description</label
                       >
                       <textarea
@@ -154,7 +154,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="caseCategory"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Case Category</label
                       >
                       <select
@@ -199,7 +199,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="programme"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Programme</label
                       >
 
@@ -235,7 +235,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="priority"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Priority</label
                       >
                       <select
@@ -253,7 +253,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="accountNumber"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Account Number</label
                       >
                       <input
@@ -268,7 +268,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="phoneNumber"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Phone Number</label
                       >
                       <input
@@ -283,7 +283,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="nationality"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Nationality</label
                       >
                       <select
@@ -311,7 +311,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="district"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Age</label
                       >
                       <select
@@ -337,7 +337,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="gender"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Gender</label
                       >
                       <select
@@ -354,7 +354,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="disability"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Disability</label
                       >
                       <select
@@ -378,7 +378,7 @@
                     <div class="col-span-12 sm:col-span-12">
                       <label
                         for="comment"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Comment</label
                       >
                       <textarea
@@ -392,7 +392,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="status"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Status</label
                       >
                       <select
@@ -412,7 +412,7 @@
                   <button
                     type="submit"
                     style="background-color: #096eb4"
-                    class="font-body inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-blue-700 focus:outline-none"
+                    class="font-body inline-block px-6 py-2.5 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-blue-700 focus:outline-none"
                   >
                     Save Case
                   </button>

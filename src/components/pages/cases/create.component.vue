@@ -2,7 +2,7 @@
   <div>
     <button
       type="button"
-      class="font-body px-6 py-2.5 bg-gray-400 text-white font-medium text-sm rounded shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
+      class="font-body px-6 py-2.5 bg-gray-400 text-white font-bold text-sm rounded shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
       @click="open = true"
     >
       New Case
@@ -31,7 +31,7 @@
           >
             <div class="inline-block w-full max-w-3xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-lg">
               <div class="flex items-center justify-between border-b pb-3">
-                <h3 class="text-lg font-medium leading-6 text-gray-900">Create New Contact</h3>
+                <h3 class="text-lg font-bold leading-6 text-gray-900">Create New Contact</h3>
                 <button @click="closeDialog" class="text-gray-400 hover:text-gray-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@
               <form @submit.prevent="submitForm" class="space-y-4 mt-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                    <label for="firstName" class="block text-sm font-bold text-gray-700">First Name</label>
                     <input
                       type="text"
                       id="firstName"
@@ -63,7 +63,7 @@
                   </div>
 
                   <div>
-                    <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+                    <label for="lastName" class="block text-sm font-bold text-gray-700">Last Name</label>
                     <input
                       type="text"
                       id="lastName"
@@ -73,7 +73,7 @@
                   </div>
 
                   <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <label for="email" class="block text-sm font-bold text-gray-700">Email</label>
                     <input
                       type="email"
                       id="email"
@@ -83,7 +83,7 @@
                   </div>
 
                   <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <label for="phone" class="block text-sm font-bold text-gray-700">Phone Number</label>
                     <input
                       type="tel"
                       id="phone"
@@ -93,7 +93,7 @@
                   </div>
 
                   <div>
-                    <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+                    <label for="address" class="block text-sm font-bold text-gray-700">Address</label>
                     <input
                       type="text"
                       id="address"
@@ -103,7 +103,7 @@
                   </div>
 
                   <div>
-                    <label for="notes" class="block text-sm font-medium text-gray-700">Notes</label>
+                    <label for="notes" class="block text-sm font-bold text-gray-700">Notes</label>
                     <textarea
                       id="notes"
                       v-model="form.notes"

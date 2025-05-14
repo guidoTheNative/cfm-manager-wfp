@@ -1,7 +1,7 @@
 <template>
   <div>
     <button type="button"
-      class="font-heading inline-flex items-center px-6 py-2.5 border border-blue-400 text-blue-400 font-bold text-xs rounded shadow-md hover:bg-blue-300 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:border-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+      class="font-heading inline-flex items-center px-6 py-2.5 border border-blue-400 text-[#096eb4] font-bold text-xs rounded shadow-md hover:bg-blue-300 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:border-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
       @click="open = true">
       <TruckIcon class="h-5 w-5 mr-2" />
       Dispatch
@@ -27,7 +27,7 @@
               class="font-body flex text-base text-left transform transition w-full md:inline-block md:max-w-2xl md:px-4 md:my-8 md:align-middle lg:max-w-2xl">
               <div
                 class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-white">
-                <h5 class="text-md font-medium leading-normal text-gray-800" id="formModalLabel">
+                <h5 class="text-md font-bold leading-normal text-gray-800" id="formModalLabel">
                   Create A Dispatch
                 </h5>
                 <button type="button"
@@ -42,7 +42,7 @@
 
               <div class="grid grid-cols-6 bg-white">
                 <div class="col-span-6 sm:col-span-3 mx-6 my-3">
-                  <label for="user-role" class="block text-sm font-medium text-gray-700">
+                  <label for="user-role" class="block text-sm font-bold text-gray-700">
                     Select User Type</label>
                   <select id="role" name="role" v-model="roleId" autocomplete="role-name"
                     class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -61,7 +61,7 @@
                 <div class="px-4 py-5 bg-white sm:p-6">
                   <div class="grid grid-cols-6 gap-2">
                     <div class="col-span-6 sm:col-span-3">
-                      <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
+                      <label for="first-name" class="block text-sm font-bold text-gray-700">First name</label>
                       <input type="text" name="first-name" id="first-name" v-model="firstName" autocomplete="given-name"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                       <p class="text-red-500 text-xs italic pt-1">
@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">
-                      <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
+                      <label for="last-name" class="block text-sm font-bold text-gray-700">Last name</label>
                       <input type="text" name="last-name" id="last-name" v-model="lastName" autocomplete="family-name"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                       <p class="text-red-500 text-xs italic pt-1">
@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="col-span-6 sm:col-span-5">
-                      <label for="email-address" class="block text-sm font-medium text-gray-700">Email address</label>
+                      <label for="email-address" class="block text-sm font-bold text-gray-700">Email address</label>
                       <input type="text" name="email-address" id="email-address" v-model="email" autocomplete="email"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                       <p class="text-red-500 text-xs italic pt-1">
@@ -87,7 +87,7 @@
                       </p>
                     </div>
                     <div class="col-span-6 sm:col-span-4">
-                      <label for="phone-number" class="block text-sm font-medium text-gray-700">Phone</label>
+                      <label for="phone-number" class="block text-sm font-bold text-gray-700">Phone</label>
                       <input type="text" v-model="phone" name="phone-number" id="phone-number" autocomplete="off"
                         placeholder="e.g. 0999123456"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
@@ -99,14 +99,14 @@
 
                   <div class="grid grid-cols-6 gap-6 mt-3">
                     <div class="col-span-6 sm:col-span-4">
-                      <label for="password" class="block text-sm font-medium text-gray-700">
+                      <label for="password" class="block text-sm font-bold text-gray-700">
                         Password</label>
                       <input id="password" name="password" :type="isPwd ? 'text' : 'password'" v-model="password"
                         autocomplete="off"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                       <div class="flex items-center w-full">
                         <input id="hide-password" name="show-password" v-model="isPwd" type="checkbox"
-                          class="ml-2 h-4 w-4 border-gray-300 text-blue-400 focus:ring-blue-400 rounded" />
+                          class="ml-2 h-4 w-4 border-gray-300 text-[#096eb4] focus:ring-blue-400 rounded" />
                         <label for="show-password" class="block text-sm text-gray-900 p-2">
                           Show password
                         </label>
@@ -119,7 +119,7 @@
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button type="submit" style="background-color: #096eb4;"
-                    class="`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                    class="`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
                     Save
                   </button>
                 </div>

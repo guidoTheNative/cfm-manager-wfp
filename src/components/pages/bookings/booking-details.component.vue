@@ -3,7 +3,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">
+          <h3 class="text-lg font-bold leading-6 text-gray-900">
             Booking Details
           </h3>
           <p class="mt-1 text-sm text-gray-500">
@@ -19,7 +19,7 @@
                     <p class="text-indigo-500 text-sm italic pt-1">
                       Current Booking status : <strong>{{ model.status }}</strong>
                     </p>
-                    <label for="status" class="block text-sm font-medium text-gray-700">
+                    <label for="status" class="block text-sm font-bold text-gray-700">
                       Change Status
                     </label>
                     <select id="status" name="status" v-model="model.status" autocomplete="status-name"
@@ -34,7 +34,7 @@
 
 
 
-                    <label for="datepicker" class="block text-sm font-medium text-gray-700">Available on:</label>
+                    <label for="datepicker" class="block text-sm font-bold text-gray-700">Available on:</label>
                     <input type="date" id="datepicker" name="datepicker" v-model="model.availableday"
                       class="mt-1 focus:ring-gray-500 focus:border-blue-400 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
 
@@ -42,7 +42,7 @@
                       <div class="grid grid-cols-2 gap-4">
                         <!-- First TimePicker -->
                         <div>
-                          <label for="timepicker1" class="block text-sm font-medium text-gray-700 mt-3">Available
+                          <label for="timepicker1" class="block text-sm font-bold text-gray-700 mt-3">Available
                             from:</label>
                           <div
                             class="mt-4 focus:ring-gray-500 focus:border-blue-400 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -53,7 +53,7 @@
 
                         <!-- Second TimePicker -->
                         <div>
-                          <label for="timepicker2" class="block text-sm font-medium text-gray-700 mt-3">Available
+                          <label for="timepicker2" class="block text-sm font-bold text-gray-700 mt-3">Available
                             to:</label>
                           <div
                             class="mt-4 focus:ring-gray-500 focus:border-blue-400 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -71,7 +71,7 @@
 
               <div class="px-4 py-3 text-right sm:px-6">
                 <button type="submit"
-                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                   Update
                 </button>
               </div>
@@ -82,7 +82,7 @@
         </div>
 
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">
+          <h3 class="text-lg font-bold leading-6 text-gray-900">
             Booking Checklist
           </h3>
           <p class="mt-1 text-sm text-gray-500">
@@ -94,7 +94,7 @@
             <h2 class="text-1xl font-semibold mb-4">Checklist</h2>
             <div class="space-y-2">
               <div v-for="(item, index) in checklistItems" :key="index" class="flex items-center">
-                <input type="checkbox" class="rounded border-gray-300 text-blue-400 focus:ring-blue-400 h-4 w-4"
+                <input type="checkbox" class="rounded border-gray-300 text-[#096eb4] focus:ring-blue-400 h-4 w-4"
                   v-model="item.completed" @change="updateChecklistItem(item)" />
                 <span class="ml-2 text-gray-700">{{ item.title }}</span>
                 <button @click="deleteItem(index)" class="ml-2 text-red-500">❌</button>

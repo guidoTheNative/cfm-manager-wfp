@@ -7,7 +7,7 @@
 
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl py-3 sm:truncate">
+          <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl py-3 sm:truncate">
             Dashboard
           </h2>
         </div>
@@ -21,21 +21,21 @@
         <div class="lg:col-span-3">
           <div class="flex justify-center space-x-4 mb-4">
             <button @click="toggleView('dashboard')" type="button"
-              class="tab-button font-body inline-flex items-center px-6 py-2.5 font-medium text-xs leading-tight rounded shadow-md transition duration-100 ease-in-out capitalize"
+              class="tab-button font-body inline-flex items-center px-6 py-2.5 font-bold text-xs leading-tight rounded shadow-md transition duration-100 ease-in-out capitalize"
               :class="{ 'active-tab': currentView === 'dashboard' }">
               <TemplateIcon class="h-5 w-5 mr-2" />
               Overall Dashboard
             </button>
 
             <button @click="toggleView('charts')" type="button"
-              class="tab-button font-body inline-flex items-center px-6 py-2.5 font-medium text-xs leading-tight rounded shadow-md transition duration-100 ease-in-out capitalize"
+              class="tab-button font-body inline-flex items-center px-6 py-2.5 font-bold text-xs leading-tight rounded shadow-md transition duration-100 ease-in-out capitalize"
               :class="{ 'active-tab': currentView === 'charts' }">
               <ChartBarIcon class="h-5 w-5 mr-2" />
               Emergency Response Dashboard
             </button>
 
             <button @click="toggleView('leanSeasonDashboard')" type="button"
-              class="tab-button font-body inline-flex items-center px-6 py-2.5 font-medium text-xs leading-tight rounded shadow-md transition duration-100 ease-in-out capitalize"
+              class="tab-button font-body inline-flex items-center px-6 py-2.5 font-bold text-xs leading-tight rounded shadow-md transition duration-100 ease-in-out capitalize"
               :class="{ 'active-tab': currentView === 'leanSeasonDashboard' }">
               <TemplateIcon class="h-5 w-5 mr-2" />
               Lean Season Response Dashboard
@@ -56,11 +56,11 @@
                   <div class="sm:flex sm:items-center sm:justify-between">
                     <div class="sm:flex sm:space-x-5">
                       <div class="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
-                        <p class="text-md font-medium font-heading text-gray-600">Welcome back,</p>
+                        <p class="text-md font-bold font-heading text-gray-600">Welcome back,</p>
                         <p class="text-xl font-bold text-gray-900 sm:text-2xl capitalize">
                           {{ user.username.replace(/\./g, ' ') }}
                         </p>
-                        <p class="text-sm font-medium text-gray-600 md:text-1xl pt-2 uppercase">{{ role.name }}</p>
+                        <p class="text-sm font-bold text-gray-600 md:text-1xl pt-2 uppercase">{{ role.name }}</p>
                       </div>
                     </div>
 
@@ -68,7 +68,7 @@
                       <button @click="exportToExcel"
                         v-if="currentView !== 'dashboard' && currentView !== 'leanSeasonDashboard' && currentView !== 'Donations' && currentView !== 'charts'"
                         type="button"
-                        class="tab-button font-body inline-flex items-center px-6 py-2.5 font-medium text-xs leading-tight rounded shadow-md transition duration-100 ease-in-out capitalize"
+                        class="tab-button font-body inline-flex items-center px-6 py-2.5 font-bold text-xs leading-tight rounded shadow-md transition duration-100 ease-in-out capitalize"
                         :class="{ 'active-tab': false }">
                         <DocumentDownloadIcon class="h-5 w-5 mr-2" />
                         Export to Excel
@@ -77,7 +77,7 @@
 
                       <button @click="takeScreenshot" v-if="currentView !== 'dashboard' && currentView !== 'Donations'"
                         type="button"
-                        class="tab-button font-body inline-flex items-center px-6 py-2.5 font-medium text-xs leading-tight rounded shadow-md transition duration-100 ease-in-out capitalize"
+                        class="tab-button font-body inline-flex items-center px-6 py-2.5 font-bold text-xs leading-tight rounded shadow-md transition duration-100 ease-in-out capitalize"
                         :class="{ 'active-tab': false }">
                         <CameraIcon class="h-5 w-5 mr-2" />
                         Take Screenshot
@@ -118,7 +118,7 @@
                   <div class="col-span-3 flex flex-col justify-center items-center">
                     <div class="text-center mt-2">
                       <h1
-                        class="text-lg font-semibold text-[#096eb4] text-blue-400 bg-white border border-blue-400 rounded-xl px-4 py-2 shadow-xs">
+                        class="text-lg font-semibold text-[#096eb4] text-[#096eb4] bg-white border border-blue-400 rounded-xl px-4 py-2 shadow-xs">
                         Emergency Response Dashboard
 
                       </h1>
@@ -149,7 +149,7 @@
 
 
                       <div class="flex flex-col">
-                        <label for="district" class="text-sm font-medium text-gray-700">District</label>
+                        <label for="district" class="text-sm font-bold text-gray-700">District</label>
 
                         <select id="district" v-model="selectedDistrict"
                           class="focus:ring-gray-500 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -162,7 +162,7 @@
                       </div>
 
                       <div class="flex flex-col">
-                        <label for="commodity" class="text-sm font-medium text-gray-700">Commodity</label>
+                        <label for="commodity" class="text-sm font-bold text-gray-700">Commodity</label>
                         <select id="commodity" v-model="selectedCommodity"
                           class="focus:ring-gray-500 w-40 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
                           <option value="">All Commodities</option>
@@ -173,7 +173,7 @@
                       </div>
 
                       <div class="flex flex-col">
-                        <label for="disaster" class="text-sm font-medium text-gray-700">Disaster/Emergency</label>
+                        <label for="disaster" class="text-sm font-bold text-gray-700">Disaster/Emergency</label>
                         <select id="disaster" v-model="selectedDisaster"
                           class="focus:ring-gray-500 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
                           <option value="">All Disasters</option>
@@ -184,19 +184,19 @@
                       </div>
 
                       <div class="flex flex-col">
-                        <label for="dateFrom" class="text-sm font-medium text-gray-700">Date of Emergency From</label>
+                        <label for="dateFrom" class="text-sm font-bold text-gray-700">Date of Emergency From</label>
                         <input type="date" id="dateFrom" v-model="selectedDateFrom"
                           class="focus:ring-gray-500 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
                       </div>
 
                       <div class="flex flex-col">
-                        <label for="dateTo" class="text-sm font-medium text-gray-700">Date of Emergency To</label>
+                        <label for="dateTo" class="text-sm font-bold text-gray-700">Date of Emergency To</label>
                         <input type="date" id="dateTo" v-model="selectedDateTo"
                           class="focus:ring-gray-500 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
                       </div>
 
                       <button @click="resetFilters"
-                        class="bg-gray-200 mt-5 hover:bg-gray-300 text-black font-medium py-1 px-2 text-sm rounded">
+                        class="bg-gray-200 mt-5 hover:bg-gray-300 text-black font-bold py-1 px-2 text-sm rounded">
                         Reset
                       </button>
                     </div>
@@ -261,7 +261,7 @@
                   <div class="col-span-3 flex flex-col justify-center items-center">
                     <div class="text-center mt-2">
                       <h1
-                        class="text-lg font-semibold text-[#096eb4] text-blue-400 bg-white border border-blue-400 rounded-xl px-4 py-2 shadow-xs">
+                        class="text-lg font-semibold text-[#096eb4] text-[#096eb4] bg-white border border-blue-400 rounded-xl px-4 py-2 shadow-xs">
                         Lean Season Response Dashboard
                       </h1>
                     </div>
@@ -337,7 +337,7 @@
                   <div class="col-span-3 flex flex-col justify-center items-center mt-2">
                     <div class="flex flex-wrap items-center space-x-4 mb-4" :class="{ 'hidden': screenshotMode }">
                       <div class="flex flex-col">
-                        <label for="district" class="text-sm font-medium text-gray-700">Activity</label>
+                        <label for="district" class="text-sm font-bold text-gray-700">Activity</label>
                         <select id="district" v-model="selectedActivity"
                           class="focus:ring-gray-500 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
                           <option value="">All Activity</option>
@@ -348,7 +348,7 @@
                       </div>
 
                       <div class="flex flex-col">
-                        <label for="district" class="text-sm font-medium text-gray-700">District</label>
+                        <label for="district" class="text-sm font-bold text-gray-700">District</label>
                         <select id="district" v-model="selectedDistrict"
                           class="focus:ring-gray-500 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
                           <option value="">All Districts</option>
@@ -359,7 +359,7 @@
                       </div>
 
                       <div class="flex flex-col">
-                        <label for="commodity" class="text-sm font-medium text-gray-700">Commodity</label>
+                        <label for="commodity" class="text-sm font-bold text-gray-700">Commodity</label>
                         <select id="commodity" v-model="selectedCommodity"
                           class="focus:ring-gray-500 w-40 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
                           <option value="">All Commodities</option>
@@ -370,7 +370,7 @@
                       </div>
 
                       <button @click="resetFilters"
-                        class="bg-gray-200 mt-5 hover:bg-gray-300 text-black font-medium py-1 px-2 text-sm rounded">
+                        class="bg-gray-200 mt-5 hover:bg-gray-300 text-black font-bold py-1 px-2 text-sm rounded">
                         Reset
                       </button>
                     </div>
@@ -415,7 +415,7 @@
                   <div class="col-span-3 flex flex-col justify-center items-center mt-2">
                     <div class="flex flex-wrap items-center space-x-4 mb-4" :class="{ 'hidden': screenshotMode }">
                       <div class="flex flex-col">
-                        <label for="district" class="text-sm font-medium text-gray-700">Activity</label>
+                        <label for="district" class="text-sm font-bold text-gray-700">Activity</label>
                         <select id="district" v-model="selectedActivity"
                           class="focus:ring-gray-500 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
                           <option value="">All Activity</option>
@@ -426,7 +426,7 @@
                       </div>
 
                       <div class="flex flex-col">
-                        <label for="district" class="text-sm font-medium text-gray-700">District</label>
+                        <label for="district" class="text-sm font-bold text-gray-700">District</label>
                         <select id="district" v-model="selectedDistrict"
                           class="focus:ring-gray-500 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
                           <option value="">All Districts</option>
@@ -437,7 +437,7 @@
                       </div>
 
                       <div class="flex flex-col">
-                        <label for="commodity" class="text-sm font-medium text-gray-700">Commodity</label>
+                        <label for="commodity" class="text-sm font-bold text-gray-700">Commodity</label>
                         <select id="commodity" v-model="selectedCommodity"
                           class="focus:ring-gray-500 w-40 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
                           <option value="">All Commodities</option>
@@ -448,7 +448,7 @@
                       </div>
 
                       <button @click="resetFilters"
-                        class="bg-gray-200 mt-5 hover:bg-gray-300 text-black font-medium py-1 px-2 text-sm rounded">
+                        class="bg-gray-200 mt-5 hover:bg-gray-300 text-black font-bold py-1 px-2 text-sm rounded">
                         Reset
                       </button>
                     </div>
@@ -504,7 +504,7 @@
                   <div class="tabs">
 
                     <button @click="currentTab = 'all'"
-                      :class="{ 'tab-button text-white': currentTab === 'all', 'bg-white text-blue-400 border border-blue-400': activeTab !== 'all' }"
+                      :class="{ 'tab-button text-white': currentTab === 'all', 'bg-white text-[#096eb4] border border-blue-400': activeTab !== 'all' }"
                       class="relative flex items-center py-2 px-4 mr-1 text-center rounded-t-lg font-semibold transition-colors duration-300 ease-in-out">
                       All Reports
 
@@ -512,7 +512,7 @@
 
 
                     <button @click="currentTab = 'DoDMA'"
-                      :class="{ 'tab-button text-white': currentTab === 'DoDMA', 'bg-white text-blue-400 border border-blue-400': activeTab !== 'DoDMA' }"
+                      :class="{ 'tab-button text-white': currentTab === 'DoDMA', 'bg-white text-[#096eb4] border border-blue-400': activeTab !== 'DoDMA' }"
                       class="relative flex items-center py-2 px-4 mr-1 text-center rounded-t-lg font-semibold transition-colors duration-300 ease-in-out">
 
                       DoDMA Reports
@@ -520,7 +520,7 @@
                     </button>
 
                     <button @click="currentTab = 'WFP'"
-                      :class="{ 'tab-button text-white': currentTab === 'WFP', 'bg-white text-blue-400 border border-blue-400': activeTab !== 'WFP' }"
+                      :class="{ 'tab-button text-white': currentTab === 'WFP', 'bg-white text-[#096eb4] border border-blue-400': activeTab !== 'WFP' }"
                       class="relative flex items-center py-2 px-4 mr-1 text-center rounded-t-lg font-semibold transition-colors duration-300 ease-in-out">
 
                       WFP Reports
@@ -528,7 +528,7 @@
                     </button>
 
                     <button @click="currentTab = 'Allo'"
-                      :class="{ 'tab-button text-white': currentTab === 'Allo', 'bg-white text-blue-400 border border-blue-400': activeTab !== 'Allo' }"
+                      :class="{ 'tab-button text-white': currentTab === 'Allo', 'bg-white text-[#096eb4] border border-blue-400': activeTab !== 'Allo' }"
                       class="relative flex items-center py-2 px-4 mr-1 text-center rounded-t-lg font-semibold transition-colors duration-300 ease-in-out">
 
                       Allocation Trends
@@ -599,7 +599,7 @@
                 <!-- Loader when data is loading -->
                 <div v-if="isLoading"
                   class="flex justify-center items-center col-span-2 p-5 bg-white rounded-lg shadow-lg">
-                  <svg class="animate-spin h-8 w-8 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  <svg class="animate-spin h-8 w-8 text-[#096eb4]" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
@@ -618,12 +618,12 @@
                         <div class="flex items-center justify-between">
                           <span class="text-3xl font-semibold text-gray-800">{{ stat.value }}</span>
                           <component v-if="stat.label === 'Total Stocks Planned (Lean Season Response)'"
-                            class="h-8 w-8 text-blue-400">
+                            class="h-8 w-8 text-[#096eb4]">
                             <TruckIcon class="h-10 w-10 inline-block mr-1" style="color: #248cd6;" />
                           </component>
                           <component v-else :is="stat.icon" :class="`h-7 w-7 text-${stat.iconColor}`" />
                         </div>
-                        <div class="text-sm font-medium text-gray-600 mt-2">{{ stat.label }}</div>
+                        <div class="text-sm font-bold text-gray-600 mt-2">{{ stat.label }}</div>
                       </div>
                       <div v-if="stat.percentageText" class="mt-4">
                         <div class="flex items-center justify-between">
@@ -637,9 +637,9 @@
                             :style="{ width: stat.progress + '%' }"></div>
                         </div>
                       </div>
-                      <div class="text-lg font-medium text-gray-800">{{ stat.commodity }}</div>
+                      <div class="text-lg font-bold text-gray-800">{{ stat.commodity }}</div>
                       <router-link v-if="stat.link" to="/manager/stock-prepositioning"
-                        class="text-blue-400 hover:underline">View
+                        class="text-[#096eb4] hover:underline">View
                         Details</router-link>
 
 
@@ -658,7 +658,7 @@
 
                   <div class="mb-4">
                     <div class="text-sm font-bold text-gray-500">Lean Season Response & Emergency Assistance</div>
-                    <div v-if="damagedStockStats.length === 0" class="text-gray-500 text-sm mb-3 font-medium">No Data
+                    <div v-if="damagedStockStats.length === 0" class="text-gray-500 text-sm mb-3 font-bold">No Data
                     </div>
                     <div v-else>
                       <div v-for="(stat, index) in damagedStockStats" :key="index"
@@ -666,8 +666,8 @@
                         <div class="flex items-center">
                           <div :style="{ backgroundColor: stat.color }" class="w-4 h-4 rounded-full mr-2"></div>
                           <div>
-                            <div class="text-lg font-medium text-gray-800">{{ stat.commodity }}</div>
-                            <router-link to="/manager/Lean-season-losses" class="text-blue-400 hover:underline">View
+                            <div class="text-lg font-bold text-gray-800">{{ stat.commodity }}</div>
+                            <router-link to="/manager/Lean-season-losses" class="text-[#096eb4] hover:underline">View
                               Details</router-link>
                           </div>
                         </div>
@@ -681,7 +681,7 @@
 
                   <div>
                     <div class="text-sm font-bold text-gray-500">Emergency Response</div>
-                    <div v-if="damagedStockStatsEmergency.length === 0" class="text-gray-500 text-sm mb-3 font-medium">
+                    <div v-if="damagedStockStatsEmergency.length === 0" class="text-gray-500 text-sm mb-3 font-bold">
                       No Data</div>
                     <div v-else>
                       <div v-for="(stat, index) in damagedStockStatsEmergency" :key="index"
@@ -689,9 +689,9 @@
                         <div class="flex items-center">
                           <div :style="{ backgroundColor: stat.color }" class="w-4 h-4 rounded-full mr-2"></div>
                           <div>
-                            <div class="text-lg font-medium text-gray-800">{{ stat.commodity }}</div>
+                            <div class="text-lg font-bold text-gray-800">{{ stat.commodity }}</div>
                             <router-link to="/manager/Emergency-season-losses"
-                              class="text-blue-400 hover:underline">View
+                              class="text-[#096eb4] hover:underline">View
                               Details</router-link>
                           </div>
                         </div>

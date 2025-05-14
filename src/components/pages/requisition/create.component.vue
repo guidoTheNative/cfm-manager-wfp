@@ -1,7 +1,7 @@
 <template>
   <div>
     <button type="button"
-      class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+      class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
       @click="open = true">
       new requisition
     </button>
@@ -25,7 +25,7 @@
               class="font-body flex text-base text-left transform transition w-full md:inline-block md:max-w-2xl md:px-4 md:my-8 md:align-middle lg:max-w-2xl">
               <div
                 class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-white">
-                <h5 class="text-md font-medium leading-normal text-gray-800" id="formModalLabel">
+                <h5 class="text-md font-bold leading-normal text-gray-800" id="formModalLabel">
                   Create Requisition
                 </h5>
                 <button type="button"
@@ -45,7 +45,7 @@
 
 
                     <div class="col-span-12 sm:col-span-12">
-                      <label for="user-district" class="block text-sm font-medium text-gray-700">
+                      <label for="user-district" class="block text-sm font-bold text-gray-700">
                         Select Disaster</label>
                       <select id="activity" name="activity" v-model="disasterId" autocomplete="activity-name"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="col-span-12 sm:col-span-12">
-                      <label for="batch" class="block text-sm font-medium text-gray-700">Affected Households</label>
+                      <label for="batch" class="block text-sm font-bold text-gray-700">Affected Households</label>
                       <input type="number" v-model="AffectedHouseholds" Name="AffectedHouseholds"
                         id="AffectedHouseholds" autocomplete="off" placeholder="Affected Households"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="col-span-12 sm:col-span-12">
-                      <label for="AffectedAreas" class="block text-sm font-medium text-gray-700">
+                      <label for="AffectedAreas" class="block text-sm font-bold text-gray-700">
                         TAs/Constituency Affected
                       </label>
 
@@ -99,7 +99,7 @@
 
 
                     <div class="col-span-12 sm:col-span-12">
-                      <label for="AffectedAreas" class="block text-sm font-medium text-gray-700">
+                      <label for="AffectedAreas" class="block text-sm font-bold text-gray-700">
                         GVHs/Wards Affected
                       </label>
 
@@ -114,7 +114,7 @@
                     </div>
 
                     <div class="col-span-12 sm:col-span-12">
-                      <label for="AffectedAreas" class="block text-sm font-medium text-gray-700">
+                      <label for="AffectedAreas" class="block text-sm font-bold text-gray-700">
                         Villages/Blocks Affected
                       </label>
 
@@ -134,7 +134,7 @@
 
                     </div> -->
                     <div class="col-span-12 sm:col-span-12">
-                      <h3 class="text-lg font-semibold text-blue-400 mb-3">Relief Items</h3>
+                      <h3 class="text-lg font-semibold text-[#096eb4] mb-3">Relief Items</h3>
                       <div class="space-y-3">
                         <div v-for="(item, index) in reliefItems" :key="index" class="flex space-x-4 items-center">
                           <div class="flex-1">
@@ -171,13 +171,13 @@
                 <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
                   <div class="flex justify-end space-x-3">
                     <button type="button" @click="saveAsDraft"
-                      class="inline-flex items-center px-3 py-2 text-sm font-medium text-green-600 hover:text-green-900 bg-white rounded-md border border-gray-300 hover:bg-gray-100">
+                      class="inline-flex items-center px-3 py-2 text-sm font-bold text-green-600 hover:text-green-900 bg-white rounded-md border border-gray-300 hover:bg-gray-100">
                       <SaveIcon class="h-5 w-5 mr-3" />
                       Save as Draft
                     </button>
 
                     <button type="submit"
-                      class="inline-flex items-center px-3 py-2 text-sm font-medium bg-blue-400 text-white hover:text-green-900 bg-white rounded-md border border-gray-300 hover:bg-gray-100">
+                      class="inline-flex items-center px-3 py-2 text-sm font-bold bg-blue-400 text-white hover:text-green-900 bg-white rounded-md border border-gray-300 hover:bg-gray-100">
                       Submit for action
                     </button>
                   </div>

@@ -9,7 +9,7 @@
               flex
               items-center
               text-sm
-              font-medium
+              font-bold
               text-gray-500
               hover:text-gray-700
             "
@@ -41,7 +41,7 @@
               </svg>
               <router-link :to="breadcrumb.href">
                 <a
-                  class="text-sm font-medium text-gray-500 hover:text-gray-700"
+                  class="text-sm font-bold text-gray-500 hover:text-gray-700"
                   :aria-current="breadcrumb.current ? 'page' : undefined"
                   >{{ breadcrumb.name }}</a
                 >

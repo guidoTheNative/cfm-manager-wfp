@@ -6,7 +6,7 @@
         px-3
         py-2
         text-sm
-        font-medium
+        font-bold
         text-green-600
         hover:text-green-900
         bg-white
@@ -39,7 +39,7 @@
               class="font-body flex text-base text-left transform transition w-full md:inline-block md:max-w-2xl md:px-4 md:my-8 md:align-middle lg:max-w-2xl">
               <div
                 class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-white">
-                <h5 class="text-md font-medium leading-normal text-gray-800">
+                <h5 class="text-md font-bold leading-normal text-gray-800">
                   Approve Loading Plan
                 </h5>
                 <button type="button" @click="closeDialog"
@@ -92,7 +92,7 @@
                 <!-- Footer Buttons -->
                 <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse">
                   <button type="button" @click="closeDialog"
-                    class="mr-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">Close</button>
+                    class="mr-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">Close</button>
                   <button type="submit" v-if="!isRejecting"
                     class="px-4 py-2 mr-3 bg-green-500 text-white rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 inline-flex items-center">
                     <CheckCircleIcon class="h-5 w-5 mr-1" />

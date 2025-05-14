@@ -303,7 +303,7 @@ watchEffect(() => {
     <!-- Message if no action selected -->
     <div v-if="!selectedAction"
       class="text-center text-gray-600 font-semibold mb-6 p-4 bg-gray-100 rounded-lg shadow-md">
-      <p>Please select an action to view the stats. <span class="font-medium text-blue-400">Choose from the dropdown
+      <p>Please select an action to view the stats. <span class="font-bold text-[#096eb4]">Choose from the dropdown
           above.</span></p>
     </div>
 

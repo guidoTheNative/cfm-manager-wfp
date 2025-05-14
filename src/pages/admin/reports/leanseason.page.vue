@@ -13,7 +13,7 @@
           <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
             <!-- District Filter -->
             <div class="md:col-span-1">
-              <label for="district" class="block text-sm font-medium text-gray-700">District</label>
+              <label for="district" class="block text-sm font-bold text-gray-700">District</label>
               <select v-model="selectedDistrict" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                 <option value="">All Districts</option>
                 <option v-for="district in districts" :key="district.id" :value="district.id">{{ district.Name }}
@@ -23,7 +23,7 @@
 
             <!-- Warehouse Filter -->
             <div class="md:col-span-1">
-              <label for="warehouse" class="block text-sm font-medium text-gray-700">Warehouse</label>
+              <label for="warehouse" class="block text-sm font-bold text-gray-700">Warehouse</label>
               <select v-model="selectedWarehouse" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                 <option value="">All Warehouses</option>
                 <option v-for="warehouse in warehouses" :key="warehouse.id" :value="warehouse.id">{{ warehouse.Name }}
@@ -33,7 +33,7 @@
 
             <!-- Transporter Filter -->
             <div class="md:col-span-1">
-              <label for="transporter" class="block text-sm font-medium text-gray-700">Transporter</label>
+              <label for="transporter" class="block text-sm font-bold text-gray-700">Transporter</label>
               <select v-model="selectedTransporter" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                 <option value="">All Transporters</option>
                 <option v-for="transporter in transporters" :key="transporter.id" :value="transporter.id">{{
@@ -43,7 +43,7 @@
 
             <!-- Commodity Filter -->
             <div class="md:col-span-1">
-              <label for="commodity" class="block text-sm font-medium text-gray-700">Commodity</label>
+              <label for="commodity" class="block text-sm font-bold text-gray-700">Commodity</label>
               <select v-model="selectedCommodity" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                 <option value="">All Commodities</option>
                 <option v-for="commodity in commodities" :key="commodity.id" :value="commodity.id">{{ commodity.Name }}
@@ -53,13 +53,13 @@
 
             <!-- Start Date Filter -->
             <div class="md:col-span-1">
-              <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date</label>
+              <label for="startDate" class="block text-sm font-bold text-gray-700">Start Date</label>
               <input type="date" v-model="startDate" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
             </div>
 
             <!-- End Date Filter -->
             <div class="md:col-span-1">
-              <label for="endDate" class="block text-sm font-medium text-gray-700">End Date</label>
+              <label for="endDate" class="block text-sm font-bold text-gray-700">End Date</label>
               <input type="date" v-model="endDate" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
             </div>
           </div>
@@ -69,11 +69,11 @@
           <div class="mt-6 flex justify-between items-center">
             <div>
               <button @click="resetFilters"
-                class="inline-flex items-center px-4 py-2 bg-gray-200 text-gray-800 text-sm font-medium rounded hover:bg-gray-300 mr-2">
+                class="inline-flex items-center px-4 py-2 bg-gray-200 text-gray-800 text-sm font-bold rounded hover:bg-gray-300 mr-2">
                 Reset
               </button>
               <button @click="applyFilters"
-                class="inline-flex items-center px-4 py-2 text-white text-sm font-medium rounded"
+                class="inline-flex items-center px-4 py-2 text-white text-sm font-bold rounded"
                 style="background-color: #248cd6;">
                 Apply Filters
               </button>
@@ -81,7 +81,7 @@
 
             <div class="relative inline-block text-left">
               <button type="button" @click="opendropdown = !opendropdown"
-                class="inline-flex justify-center w-full px-4 py-2 bg-green-500 text-sm font-medium text-white rounded-md hover:bg-green-400 focus:outline-none"
+                class="inline-flex justify-center w-full px-4 py-2 bg-green-500 text-sm font-bold text-white rounded-md hover:bg-green-400 focus:outline-none"
                 id="menu-button" aria-expanded="true" aria-haspopup="true">
                 Export
                 <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"

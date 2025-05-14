@@ -7,7 +7,7 @@
           px-3
           py-2
           text-sm
-          font-medium
+          font-bold
           text-green-600
           hover:text-green-900
           bg-white
@@ -42,7 +42,7 @@
               class="font-body flex text-base text-left transform transition w-full md:inline-block md:max-w-2xl md:px-4 md:my-8 md:align-middle lg:max-w-2xl">
               <div
                 class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-white">
-                <h5 class="text-md font-medium leading-normal text-gray-800" id="formModalLabel">
+                <h5 class="text-md font-bold leading-normal text-gray-800" id="formModalLabel">
                   Create Instruction
                 </h5>
                 <button type="button"
@@ -61,7 +61,7 @@
 
                     <div class="col-span-12 sm:col-span-12">
 
-                      <label class="block text-sm font-medium text-gray-700">
+                      <label class="block text-sm font-bold text-gray-700">
                         Select Warehouse(s)</label>
                       <multiselect v-model="selectedWarehouseIds" tag-placeholder="Add this as new warehouse"
                         placeholder="Search or add a warehouse" label="Name" track-by="id" :options="warehouses"
@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="col-span-12 sm:col-span-12">
-                      <label for="user-district" class="block text-sm font-medium text-gray-700">
+                      <label for="user-district" class="block text-sm font-bold text-gray-700">
                         District (To)</label>
 
 
@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="col-span-12 sm:col-span-12">
-                      <label for="user-district" class="block text-sm font-medium text-gray-700">
+                      <label for="user-district" class="block text-sm font-bold text-gray-700">
                         Select transporter</label>
                       <select id="activity" name="activity" v-model="transporterId" autocomplete="activity-name"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -97,7 +97,7 @@
                     </div>
 
                     <!--     <div class="col-span-12 sm:col-span-12">
-                      <label for="DriverName" class="block text-sm font-medium text-gray-700">Driver Name</label>
+                      <label for="DriverName" class="block text-sm font-bold text-gray-700">Driver Name</label>
                       <input type="text" v-model="DriverName" name="DriverName" id="From" autocomplete="off"
                         placeholder="Driver Name"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
@@ -109,7 +109,7 @@
 
 
                     <div class="col-span-12 sm:col-span-12">
-                      <label for="From" class="block text-sm font-medium text-gray-700">Vehicle Reg #</label>
+                      <label for="From" class="block text-sm font-bold text-gray-700">Vehicle Reg #</label>
                       <input type="text" v-model="VehicleRegNo" name="Fromr" id="From" autocomplete="off"
                         placeholder="Vehicle Reg #"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
@@ -120,7 +120,7 @@
  -->
 
                     <div class="col-span-12 sm:col-span-12">
-                      <label for="From" class="block text-sm font-medium text-gray-700">Purpose</label>
+                      <label for="From" class="block text-sm font-bold text-gray-700">Purpose</label>
                       <input type="text" v-model="Purpose" name="Purpose" id="Purpose" autocomplete="off"
                         placeholder="Purpose"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
@@ -137,7 +137,7 @@
 
 
                     <div class="col-span-12 sm:col-span-12">
-                      <label for="remarks" class="block text-sm font-medium text-gray-700">
+                      <label for="remarks" class="block text-sm font-bold text-gray-700">
                         Instruction
                       </label>
 
@@ -154,7 +154,7 @@
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button type="submit" style="background-color: #096eb4;"
-                    class="`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                    class="`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
                     Create Instruction
                   </button>
                 </div>

@@ -6,14 +6,11 @@
       <div>
         <breadcrumb-widget v-bind:breadcrumbs="breadcrumbs" />
       </div>
-      <div class=" md:flex md:items-center md:justify-between">
+      <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="
-              font-bold
-              leading-7
-              text-blue-400
-              sm:text-2xl sm:truncate
-            ">
+          <h2
+            class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate"
+          >
             Users
           </h2>
         </div>
@@ -31,7 +28,7 @@
                 rounded
                 shadow-sm
                 text-sm
-                font-medium
+                font-bold
                 text-white
                 bg-blue-400
                 hover:bg-blue-400
@@ -46,22 +43,33 @@
             </button>
           </router-link> -->
           <create-user-form v-on:create="createUser" :users="users" />
-          
         </div>
       </div>
       <!-- table  -->
 
-
-      <div class="align-middle inline-block min-w-full mt-5 shadow-xl rounded-table">
-        <vue-good-table :columns="columns" :rows="users" :search-options="{ enabled: true }"
-          style=" color: #096eb4;" :pagination-options="{ enabled: true }" theme="polar-bear"
-          styleClass="vgt-table striped" compactMode>
+      <div
+        class="align-middle inline-block min-w-full mt-5 shadow-xl rounded-table"
+      >
+        <vue-good-table
+          :columns="columns"
+          :rows="users"
+          :search-options="{ enabled: true }"
+          style="color: #096eb4"
+          :pagination-options="{ enabled: true }"
+          theme="polar-bear"
+          styleClass="vgt-table striped"
+          compactMode
+        >
           <template #table-actions> </template>
-       
+
           <template #table-row="props">
             <span v-if="props.column.label == 'Options'">
-              <router-link :to="{ path: '/admin/users/manage/' + props.row.id }">
-                <a href="#" class="text-blue-400 text-sm hover:text-green-900">Manage </a>
+              <router-link
+                :to="{ path: '/activitymanager/users/manage/' + props.row.id }"
+              >
+                <a href="#" class="text-[#096eb4] text-sm hover:text-green-900"
+                  >Manage
+                </a>
               </router-link>
             </span>
           </template>
@@ -79,13 +87,12 @@ import { useRouter } from "vue-router";
 import {
   SearchIcon,
   ChevronLeftIcon,
-  ChevronRightIcon
+  ChevronRightIcon,
 } from "@heroicons/vue/solid";
 //COMPONENTS
 import spinnerWidget from "../../../components/widgets/spinners/default.spinner.vue";
 import breadcrumbWidget from "../../../components/widgets/breadcrumbs/admin.breadcrumb.vue";
 import createUserForm from "../../../components/pages/users/create.component.vue";
-
 
 //SCHEMA//AND//STORES
 import { useUserStore } from "../../../stores/user.store";
@@ -94,89 +101,87 @@ const $router = useRouter();
 const moment = inject("moment");
 const Swal = inject("Swal");
 
-
-
 //VARIABLES
 const isLoading = ref(false);
 const breadcrumbs = [
   { name: "Home", href: "/admin/dashboard", current: false },
-  { name: "Users", href: "#", current: true }
+  { name: "Users", href: "#", current: true },
 ];
 const userStore = useUserStore();
 const users = reactive([]);
 const columns = ref([
-
   {
     label: "#",
     field: (row) => row.originalIndex + 1,
     sortable: true,
     firstSortType: "asc",
-    tdClass: "capitalize"
+    tdClass: "capitalize",
   },
   {
     label: "Username",
-    field: row => row.username,
+    field: (row) => row.username,
     sortable: true,
     firstSortType: "asc",
-    tdClass: "capitalize"
+    tdClass: "capitalize",
   },
- 
 
   {
     label: "Email",
-    field: row => row.email,
+    field: (row) => row.email,
     sortable: true,
-    firstSortType: "asc"
+    firstSortType: "asc",
   },
   {
     label: "District",
-    field: row => row.district,
+    field: (row) => row.district,
     sortable: true,
-    firstSortType: "asc"
+    firstSortType: "asc",
   },
   {
     label: "Role",
     hidden: false,
-    field: row =>
-      typeof row.role != "undefined" ? row.role.name : "unspecified",
+    field: (row) => {
+      // Check if row.role exists and has a name, otherwise use "unspecified"
+      const roleName = row.role?.name || "unspecified";
+      // Check if row.activity is not empty and not null
+      const activityText = row.activity ? ` (${row.activity})` : "";
+      return roleName + activityText;
+    },
     sortable: true,
     firstSortType: "asc",
-    tdClass: "capitalize"
+    tdClass: "capitalize",
   },
   {
     label: "Phone",
     hidden: true,
-    field: row => row.phone,
+    field: (row) => row.phone,
     sortable: true,
-    firstSortType: "asc"
+    firstSortType: "asc",
   },
   {
     label: "Status",
-    field: row => (row.status == true ? "active" : "inactive"),
+    field: (row) => (row.status == true ? "active" : "inactive"),
     sortable: true,
     firstSortType: "asc",
-    tdClass: "capitalize"
+    tdClass: "capitalize",
   },
   {
     label: "Options",
-    field: row => row,
-    sortable: false
-  }
+    field: (row) => row,
+    sortable: false,
+  },
 ]);
 //MOUNTED
 onMounted(() => {
   getUsers();
 });
 
-
-
-
 //FUNCTIONS
 const getUsers = async () => {
   isLoading.value = true;
   userStore
     .get()
-    .then(result => {
+    .then((result) => {
       // for (let i = 0; i < 100; i++) {
       //   users.push(...result);
       // }
@@ -184,14 +189,13 @@ const getUsers = async () => {
       users.push(...result);
 
       users.sort((a, b) => new Date(b.created) - new Date(a.created));
-
     })
-    .catch(error => {
+    .catch((error) => {
       Swal.fire({
         title: "User Retrieval Failed",
         text: "failed to get users (Please refresh to try again)",
         icon: "error",
-        confirmButtonText: "Ok"
+        confirmButtonText: "Ok",
       });
     })
     .finally(() => {
@@ -199,19 +203,19 @@ const getUsers = async () => {
     });
 };
 
-const createUser = async model => {
+const createUser = async (model) => {
   isLoading.value = true;
   userStore
     .create(model)
-    .then(result => {
+    .then((result) => {
       Swal.fire({
         title: "Success",
         text: "Created a new user successfully",
         icon: "success",
-        confirmButtonText: "Ok"
+        confirmButtonText: "Ok",
       });
     })
-    .catch(error => {
+    .catch((error) => {
       /*  Swal.fire({
          title: "Failed",
          text: "failed to get create user (" + error + ")",

@@ -1,7 +1,7 @@
 <template>
   <div>
     <button type="button" style="background-color: #248cd6;"
-      class="font-body inline-flex items-center px-6 py-2.5 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+      class="font-body inline-flex items-center px-6 py-2.5 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
       @click="open = true">
       <PlusIcon class="h-5 w-5 mr-2" />
       Create a loading plan
@@ -26,7 +26,7 @@
               class="font-body flex text-base text-left transform transition w-full md:inline-block md:max-w-2xl md:px-4 md:my-8 md:align-middle lg:max-w-2xl">
               <div
                 class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-white">
-                <h5 class="font-body text-md font-bold leading-normal text-blue-400" id="formModalLabel">
+                <h5 class="font-body text-md font-bold leading-normal text-[#096eb4]" id="formModalLabel">
                   Create Loading Plan
                 </h5>
                 <button type="button"
@@ -40,7 +40,7 @@
 
 
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="transporter" class="block text-sm font-medium text-gray-700">
+                    <label for="transporter" class="block text-sm font-bold text-gray-700">
                       Select Transporter</label>
                     <select id="transporter" name="transporter" v-model="reports.transporterId"
                       autocomplete="transporter-name"
@@ -57,7 +57,7 @@
 
 
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="transporter" class="block text-sm font-medium text-gray-700">
+                    <label for="transporter" class="block text-sm font-bold text-gray-700">
                       Select Commodity</label>
                     <select id="commodity" name="commodity" v-model="reports.commodityId" autocomplete="commodity-name"
                       class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -72,7 +72,7 @@
 
                 <div class="grid grid-cols-6 gap-2">
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="quantity" class="block text-sm font-medium text-gray-700">Quantity</label>
+                    <label for="quantity" class="block text-sm font-bold text-gray-700">Quantity</label>
 
                     <input type="number" name="quantity" v-model="reports.Quantity" id="reportFrom"
                       autocomplete="quantity"
@@ -80,7 +80,7 @@
                   </div>
 
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="warehouse" class="block text-sm font-medium text-gray-700">Warehouse</label>
+                    <label for="warehouse" class="block text-sm font-bold text-gray-700">Warehouse</label>
 
                     <select id="warehouse" name="warehouse" v-model="reports.warehouseId" autocomplete="warehouse-name"
                       class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -95,7 +95,7 @@
 
                 <div class="grid grid-cols-6 gap-2">
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="destination-district" class="block text-sm font-medium text-gray-700">Destination
+                    <label for="destination-district" class="block text-sm font-bold text-gray-700">Destination
                       District</label>
 
                     <select id="destination" name="destination" v-model="reports.districtId"
@@ -108,7 +108,7 @@
                   </div>
 
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="project" class="block text-sm font-medium text-gray-700">Project</label>
+                    <label for="project" class="block text-sm font-bold text-gray-700">Project</label>
 
                     <select id="project" name="project" v-model="reports.projectId" autocomplete="project-name"
                       class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -121,7 +121,7 @@
 
                 <div class="grid grid-cols-6 gap-2">
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="destination-district" class="block text-sm font-medium text-gray-700">Activity</label>
+                    <label for="destination-district" class="block text-sm font-bold text-gray-700">Activity</label>
 
                     <select id="activity" name="activity" v-model="reports.activityId" autocomplete="activity-name"
                       class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -132,7 +132,7 @@
                   </div>
 
                   <div class="col-span-3 sm:col-span-3">
-                    <label for="project" class="block text-sm font-medium text-gray-700">Start Date</label>
+                    <label for="project" class="block text-sm font-bold text-gray-700">Start Date</label>
 
                     <input type="date" name="Start Date" v-model="reports.StartDate" id="Start Date"
                       autocomplete="Start Date"
@@ -141,7 +141,7 @@
                   </div>
 
                   <div class="col-span-3 sm:col-span-3">
-                    <label for="End Date" class="block text-sm font-medium text-gray-700">End Date</label>
+                    <label for="End Date" class="block text-sm font-bold text-gray-700">End Date</label>
 
                     <input type="date" name="End Date" v-model="reports.EndDate" id="End Date" autocomplete="End Date"
                       class="mt-2 focus:ring-blue-400 focus:border-blue-400 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
@@ -151,7 +151,7 @@
               </div>
               <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <button @click="onSubmit" style="background-color: #329ce7;"
-                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                   Save
                 </button>
               </div>

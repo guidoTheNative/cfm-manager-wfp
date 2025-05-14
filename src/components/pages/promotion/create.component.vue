@@ -2,7 +2,7 @@
   <div>
     <button
       type="button"
-      class="inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+      class="inline-block px-6 py-2.5 bg-gray-500 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
       @click="open = true"
     >
       new promotion
@@ -56,7 +56,7 @@
                 class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-white"
               >
                 <h5
-                  class="text-md font-medium leading-normal text-gray-800"
+                  class="text-md font-bold leading-normal text-gray-800"
                   id="formModalLabel"
                 >
                   Create Promotion
@@ -73,7 +73,7 @@
                     <div class="col-span-6 sm:col-span-6">
                       <label
                         for="name"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Name</label
                       >
                       <input
@@ -93,7 +93,7 @@
                       <div class="mt-2">
                         <label
                           for="from"
-                          class="block text-sm font-medium text-gray-700"
+                          class="block text-sm font-bold text-gray-700"
                         >
                           Starting</label
                         >
@@ -117,7 +117,7 @@
                       <div class="mt-2">
                         <label
                           for="to"
-                          class="block text-sm font-medium text-gray-700"
+                          class="block text-sm font-bold text-gray-700"
                         >
                           Ending</label
                         >
@@ -140,7 +140,7 @@
                     <div class="col-span-6 sm:col-span-6">
                       <label
                         for="location_details"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Short Description</label
                       >
                       <input
@@ -156,7 +156,7 @@
                     <div class="col-span-6 sm:col-span-6">
                       <label
                         for="description"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                       >
                         Description
                       </label>
@@ -182,7 +182,7 @@
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button
                     type="submit"
-                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                   >
                     Save
                   </button>

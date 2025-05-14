@@ -8,13 +8,13 @@
             flex
             items-center
             text-sm
-            font-medium
-            text-blue-400
+            font-bold
+            text-[#096eb4]
             hover:text-blue-700
           "
         >
           <ChevronLeftIcon
-            class="flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-blue-400"
+            class="flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-[#096eb4]"
             aria-hidden="true"
           />
           Back
@@ -27,7 +27,7 @@
           <div class="flex">
           
               <router-link :to="{ name: 'admin-dashboard' }">
-                <a class="text-sm font-medium text-blue-400 hover:text-blue-700"
+                <a class="text-sm font-bold text-[#096eb4] hover:text-blue-700"
                   >Home</a
                 >
               </router-link>
@@ -51,8 +51,8 @@
                 class="
                   ml-1
                   text-sm
-                  font-medium
-                  text-blue-400
+                  font-bold
+                  text-[#096eb4]
                   hover:text-blue-300
                 "
                 >{{ breadcrumb.name }}</a

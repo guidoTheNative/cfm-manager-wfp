@@ -8,7 +8,9 @@
       </div>
       <div class="mt-2 md:flex md:items-center md:justify-between mb-3">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
+          <h2
+            class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate"
+          >
             Create Case
           </h2>
         </div>
@@ -17,30 +19,159 @@
       <!-- tabs -->
       <div class="align-middle inline-block min-w-full">
         <div class="tab-content" id="tabs-case-options">
-          <!-- <div
-              class="tab-pane fade show active"
-              id="case-profile"
-              role="tabpanel"
-              aria-labelledby="tabs-case-profile"
-            >
-              <case-profile v-bind:model="model" v-on:update="updateCase" :key="model.id+'profile'"/>
-            </div> -->
-          <div
-            class="tab-pane fade show active"
-            id="case-settings"
-            role="tabpanel"
-            aria-labelledby="tabs-case-settings"
-          >
+          <div class="tab-pane fade show active" id="case-settings">
             <div class="bg-white">
               <!-- Form -->
               <form @submit.prevent="submitForm">
                 <div class="p-4 bg-white">
+                  <div
+                    class="p-4 rounded-md mb-4"
+                    style="background-color: #096eb4; color: white"
+                  >
+                    <h2 class="text-md font-semibold mb-2">Intake Details</h2>
+                  </div>
                   <div class="grid grid-cols-12 gap-4">
+                    <div class="col-span-6 sm:col-span-3">
+                      <label
+                        for="intakeModality"
+                        class="block text-sm font-bold text-gray-700"
+                      >
+                        Intake Modality
+                      </label>
+                      <select
+                        id="intakeModality"
+                        v-model="form.intakeModality"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                      >
+                        <option value="Helpdesk">Helpdesk</option>
+                        <option value="Helpline">Helpline</option>
+                        <option value="Suggestion Box">Suggestion Box</option>
+                        <option value="Walk-in">Walk-in</option>
+                        <option value="Other">Other (Specify)</option>
+                      </select>
+                      <input
+                        v-if="form.intakeModality === 'Other'"
+                        type="text"
+                        v-model="form.intakeModalityOther"
+                        placeholder="Specify other modality"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                      />
+                    </div>
+
+                    <!-- Who is this issue affecting? -->
+                    <div class="col-span-6 sm:col-span-3">
+                      <label
+                        for="issueAffecting"
+                        class="block text-sm font-bold text-gray-700"
+                      >
+                        Who is this issue affecting?
+                      </label>
+                      <select
+                        id="issueAffecting"
+                        v-model="form.issueAffecting"
+                        @change="handleIssueAffectingChange"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                      >
+                        <option value="Myself">Myself</option>
+                        <option value="Someone else">Someone else</option>
+                      </select>
+                    </div>
+
+                    <!-- Relationship & Reason if "Someone else" -->
+                    <div
+                      v-if="form.issueAffecting === 'Someone else'"
+                      class="col-span-12"
+                    >
+                      <div class="grid grid-cols-12 gap-4">
+                        <!-- Relationship -->
+                        <div class="col-span-6 sm:col-span-3">
+                          <label
+                            for="relationship"
+                            class="block text-sm font-bold text-gray-700"
+                          >
+                            Relationship to Complainant
+                          </label>
+                          <select
+                            id="relationship"
+                            v-model="form.relationship"
+                            class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                          >
+                            <option value="Parent">Parent</option>
+                            <option value="Child">Child</option>
+                            <option value="Other close relative">
+                              Other close relative
+                            </option>
+                            <option value="Neighbour">Neighbour</option>
+                            <option value="Other">Other (Specify)</option>
+                          </select>
+                          <input
+                            v-if="form.relationship === 'Other'"
+                            type="text"
+                            v-model="form.otherRelationship"
+                            placeholder="Specify relationship"
+                            class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                          />
+                        </div>
+
+                        <!-- Reason for not contacting -->
+                        <div class="col-span-6 sm:col-span-3">
+                          <label
+                            for="reasonNotContact"
+                            class="block text-sm font-bold text-gray-700"
+                          >
+                            Why did that person not contact us?
+                          </label>
+                          <select
+                            id="reasonNotContact"
+                            v-model="form.reasonNotContact"
+                            class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                          >
+                            <option value="Minor (< 17 years old)">
+                              Minor (&lt; 17 years old)
+                            </option>
+                            <option value="Can't read or write">
+                              Can't read or write
+                            </option>
+                            <option value="Older person">Older person</option>
+                            <option value="Person with disability">
+                              Person with disability
+                            </option>
+                            <option value="Gender related reasons">
+                              Gender related reasons
+                            </option>
+                            <option value="Afraid of consequences">
+                              Afraid of consequences
+                            </option>
+                            <option value="Does not know how to contact WFP">
+                              Does not know how to contact WFP
+                            </option>
+                            <option value="Does not have a phone">
+                              Does not have a phone
+                            </option>
+                            <option value="Language difference">
+                              Language difference
+                            </option>
+                            <option value="Urgent - no time to consult">
+                              Urgent - no time to consult
+                            </option>
+                            <option value="Other">Other (Specify)</option>
+                          </select>
+                          <input
+                            v-if="form.reasonNotContact === 'Other'"
+                            type="text"
+                            v-model="form.otherReasonNotContact"
+                            placeholder="Specify reason"
+                            class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
                     <!-- District -->
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="district"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >District</label
                       >
                       <select
@@ -53,7 +184,7 @@
                           :key="district"
                           :value="district"
                         >
-                          {{ district.toUpperCase() }}
+                          {{ district }}
                         </option>
                       </select>
                     </div>
@@ -62,7 +193,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="ta"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >T/A</label
                       >
                       <select
@@ -81,7 +212,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="gvh"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >GVH</label
                       >
                       <input
@@ -96,7 +227,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="village"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Village</label
                       >
                       <input
@@ -110,7 +241,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="name_of_caller"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Name of Caller</label
                       >
                       <input
@@ -125,7 +256,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="idNumber"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >ID Number</label
                       >
                       <input
@@ -136,11 +267,139 @@
                       />
                     </div>
 
+                    <!-- Language of Interaction -->
+                    <div class="col-span-6 sm:col-span-3">
+                      <label
+                        for="languageOfInteraction"
+                        class="block text-sm font-bold text-gray-700"
+                      >
+                        Language of Interaction
+                      </label>
+                      <select
+                        id="languageOfInteraction"
+                        v-model="form.languageOfInteraction"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                      >
+                        <option value="" disabled>Select Language</option>
+                        <option value="Chichewa">Chichewa</option>
+                        <option value="English">English</option>
+                        <option value="French">French</option>
+                        <option value="Swahili">Swahili</option>
+                        <option value="Tumbuka">Tumbuka</option>
+                        <option value="Other">Other (Specify)</option>
+                      </select>
+                      <input
+                        v-if="form.languageOfInteraction === 'Other'"
+                        type="text"
+                        v-model="form.otherLanguageOfInteraction"
+                        placeholder="Specify other language"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                      />
+                    </div>
+
+                    <!-- Diversity Factor -->
+                    <div class="col-span-6 sm:col-span-3">
+                      <label
+                        for="diversityFactor"
+                        class="block text-sm font-bold text-gray-700"
+                      >
+                        Diversity Factor
+                      </label>
+                      <select
+                        id="diversityFactor"
+                        v-model="form.diversityFactor"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                      >
+                        <option value="" disabled>
+                          Select Diversity Factor
+                        </option>
+                        <option value="None">None</option>
+                        <option value="Chronic illness">Chronic illness</option>
+                        <option value="Member of religious minority">
+                          Member of religious minority
+                        </option>
+                        <option value="Nursing mother">Nursing mother</option>
+                        <option value="Older person living alone">
+                          Older person living alone
+                        </option>
+                        <option value="Older person living with children">
+                          Older person living with children
+                        </option>
+                        <option value="People with disability">
+                          People with disability
+                        </option>
+                        <option value="Pregnant">Pregnant</option>
+                        <option value="Single female headed household">
+                          Single female headed household
+                        </option>
+                        <option
+                          value="Single female headed household, people with disability"
+                        >
+                          Single female headed household, people with disability
+                        </option>
+                        <option value="Single male headed household">
+                          Single male headed household
+                        </option>
+                        <option value="Other">Other (Specify)</option>
+                      </select>
+                      <input
+                        v-if="form.diversityFactor === 'Other'"
+                        type="text"
+                        v-model="form.otherDiversityFactor"
+                        placeholder="Specify other factor"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                      />
+                    </div>
+
+                    <!-- Cooperating Partners Dropdown -->
+                    <div class="col-span-6 sm:col-span-3">
+                      <label
+                        for="cooperatingPartner"
+                        class="block text-sm font-bold text-gray-700"
+                      >
+                        Cooperating Partner
+                      </label>
+                      <select
+                        id="cooperatingPartner"
+                        v-model="form.cooperatingPartner"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                      >
+                        <option value="" disabled>Select Partner</option>
+                        <option
+                          v-for="partner in cooperatingPartner"
+                          :key="partner"
+                          :value="partner"
+                        >
+                          {{ partner.toUpperCase() }}
+                        </option>
+                      </select>
+                    </div>
+
+                    <!-- Conditional Input for 'Other (specify)' -->
+                    <div
+                      class="col-span-6 sm:col-span-3"
+                      v-if="form.cooperatingPartner === 'Other (specify)'"
+                    >
+                      <label
+                        for="otherCooperatingPartner"
+                        class="block text-sm font-bold text-gray-700"
+                      >
+                        Specify Other Partner
+                      </label>
+                      <input
+                        type="text"
+                        id="otherCooperatingPartner"
+                        v-model="form.otherCooperatingPartner"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                        placeholder="Enter partner name"
+                      />
+                    </div>
+
                     <!-- Issue Description -->
                     <div class="col-span-12 sm:col-span-12">
                       <label
                         for="issueDescription"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Issue Description</label
                       >
                       <textarea
@@ -148,45 +407,63 @@
                         v-model="form.issueDescription"
                         class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
                       />
-                    </div>
+                      <hr class="my-4 border-blue-300" />
 
-                    <!-- Case Category -->
-                    <div class="col-span-6 sm:col-span-3">
-                      <label
-                        for="caseCategory"
-                        class="block text-sm font-medium text-gray-700"
-                        >Case Category</label
+                      <div
+                        class="p-4 rounded-md mb-4"
+                        style="background-color: #096eb4; color: white"
                       >
+                        <h2 class="text-md font-semibold mb-2">
+                          Additional Details
+                        </h2>
+                      </div>
+                    </div>
+                    <div class="col-span-6 sm:col-span-3">
+                      <!-- Macrocategory Dropdown -->
+                      <label
+                        for="macroCategory"
+                        class="block text-sm font-bold text-gray-700"
+                      >
+                        Macrocategory
+                      </label>
                       <select
-                        id="caseCategory"
-                        v-model="form.caseCategory"
+                        id="macroCategory"
+                        v-model="selectedMacro"
+                        @change="updateCategories"
                         class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
                       >
+                        <option value="" disabled>Select Macrocategory</option>
                         <option
-                          v-for="category in [
-                            'Sexual Exploitation and Abuse (SEA)',
-                            'Forced sharing',
-                            'Safety and Security',
-                            'Food Diversion/Fraud and Corruption',
-                            'Extortion/Harassment',
-                            'Fake/ Ghost names on beneficiary list',
-                            'Gender Based Violence and Child protection',
-                            'Cash or food inquiries',
-                            'Targeting (Inclusion and Exclusion errors)',
-                            'Technical Issues',
-                            'Dissatisfaction',
-                            'Delays in food/cash distribution',
-                            'Long distances to FDP',
-                            'Long waiting time',
-                            'Lack of facilities at the FDP',
-                            'Food quality',
-                            'CP staff behaviour',
-                            'Request for assistance',
-                            'General inquiry',
-                            'Appreciation',
-                            'Playfull/Prank calls',
-                            'Other',
+                          v-for="macro in [
+                            ...new Set(
+                              categoriesData.map((item) => item.macrocategory)
+                            ),
                           ]"
+                          :key="macro"
+                          :value="macro"
+                        >
+                          {{ macro.toUpperCase() }}
+                        </option>
+                      </select>
+                    </div>
+
+                    <!-- Category Dropdown (Shown Only If Macrocategory is Selected) -->
+                    <div v-if="selectedMacro" class="col-span-6 sm:col-span-3">
+                      <label
+                        for="category"
+                        class="block text-sm font-bold text-gray-700"
+                      >
+                        Category
+                      </label>
+                      <select
+                        id="category"
+                        v-model="selectedCategory"
+                        @change="updateSubCategories"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                      >
+                        <option value="" disabled>Select Category</option>
+                        <option
+                          v-for="category in filteredCategories"
                           :key="category"
                           :value="category"
                         >
@@ -195,11 +472,40 @@
                       </select>
                     </div>
 
+                    <!-- Subcategory Dropdown (Shown Only If There Are Valid Subcategories) -->
+                    <div
+                      v-if="
+                        selectedCategory && filteredSubCategories.length > 0
+                      "
+                      class="col-span-6 sm:col-span-3"
+                    >
+                      <label
+                        for="subCategory"
+                        class="block text-sm font-bold text-gray-700"
+                      >
+                        Subcategory
+                      </label>
+                      <select
+                        id="subCategory"
+                        v-model="selectedSubCategory"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                      >
+                        <option value="" disabled>Select Subcategory</option>
+                        <option
+                          v-for="sub in filteredSubCategories"
+                          :key="sub"
+                          :value="sub"
+                        >
+                          {{ sub.toUpperCase() }}
+                        </option>
+                      </select>
+                    </div>
+
                     <!-- Programme -->
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="programme"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Programme</label
                       >
 
@@ -232,20 +538,23 @@
                     </div>
 
                     <!-- Priority -->
+                    <!-- Priority -->
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="priority"
-                        class="block text-sm font-medium text-gray-700"
-                        >Priority</label
+                        class="block text-sm font-bold text-gray-700"
                       >
+                        Priority
+                      </label>
                       <select
                         id="priority"
-                        v-model="form.priority"
-                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                        v-model="computedPriority"
+                        disabled
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm bg-gray-100"
                       >
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
+                        <option :value="computedPriority">
+                          {{ computedPriority.toUpperCase() }}
+                        </option>
                       </select>
                     </div>
 
@@ -253,7 +562,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="accountNumber"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Account Number</label
                       >
                       <input
@@ -268,7 +577,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="phoneNumber"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Phone Number</label
                       >
                       <input
@@ -283,7 +592,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="nationality"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Nationality</label
                       >
                       <select
@@ -294,12 +603,7 @@
                         class="mt-1 focus:ring-gray-500 focus:border-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       >
                         <option
-                          v-for="nationality in [
-                            'Malawian',
-                            'Congolese',
-                            'Rwandeese',
-                            'Burundian',
-                          ]"
+                          v-for="nationality in nationalities"
                           :key="nationality"
                           :value="nationality"
                         >
@@ -311,7 +615,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="district"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Age</label
                       >
                       <select
@@ -337,7 +641,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="gender"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Gender</label
                       >
                       <select
@@ -354,7 +658,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="disability"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Disability</label
                       >
                       <select
@@ -378,7 +682,7 @@
                     <div class="col-span-12 sm:col-span-12">
                       <label
                         for="comment"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Comment</label
                       >
                       <textarea
@@ -388,31 +692,62 @@
                       />
                     </div>
 
+                    <!-- Status and Action (shown only when status is not "Closed") -->
+
+                    <!-- Action -->
+                    <div class="col-span-6 sm:col-span-3">
+                      <label
+                        for="action"
+                        class="block text-sm font-bold text-gray-700"
+                      >
+                        Action
+                      </label>
+                      <select
+                        id="action"
+                        v-model="form.action"
+                        @change="updateStatus"
+                        class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                      >
+                        <option disabled value="">Select Action</option>
+                        <option value="Callback">Callback</option>
+                        <option value="External referral required">
+                          External referral required
+                        </option>
+                        <option value="First case resolution">
+                          First case resolution
+                        </option>
+                        <option value="Internal escalation - Action required">
+                          Internal escalation - Action required
+                        </option>
+                      </select>
+                    </div>
+
                     <!-- Status -->
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="status"
-                        class="block text-sm font-medium text-gray-700"
-                        >Status</label
+                        class="block text-sm font-bold text-gray-700"
                       >
+                        Status
+                      </label>
                       <select
                         id="status"
                         v-model="form.status"
                         class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm"
+                        disabled
                       >
                         <option value="Open">Open</option>
-                        <option value="Closed">Closed</option>
                         <option value="Pending">Pending</option>
+                        <option value="Closed">Closed</option>
                       </select>
                     </div>
-                    <!-- Date Closed -->
                   </div>
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button
                     type="submit"
                     style="background-color: #096eb4"
-                    class="font-body inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-blue-700 focus:outline-none"
+                    class="font-body inline-block px-6 py-2.5 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-blue-700 focus:outline-none"
                   >
                     Save Case
                   </button>
@@ -434,17 +769,23 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 import { XIcon } from "@heroicons/vue/outline";
-import { ref, inject, reactive, onMounted, computed  } from "vue";
+import { ref, inject, reactive, onMounted, computed, watch } from "vue";
 import { usedistrictstore } from "../../../stores/districts.store";
 import { useSessionStore } from "../../../stores/session.store";
 import { useCaseStore } from "../../../stores/case.store";
 const Swal = inject("Swal");
 
-import { useRouter } from "vue-router";
 import breadcrumbWidget from "../../../components/widgets/breadcrumbs/admin.breadcrumb.vue";
 const districtStore = usedistrictstore();
+import {
+  activitysite,
+  activities,
+  districtTaData,
+  nationalities,
+  cooperatingPartner,
+  categoriesData,
+} from "@/composables/useConstants";
 
-const $router = useRouter();
 const sessionStore = useSessionStore();
 const user = ref(sessionStore.getUser);
 const moment = inject("moment");
@@ -461,8 +802,8 @@ const roles = [
   // Add other roles...
 ];
 const breadcrumbs = [
-  { name: "Home", href: "/callcenter/dashboard", current: false },
-  { name: "Cases", href: "#", current: true },
+  { name: "Home", href: "/admin/dashboard", current: false },
+  { name: "Cases", href: "/admin/cases", current: true },
   { name: "Create", href: "#", current: true },
 ];
 const priorities = [
@@ -470,15 +811,25 @@ const priorities = [
   { id: "Medium", name: "Medium" },
   { id: "Low", name: "Low" },
 ];
+
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+// Cooperating Partners List
+
 const form = ref({
   district: "",
   ta: "",
   gvh: "",
   name_of_caller: "",
+  cooperatingPartner: "",
+  otherCooperatingPartner: "",
   village: "",
   idNumber: "",
   issueDescription: "",
-  caseCategory: "",
+  macrocategory: "",
+  category: "",
+  subCategory: "",
   programme: "",
   priority: "",
   accountNumber: "",
@@ -490,1742 +841,77 @@ const form = ref({
   comment: "",
   status: "",
   feedback: "",
+  intakeModality: "",
+  intakeModalityOther: "",
+  issueAffecting: "",
+  relationship: "",
+  otherRelationship: "",
+  reasonNotContact: "",
+  otherReasonNotContact: "",
+  languageOfInteraction: "",
+  otherLanguageOfInteraction: "",
+  diversityFactor: "",
+  otherDiversityFactor: "",
 });
 
-const districtTaData = ref([
-  {
-    District: "Chitipa",
-    TA: "TA Mwabulambya",
-  },
-  {
-    District: "Chitipa",
-    TA: "STA Bulambya Songwe",
-  },
-  {
-    District: "Chitipa",
-    TA: "TA Mwenemisuku",
-  },
-  {
-    District: "Chitipa",
-    TA: "STA Lwangwa",
-  },
-  {
-    District: "Chitipa",
-    TA: "TA Mwenewenya",
-  },
-  {
-    District: "Chitipa",
-    TA: "TA Nthalire",
-  },
-  {
-    District: "Chitipa",
-    TA: "STA Nthengatenga",
-  },
-  {
-    District: "Chitipa",
-    TA: "STA Wavikaza",
-  },
-  {
-    District: "Chitipa",
-    TA: "TA Kameme",
-  },
-  {
-    District: "Chitipa",
-    TA: "Nyika Ntational Park-Chitipa",
-  },
-  {
-    District: "Chitipa",
-    TA: "Chitipa Boma",
-  },
-  {
-    District: "Karonga",
-    TA: "TA Kilupula",
-  },
-  {
-    District: "Karonga",
-    TA: "TA Mwakaboko",
-  },
-  {
-    District: "Karonga",
-    TA: "TA Kyungu",
-  },
-  {
-    District: "Karonga",
-    TA: "TA Wasambo",
-  },
-  {
-    District: "Karonga",
-    TA: "TA Mwirang'ombe",
-  },
-  {
-    District: "Karonga",
-    TA: "Nyika National Park-Karonga",
-  },
-  {
-    District: "Karonga",
-    TA: "Karonga Town",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "TA Kabunduli",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "TA Fukamapiri",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "TA Malenga Mzoma",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "TA Malanda",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "TA Zilakoma",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "TA Mankhambira",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "TA Fukamalaza",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "TA Mkumbira",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "TA M'bwana",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "STA Nyaluwanga",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "STA Kondowe",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "TA Timbiri",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "TA Boghoyo",
-  },
-  {
-    District: "Nkhatabay",
-    TA: "Nkhatabay Boma",
-  },
-  {
-    District: "Rumphi",
-    TA: "TA Chikulamayembe",
-  },
-  {
-    District: "Rumphi",
-    TA: "TA Mwamlowe",
-  },
-  {
-    District: "Rumphi",
-    TA: "TA Mwahenga",
-  },
-  {
-    District: "Rumphi",
-    TA: "TA Mwalweni",
-  },
-  {
-    District: "Rumphi",
-    TA: "STA Kachulu",
-  },
-  {
-    District: "Rumphi",
-    TA: "STA Chapinduka",
-  },
-  {
-    District: "Rumphi",
-    TA: "TA Mwankhunikira",
-  },
-  {
-    District: "Rumphi",
-    TA: "TA Katumbi",
-  },
-  {
-    District: "Rumphi",
-    TA: "STA Zolokere",
-  },
-  {
-    District: "Rumphi",
-    TA: "STA Chisovya",
-  },
-  {
-    District: "Rumphi",
-    TA: "STA Njikula",
-  },
-  {
-    District: "Rumphi",
-    TA: "Nyika National Park",
-  },
-  {
-    District: "Rumphi",
-    TA: "Vwaza Marsh Reserve",
-  },
-  {
-    District: "Rumphi",
-    TA: "Rumphi Boma",
-  },
-  {
-    District: "Mzimba",
-    TA: "TA M'Mbelwa",
-  },
-  {
-    District: "Mzimba",
-    TA: "TA Mtwalo",
-  },
-  {
-    District: "Mzimba",
-    TA: "TA Kampingo Sibande",
-  },
-  {
-    District: "Mzimba",
-    TA: "TA Jaravikuba Munthali",
-  },
-  {
-    District: "Mzimba",
-    TA: "TA Chindi",
-  },
-  {
-    District: "Mzimba",
-    TA: "TA Mzikubola",
-  },
-  {
-    District: "Mzimba",
-    TA: "TA Mabulabo",
-  },
-  {
-    District: "Mzimba",
-    TA: "TA Khosolo Gwaza Jere",
-  },
-  {
-    District: "Mzimba",
-    TA: "TA Mpherembe",
-  },
-  {
-    District: "Mzimba",
-    TA: "TA Mzukuzuku",
-  },
-  {
-    District: "Mzimba",
-    TA: "STA Levi Jere",
-  },
-  {
-    District: "Mzimba",
-    TA: "Vwaza Marsh Reserve",
-  },
-  {
-    District: "Mzimba",
-    TA: "Mzimba Boma",
-  },
-  {
-    District: "Likoma",
-    TA: "TA Mkumpha",
-  },
-  {
-    District: "Likoma",
-    TA: "Likoma Boma",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Chibavi East Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Chibavi West Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Chibanja Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Chiputula Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Jombo - Kaning'ina Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Katawa Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Luwinga Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Masasa Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Mchengautuwa East Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Mchengautuwa West Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Msongwe Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Mzilawaingwe Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Nkhorongo - Lupaso Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Zolozolo East Ward",
-  },
-  {
-    District: "Mzuzu City",
-    TA: "Zolozolo West Ward",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Kaluluma",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Chisemphere",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Simlemba",
-  },
-  {
-    District: "Kasungu",
-    TA: "STA M'nyanja",
-  },
-  {
-    District: "Kasungu",
-    TA: "STA Chisikwa",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Kaomba",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Kawamba",
-  },
-  {
-    District: "Kasungu",
-    TA: "STA Nthunduwala",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Njombwa",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Chilowamatambe",
-  },
-  {
-    District: "Kasungu",
-    TA: "STA Chambwe",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Chulu",
-  },
-  {
-    District: "Kasungu",
-    TA: "STA Chisinga",
-  },
-  {
-    District: "Kasungu",
-    TA: "STA Mphomwa",
-  },
-  {
-    District: "Kasungu",
-    TA: "STA Chaima",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Kaphaizi",
-  },
-  {
-    District: "Kasungu",
-    TA: "STA Mangwazu",
-  },
-  {
-    District: "Kasungu",
-    TA: "STA Mawawa",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Lukwa",
-  },
-  {
-    District: "Kasungu",
-    TA: "Kasungu Boma",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Santhe",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Chidzuma",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Wimbe",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Kapelula",
-  },
-  {
-    District: "Kasungu",
-    TA: "STA Kapichira",
-  },
-  {
-    District: "Kasungu",
-    TA: "STA Mdunga",
-  },
-  {
-    District: "Kasungu",
-    TA: "TA Mwase",
-  },
-  {
-    District: "Kasungu",
-    TA: "Kasungu National Park",
-  },
-  {
-    District: "Nkhotakota",
-    TA: "TA Kanyenda",
-  },
-  {
-    District: "Nkhotakota",
-    TA: "TA Kafuzila",
-  },
-  {
-    District: "Nkhotakota",
-    TA: "STA Kalimanjira",
-  },
-  {
-    District: "Nkhotakota",
-    TA: "TA Malenga Chanzi",
-  },
-  {
-    District: "Nkhotakota",
-    TA: "TA Mphonde",
-  },
-  {
-    District: "Nkhotakota",
-    TA: "TA Mwadzama",
-  },
-  {
-    District: "Nkhotakota",
-    TA: "TA Mwansambo",
-  },
-  {
-    District: "Nkhotakota",
-    TA: "Nkhotakota Game Reserve",
-  },
-  {
-    District: "Nkhotakota",
-    TA: "Nkhotakota Boma",
-  },
-  {
-    District: "Ntchisi",
-    TA: "TA Kasakula",
-  },
-  {
-    District: "Ntchisi",
-    TA: "TA Chikho",
-  },
-  {
-    District: "Ntchisi",
-    TA: "TA Kalumo",
-  },
-  {
-    District: "Ntchisi",
-    TA: "TA Nthondo",
-  },
-  {
-    District: "Ntchisi",
-    TA: "TA Chilooko",
-  },
-  {
-    District: "Ntchisi",
-    TA: "TA Vuso Jere",
-  },
-  {
-    District: "Ntchisi",
-    TA: "TA Malenga",
-  },
-  {
-    District: "Ntchisi",
-    TA: "Ntchisi Boma",
-  },
-  {
-    District: "Dowa",
-    TA: "TA Dzoole",
-  },
-  {
-    District: "Dowa",
-    TA: "TA Chakhaza",
-  },
-  {
-    District: "Dowa",
-    TA: "TA Kayembe",
-  },
-  {
-    District: "Dowa",
-    TA: "TA Chiwere",
-  },
-  {
-    District: "Dowa",
-    TA: "TA Mkukula",
-  },
-  {
-    District: "Dowa",
-    TA: "TA Msakambewa",
-  },
-  {
-    District: "Dowa",
-    TA: "TA Mponela",
-  },
-  {
-    District: "Dowa",
-    TA: "Dowa Boma",
-  },
-  {
-    District: "Dowa",
-    TA: "Mponela Urban",
-  },
-  {
-    District: "Salima",
-    TA: "TA Maganga",
-  },
-  {
-    District: "Salima",
-    TA: "TA Karonga",
-  },
-  {
-    District: "Salima",
-    TA: "TA Pemba",
-  },
-  {
-    District: "Salima",
-    TA: "TA Kambwiri",
-  },
-  {
-    District: "Salima",
-    TA: "TA Ndindi",
-  },
-  {
-    District: "Salima",
-    TA: "TA Kambalame",
-  },
-  {
-    District: "Salima",
-    TA: "TA Khombedza",
-  },
-  {
-    District: "Salima",
-    TA: "TA Mwanza",
-  },
-  {
-    District: "Salima",
-    TA: "TA Kuluunda",
-  },
-  {
-    District: "Salima",
-    TA: "TA Msosa",
-  },
-  {
-    District: "Salima",
-    TA: "Lake Malawi National Park",
-  },
-  {
-    District: "Salima",
-    TA: "Salima Town",
-  },
-  {
-    District: "Salima",
-    TA: "Chipoka Urban",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Chadza",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Kalolo",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Masula",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Masumbankhunda",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Chiseka",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Mazengera",
-  },
-  {
-    District: "Lilongwe",
-    TA: "STA Chitekwele",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Khongoni",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Chimutu",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Chitukula",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Mtema",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Kalumbu",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Tsabango",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Kalumba",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Njewa",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Malili",
-  },
-  {
-    District: "Lilongwe",
-    TA: "TA Kabudula",
-  },
-  {
-    District: "Lilongwe",
-    TA: "STA Mbang'ombe",
-  },
-  {
-    District: "Mchinji",
-    TA: "TA Mlonyeni",
-  },
-  {
-    District: "Mchinji",
-    TA: "TA Mavwere",
-  },
-  {
-    District: "Mchinji",
-    TA: "TA Zulu",
-  },
-  {
-    District: "Mchinji",
-    TA: "TA Simphasi",
-  },
-  {
-    District: "Mchinji",
-    TA: "TA Mduwa",
-  },
-  {
-    District: "Mchinji",
-    TA: "STA Nyoka",
-  },
-  {
-    District: "Mchinji",
-    TA: "TA Mkanda",
-  },
-  {
-    District: "Mchinji",
-    TA: "STA Gumba",
-  },
-  {
-    District: "Mchinji",
-    TA: "STA Pitala",
-  },
-  {
-    District: "Mchinji",
-    TA: "STA Kapunula",
-  },
-  {
-    District: "Mchinji",
-    TA: "TA Kazyozyo",
-  },
-  {
-    District: "Mchinji",
-    TA: "TA Dambe",
-  },
-  {
-    District: "Mchinji",
-    TA: "TA Kapondo",
-  },
-  {
-    District: "Mchinji",
-    TA: "Mchinji Boma",
-  },
-  {
-    District: "Dedza",
-    TA: "TA Kachere",
-  },
-  {
-    District: "Dedza",
-    TA: "TA Chilikumwendo",
-  },
-  {
-    District: "Dedza",
-    TA: "TA Kaphuka",
-  },
-  {
-    District: "Dedza",
-    TA: "TA Tambala",
-  },
-  {
-    District: "Dedza",
-    TA: "TA Chauma",
-  },
-  {
-    District: "Dedza",
-    TA: "TA Kasumbu",
-  },
-  {
-    District: "Dedza",
-    TA: "TA Kachindamoto",
-  },
-  {
-    District: "Dedza",
-    TA: "TA Kamenya Gwaza",
-  },
-  {
-    District: "Dedza",
-    TA: "Dedza Boma",
-  },
-  {
-    District: "Ntcheu",
-    TA: "TA Phambala",
-  },
-  {
-    District: "Ntcheu",
-    TA: "STA Tsikulamowa",
-  },
-  {
-    District: "Ntcheu",
-    TA: "TA Mpando",
-  },
-  {
-    District: "Ntcheu",
-    TA: "TA Kwataine",
-  },
-  {
-    District: "Ntcheu",
-    TA: "TA Makwangwala",
-  },
-  {
-    District: "Ntcheu",
-    TA: "STA Mkutumula",
-  },
-  {
-    District: "Ntcheu",
-    TA: "TA Champiti",
-  },
-  {
-    District: "Ntcheu",
-    TA: "TA Njolomole",
-  },
-  {
-    District: "Ntcheu",
-    TA: "TA Chakhumbira",
-  },
-  {
-    District: "Ntcheu",
-    TA: "TA Goodson Ganya",
-  },
-  {
-    District: "Ntcheu",
-    TA: "TA Masasa",
-  },
-  {
-    District: "Ntcheu",
-    TA: "Ntcheu Boma",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 1",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 2",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 3",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 4",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 5",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 6",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 7",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 8",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 9",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 10",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 11",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 12",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 13",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 14",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 15",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 16",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 17",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 18",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 19",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 20",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 21",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 22",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 23",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 24",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 25",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 26",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 27",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 28",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 29",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 30",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 31",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 32",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 33",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 34",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 35",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 36",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 37",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 38",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 39",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 40",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 41",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 42",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 43",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 44",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 45",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 46",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 47",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 48",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 49",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 50",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 51",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 52",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 53",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 54",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 55",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 56",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 57",
-  },
-  {
-    District: "Lilongwe City",
-    TA: "Area 58",
-  },
-  {
-    District: "Mangochi",
-    TA: "TA Mponda",
-  },
-  {
-    District: "Mangochi",
-    TA: "TA Chimwala",
-  },
-  {
-    District: "Mangochi",
-    TA: "TA Chilipa",
-  },
-  {
-    District: "Mangochi",
-    TA: "TA Nankumba",
-  },
-  {
-    District: "Mangochi",
-    TA: "TA Jalasi",
-  },
-  {
-    District: "Mangochi",
-    TA: "TA Mbwana Nyambi",
-  },
-  {
-    District: "Mangochi",
-    TA: "TA Chowe",
-  },
-  {
-    District: "Mangochi",
-    TA: "TA Katuli",
-  },
-  {
-    District: "Mangochi",
-    TA: "TA Makanjila",
-  },
-  {
-    District: "Mangochi",
-    TA: "STA Lulanga",
-  },
-  {
-    District: "Mangochi",
-    TA: "TA Namabvi",
-  },
-  {
-    District: "Mangochi",
-    TA: "Lake Malawi National Park",
-  },
-  {
-    District: "Mangochi",
-    TA: "STA Ntonda",
-  },
-  {
-    District: "Mangochi",
-    TA: "STA Chiunda",
-  },
-  {
-    District: "Mangochi",
-    TA: "Mangochi Town",
-  },
-  {
-    District: "Mangochi",
-    TA: "Monkey Bay Urban",
-  },
-  {
-    District: "Mangochi",
-    TA: "Lake Malombe",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Liwonde",
-  },
-  {
-    District: "Machinga",
-    TA: "STA Nsanama",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Sitola",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Nkula",
-  },
-  {
-    District: "Machinga",
-    TA: "STA Nchinguza",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Kawinga",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Nkoola",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Chamba",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Mposa",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Mlomba",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Chikweo",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Ngokwe",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Chiwalo",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Kapoloma",
-  },
-  {
-    District: "Machinga",
-    TA: "TA Nyambi",
-  },
-  {
-    District: "Machinga",
-    TA: "STA Chesale",
-  },
-  {
-    District: "Machinga",
-    TA: "Liwonde National Park",
-  },
-  {
-    District: "Machinga",
-    TA: "Machinga Boma",
-  },
-  {
-    District: "Machinga",
-    TA: "Liwonde Town",
-  },
-  {
-    District: "Zomba",
-    TA: "TA Kuntumanji",
-  },
-  {
-    District: "Zomba",
-    TA: "TA Mwambo",
-  },
-  {
-    District: "Zomba",
-    TA: "TA Mkumbira",
-  },
-  {
-    District: "Zomba",
-    TA: "TA Chikowi",
-  },
-  {
-    District: "Zomba",
-    TA: "TA Mbiza",
-  },
-  {
-    District: "Zomba",
-    TA: "TA Malemia",
-  },
-  {
-    District: "Zomba",
-    TA: "TA Mlumbe",
-  },
-  {
-    District: "Zomba",
-    TA: "STA Nkagula",
-  },
-  {
-    District: "Zomba",
-    TA: "STA Ntholowa",
-  },
-  {
-    District: "Zomba",
-    TA: "STA Ngwelero",
-  },
-  {
-    District: "Zomba",
-    TA: "STA Nkapita",
-  },
-  {
-    District: "Chiradzulu",
-    TA: "TA Mpama",
-  },
-  {
-    District: "Chiradzulu",
-    TA: "TA Likoswe",
-  },
-  {
-    District: "Chiradzulu",
-    TA: "TA Kadewere",
-  },
-  {
-    District: "Chiradzulu",
-    TA: "TA Nkalo",
-  },
-  {
-    District: "Chiradzulu",
-    TA: "TA Chitera",
-  },
-  {
-    District: "Chiradzulu",
-    TA: "TA Nchema",
-  },
-  {
-    District: "Chiradzulu",
-    TA: "STA Mpunga",
-  },
-  {
-    District: "Chiradzulu",
-    TA: "STA Sandareki",
-  },
-  {
-    District: "Chiradzulu",
-    TA: "STA Onga",
-  },
-  {
-    District: "Chiradzulu",
-    TA: "Chiradzulu Boma",
-  },
-  {
-    District: "Blantyre",
-    TA: "TA Kapeni",
-  },
-  {
-    District: "Blantyre",
-    TA: "TA Lundu",
-  },
-  {
-    District: "Blantyre",
-    TA: "TA Chigaru",
-  },
-  {
-    District: "Blantyre",
-    TA: "TA Kunthembwe",
-  },
-  {
-    District: "Blantyre",
-    TA: "TA Makata",
-  },
-  {
-    District: "Blantyre",
-    TA: "TA Kuntaja",
-  },
-  {
-    District: "Blantyre",
-    TA: "TA Machinjiri",
-  },
-  {
-    District: "Blantyre",
-    TA: "TA Somba",
-  },
-  {
-    District: "Mwanza",
-    TA: "TA Kanduku",
-  },
-  {
-    District: "Mwanza",
-    TA: "TA Nthache",
-  },
-  {
-    District: "Mwanza",
-    TA: "STA Govati",
-  },
-  {
-    District: "Mwanza",
-    TA: "Majete Game Reserve - Mwanza",
-  },
-  {
-    District: "Mwanza",
-    TA: "Mwanza Boma",
-  },
-  {
-    District: "Thyolo",
-    TA: "TA Nsabwe",
-  },
-  {
-    District: "Thyolo",
-    TA: "STA Thukuta",
-  },
-  {
-    District: "Thyolo",
-    TA: "STA Mbawela",
-  },
-  {
-    District: "Thyolo",
-    TA: "TA Changata",
-  },
-  {
-    District: "Thyolo",
-    TA: "TA Mphuka",
-  },
-  {
-    District: "Thyolo",
-    TA: "TA Kwethemule",
-  },
-  {
-    District: "Thyolo",
-    TA: "TA Kapichi",
-  },
-  {
-    District: "Thyolo",
-    TA: "TA Nchilamwela",
-  },
-  {
-    District: "Thyolo",
-    TA: "TA Chimaliro",
-  },
-  {
-    District: "Thyolo",
-    TA: "TA Bvumbwe",
-  },
-  {
-    District: "Thyolo",
-    TA: "TA Thomas",
-  },
-  {
-    District: "Thyolo",
-    TA: "TA Nanseta",
-  },
-  {
-    District: "Thyolo",
-    TA: "TA Ngolongoliwa",
-  },
-  {
-    District: "Thyolo",
-    TA: "STA Boyidi",
-  },
-  {
-    District: "Thyolo",
-    TA: "Thyolo Boma",
-  },
-  {
-    District: "Thyolo",
-    TA: "Luchenza Town",
-  },
-  {
-    District: "Mulanje",
-    TA: "TA Mabuka",
-  },
-  {
-    District: "Mulanje",
-    TA: "TA Laston Njema",
-  },
-  {
-    District: "Mulanje",
-    TA: "TA Chikumbu",
-  },
-  {
-    District: "Mulanje",
-    TA: "TA Nthiramanja",
-  },
-  {
-    District: "Mulanje",
-    TA: "TA Nkanda",
-  },
-  {
-    District: "Mulanje",
-    TA: "TA Juma",
-  },
-  {
-    District: "Mulanje",
-    TA: "STA Sunganinzeru",
-  },
-  {
-    District: "Mulanje",
-    TA: "STA Tombondiya",
-  },
-  {
-    District: "Mulanje",
-    TA: "Mulanje Mountain Reserve",
-  },
-  {
-    District: "Mulanje",
-    TA: "Mulanje Boma",
-  },
-  {
-    District: "Phalombe",
-    TA: "TA Mkhumba",
-  },
-  {
-    District: "Phalombe",
-    TA: "TA Nazombe",
-  },
-  {
-    District: "Phalombe",
-    TA: "TA Chiwalo",
-  },
-  {
-    District: "Phalombe",
-    TA: "TA Nkhulambe",
-  },
-  {
-    District: "Phalombe",
-    TA: "TA Jenala",
-  },
-  {
-    District: "Phalombe",
-    TA: "TA Kaduya",
-  },
-  {
-    District: "Phalombe",
-    TA: "Phalombe Boma",
-  },
-  {
-    District: "Chikwawa",
-    TA: "TA Ngabu",
-  },
-  {
-    District: "Chikwawa",
-    TA: "TA Lundu",
-  },
-  {
-    District: "Chikwawa",
-    TA: "TA Chapananga",
-  },
-  {
-    District: "Chikwawa",
-    TA: "TA Maseya",
-  },
-  {
-    District: "Chikwawa",
-    TA: "TA Katunga",
-  },
-  {
-    District: "Chikwawa",
-    TA: "TA Kasisi",
-  },
-  {
-    District: "Chikwawa",
-    TA: "TA Makhwira",
-  },
-  {
-    District: "Chikwawa",
-    TA: "STA Ndakwela",
-  },
-  {
-    District: "Chikwawa",
-    TA: "TA Mlilima",
-  },
-  {
-    District: "Chikwawa",
-    TA: "STA Masache",
-  },
-  {
-    District: "Chikwawa",
-    TA: "TA Ngowe",
-  },
-  {
-    District: "Chikwawa",
-    TA: "Lengwe National Park",
-  },
-  {
-    District: "Chikwawa",
-    TA: "Majete Game Reserve - Chikwawa",
-  },
-  {
-    District: "Chikwawa",
-    TA: "Chikwawa Boma",
-  },
-  {
-    District: "Chikwawa",
-    TA: "Ngabu Urban",
-  },
-  {
-    District: "Nsanje",
-    TA: "TA Ndamera",
-  },
-  {
-    District: "Nsanje",
-    TA: "TA Chimombo",
-  },
-  {
-    District: "Nsanje",
-    TA: "TA Nyachikadza",
-  },
-  {
-    District: "Nsanje",
-    TA: "TA Mlolo",
-  },
-  {
-    District: "Nsanje",
-    TA: "TA Tengani",
-  },
-  {
-    District: "Nsanje",
-    TA: "TA Malemia",
-  },
-  {
-    District: "Nsanje",
-    TA: "TA Mbenje",
-  },
-  {
-    District: "Nsanje",
-    TA: "TA Ngabu",
-  },
-  {
-    District: "Nsanje",
-    TA: "TA Makoko",
-  },
-  {
-    District: "Nsanje",
-    TA: "Mwabvi Game Reserve",
-  },
-  {
-    District: "Nsanje",
-    TA: "Nsanje Boma",
-  },
-  {
-    District: "Balaka",
-    TA: "TA Msamala",
-  },
-  {
-    District: "Balaka",
-    TA: "TA Kalembo",
-  },
-  {
-    District: "Balaka",
-    TA: "STA Kachenga",
-  },
-  {
-    District: "Balaka",
-    TA: "TA Amidu",
-  },
-  {
-    District: "Balaka",
-    TA: "TA Nkaya",
-  },
-  {
-    District: "Balaka",
-    TA: "STA Phalula",
-  },
-  {
-    District: "Balaka",
-    TA: "TA Chanthunya",
-  },
-  {
-    District: "Balaka",
-    TA: "TA Sawali",
-  },
-  {
-    District: "Balaka",
-    TA: "STA Matola",
-  },
-  {
-    District: "Balaka",
-    TA: "STA Toleza",
-  },
-  {
-    District: "Balaka",
-    TA: "Balaka Town",
-  },
-  {
-    District: "Balaka",
-    TA: "Liwonde Town",
-  },
-  {
-    District: "Neno",
-    TA: "TA Dambe",
-  },
-  {
-    District: "Neno",
-    TA: "TA Mlauli",
-  },
-  {
-    District: "Neno",
-    TA: "TA Symon Likongwe",
-  },
-  {
-    District: "Neno",
-    TA: "TA Chekucheku",
-  },
-  {
-    District: "Neno",
-    TA: "Neno Boma",
-  },
-  {
-    District: "Zomba City",
-    TA: "Mpira Ward",
-  },
-  {
-    District: "Zomba City",
-    TA: "Mbedza Ward",
-  },
-  {
-    District: "Zomba City",
-    TA: "Chinamwali Ward",
-  },
-  {
-    District: "Zomba City",
-    TA: "Chirunga Ward",
-  },
-  {
-    District: "Zomba City",
-    TA: "Mtiya Ward",
-  },
-  {
-    District: "Zomba City",
-    TA: "Masongola Ward",
-  },
-  {
-    District: "Zomba City",
-    TA: "Zomba Central Ward",
-  },
-  {
-    District: "Zomba City",
-    TA: "Likangala Ward",
-  },
-  {
-    District: "Zomba City",
-    TA: "Chambo Ward",
-  },
-  {
-    District: "Zomba City",
-    TA: "Sadzi Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Michiru Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "South Lunzu Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Mapanga Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Nkolokoti Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Ndirande Matope Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Ndirande Makata Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Ndirande Gamulani Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Nyambadwe Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Mbayani Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Chilomoni Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Blantyre City Centre Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Namalimwe Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Limbe Central Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Mzedi Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Bangwe Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Bangwe Mthandizi Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Soche East Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Blantyre South Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Green Corner Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Soche West Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Namiyango Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Chigumula Ward",
-  },
-  {
-    District: "Blantyre City",
-    TA: "Misesa Ward",
-  },
-]);
+const selectedMacro = ref("");
+const selectedCategory = ref("");
+const selectedSubCategory = ref("");
+
+// Computed property to get the priority
+const computedPriority = computed(() => {
+  const found = categoriesData.find(
+    (item) =>
+      item.macrocategory === selectedMacro.value &&
+      item.category === selectedCategory.value &&
+      item.subcategory.trim() === selectedSubCategory.value.trim()
+  );
+  return found ? found.Priority : ""; // Default to LOW if not found
+});
+
+// Computed property to filter categories based on selected macrocategory
+const filteredCategories = computed(() => {
+  return [
+    ...new Set(
+      categoriesData
+        .filter((item) => item.macrocategory === selectedMacro.value)
+        .map((item) => item.category)
+    ),
+  ];
+});
+
+// Computed property to filter subcategories based on selected category
+const filteredSubCategories = computed(() => {
+  return [
+    ...new Set(
+      categoriesData
+        .filter(
+          (item) =>
+            item.macrocategory === selectedMacro.value &&
+            item.category === selectedCategory.value
+        )
+        .map((item) => item.subcategory)
+    ),
+  ].filter((sub) => sub.trim() !== ""); // Removes empty subcategories
+});
+
+const updateCategories = () => {
+  selectedCategory.value = "";
+  selectedSubCategory.value = "";
+};
+
+const updateSubCategories = () => {
+  selectedSubCategory.value = "";
+};
+
+const handleIssueAffectingChange = () => {
+  if (form.value.issueAffecting !== "Someone else") {
+    form.value.relationship = "";
+    form.value.reasonNotContact = "";
+    form.value.otherRelationship = "";
+    form.value.otherReasonNotContact = "";
+  }
+};
 
 onMounted(() => {
   getDistricts();
@@ -2237,25 +923,48 @@ const closeDialog = () => {
 
 const submitForm = async () => {
   form.value.submittedBy = user.value.firstname + " " + user.value.lastname;
-  form.value.created = moment().toDate(); // This will set the current date and time
-  form.value.district = selectedDistrict.value
-  form.value.ta = selectedTA.value
+  form.value.created = moment().toDate(); // Set the current date and time
+  form.value.district = selectedDistrict.value;
+  form.value.ta = selectedTA.value;
+  form.value.priority = computedPriority.value;
+  form.value.macrocategory = selectedMacro.value;
+  form.value.category = selectedCategory.value;
+  form.value.subCategory = selectedSubCategory.value;
   try {
     await caseStore.create(form.value);
     Swal.fire({
+      position: "top-end", // Position to the top right
       title: "Success",
       text: "Created a new case successfully",
       icon: "success",
-      confirmButtonText: "Ok",
+      showConfirmButton: false, // Remove the confirm button
+      timer: 3000, // Auto close after 3 seconds
+      toast: true, // Enable toast-like notification
+    }).then(() => {
+      // Confirm before redirecting
+      Swal.fire({
+        title: "Redirect?",
+        text: "Go to case list?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Yes Go Back",
+        cancelButtonText: "No",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Redirect to /admin/cases
+          router.push("/admin/cases");
+        }
+      });
     });
-    
-    $router.push("/callcenter/cases/");
   } catch (error) {
     Swal.fire({
+      position: "top-end", // Position to the top right
       title: "Failed",
       text: "Failed to create case (" + error + ")",
       icon: "error",
-      confirmButtonText: "Ok",
+      showConfirmButton: false, // Remove the confirm button
+      timer: 3000, // Auto close after 3 seconds
+      toast: true, // Enable toast-like notification
     });
   }
 };
@@ -2278,13 +987,50 @@ const getDistricts = async () => {
 const selectedDistrict = ref("");
 const selectedTA = ref("");
 
-const uniqueDistricts = computed(() => [
-  ...new Set(districtTaData.value.map((item) => item.District)),
-]);
+const uniqueDistricts = computed(() => {
+  return [
+    ...new Set(
+      activitysite
+        .filter((item) => item.District) // Exclude matching district
+        .map((item) => item.District)
+    ),
+  ];
+});
 
 const filteredTAs = computed(() =>
-  districtTaData.value
+  districtTaData
     .filter((item) => item.District === selectedDistrict.value)
     .map((item) => item.TA)
 );
+
+const updateStatus = () => {
+  switch (form.value.action) {
+    case "Callback":
+    case "External referral required":
+      form.value.status = "Pending";
+      break;
+    case "First case resolution":
+      form.value.status = "Closed";
+      break;
+    case "Internal escalation - Action required":
+      form.value.status = "Open";
+      break;
+    default:
+      form.value.status = "Open";
+  }
+};
+
+// Watch for changes to action and update status automatically
+watch(() => form.action, updateStatus);
 </script>
+<style>
+/* Smooth fade animation */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

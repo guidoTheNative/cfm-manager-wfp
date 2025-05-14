@@ -19,32 +19,32 @@
         <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
           <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
-              <h3 class="text-lg font-medium leading-6 text-gray-900">
+              <h3 class="text-lg font-bold leading-6 text-gray-900">
                 Enquiry Info
               </h3>
-              <p class="mt-1 text-sm text-blue-400">
+              <p class="mt-1 text-sm text-[#096eb4]">
                 <span class="text-gray-500 font-bold">Enquiry:</span>
                 {{ booking }}
               </p>
-              <p class="mt-1 text-sm text-blue-400">
+              <p class="mt-1 text-sm text-[#096eb4]">
                 <span class="text-gray-500 font-bold">Enquirer Email:</span>
                 {{ model.email }}
               </p>
 
-              <p class="mt-1 text-sm text-blue-400">
+              <p class="mt-1 text-sm text-[#096eb4]">
                 <span class="text-gray-500 font-bold">Enquirer Phone #:</span>
                 {{ model.phone }}
               </p>
-              <p class="mt-1 text-sm text-blue-400">
+              <p class="mt-1 text-sm text-[#096eb4]">
                 <span class="text-gray-500 font-bold">Enquired From:</span>
                 {{ moment(model.enquiryFrom).format("DD/MM/YYYY") }}
               </p>
-              <p class="mt-1 text-sm text-blue-400">
+              <p class="mt-1 text-sm text-[#096eb4]">
                 <span class="text-gray-500 font-bold">Enquired To:</span>
                 {{ moment(model.enquiryTo).format("DD/MM/YYYY") }}
               </p>
 
-              <p class="mt-1 text-sm text-blue-400">
+              <p class="mt-1 text-sm text-[#096eb4]">
                 <span class="text-gray-500 font-bold">Service Type:</span>
                 {{ model.servicetype }}
               </p>
@@ -60,7 +60,7 @@
         <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
           <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
-              <h3 class="text-lg font-medium leading-6 text-gray-900">
+              <h3 class="text-lg font-bold leading-6 text-gray-900">
                 Delete Enquiry
               </h3>
               <p class="mt-1 text-sm text-gray-500">Delete Enquiry</p>
@@ -69,7 +69,7 @@
               <div class="px-4 py-3 text-right sm:px-6">
                 <button
                   type="button"
-                  class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-red-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                  class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-bold text-red-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                   @click="deleteBooking()"
                 >
                   Delete Enquiry

@@ -6,7 +6,7 @@
         px-2
         py-1
         text-sm
-        font-medium
+        font-bold
         text-green-600
         hover:text-green-900
         bg-white
@@ -35,7 +35,7 @@
             <div
               class="inline-block bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-4xl sm:w-full">
               <div class="flex items-center justify-between p-2 border-b border-gray-200 bg-white">
-                <h5 class="text-md font-medium text-gray-800">
+                <h5 class="text-md font-bold text-gray-800">
                   Create Dispatch for Instruction (<b>ID: {{ props.rowId }} </b>)
                 </h5>
                 <button type="button" @click="open = false" class="p-1 text-black">
@@ -54,14 +54,14 @@
                     <p class="mb-2"><strong>Transporter:</strong> {{ instruction.transporter.Name }}</p>
 
                     <!-- Table for Goods List -->
-                    <h3 class="text-lg font-semibold text-blue-400 mb-2">List of Items Required:</h3>
+                    <h3 class="text-lg font-semibold text-[#096eb4] mb-2">List of Items Required:</h3>
                     <table class="min-w-full bg-white border border-0 rounded-lg">
                       <thead class="bg-blue-100">
                         <tr>
-                          <th class="py-1 px-2 text-left text-xs font-medium text-gray-700 uppercase border-b">#</th>
-                          <th class="py-1 px-2 text-left text-xs font-medium text-gray-700 uppercase border-b">Commodity
+                          <th class="py-1 px-2 text-left text-xs font-bold text-gray-700 uppercase border-b">#</th>
+                          <th class="py-1 px-2 text-left text-xs font-bold text-gray-700 uppercase border-b">Commodity
                           </th>
-                          <th class="py-1 px-2 text-left text-xs font-medium text-gray-700 uppercase border-b">Quantity
+                          <th class="py-1 px-2 text-left text-xs font-bold text-gray-700 uppercase border-b">Quantity
                           </th>
                         </tr>
                       </thead>
@@ -81,11 +81,11 @@
                     <h3 class="text-lg font-semibold mb-2">Dispatch Form</h3>
 
                     <!-- Form Inputs -->
-                    <label for="deliveryNote" class="block font-medium">Delivery Note:</label>
+                    <label for="deliveryNote" class="block font-bold">Delivery Note:</label>
                     <input type="text" id="deliveryNote" v-model="DeliveryNote"
                       class="mt-1 block w-full shadow-sm border-gray-300 rounded-md" readonly>
 
-                    <label for="finalDestination" class="block font-medium mt-2">Final Destination Point:</label>
+                    <label for="finalDestination" class="block font-bold mt-2">Final Destination Point:</label>
                     <input type="text" id="finalDestination" v-model="FinalDestinationPoint"
                       class="mt-1 block w-full shadow-sm border-gray-300 rounded-md">
 
@@ -130,7 +130,7 @@
 
                           <div class="flex items-left justify-left">
                             <button @click="removeItem(item.id)" type="button"
-                              class="ml-2 p-1 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700">
+                              class="ml-2 p-1 text-sm font-bold text-white bg-red-600 rounded-md hover:bg-red-700">
                               <MinusCircleIcon class="h-4 w-4" />
                             </button>
                           </div>
@@ -138,7 +138,7 @@
 
                         <div class="flex justify-end">
                           <button @click.prevent="addNewItem"
-                            class="inline-flex px-2 py-1 border border-gray-300 text-sm font-medium rounded-md text-blue-400 bg-white hover:bg-gray-100">
+                            class="inline-flex px-2 py-1 border border-gray-300 text-sm font-bold rounded-md text-[#096eb4] bg-white hover:bg-gray-100">
                             + Add Item
                           </button>
                         </div>
@@ -150,13 +150,13 @@
                 <!-- Footer Buttons -->
                 <div class="flex items-center justify-end bg-gray-50 px-4 py-3 border-t border-gray-200 rounded-b-md">
                   <button type="button" @click="open = false"
-                    class="inline-flex px-4 py-2 border border-gray-300 text-base font-medium rounded-md text-gray-700 hover:bg-gray-100">
+                    class="inline-flex px-4 py-2 border border-gray-300 text-base font-bold rounded-md text-gray-700 hover:bg-gray-100">
                     Cancel
                   </button>
                 
 
                   <button type="submit"
-                      class="inline-flex ml-3 items-center px-3 py-2 text-sm font-medium text-white bg-blue-400 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                      class="inline-flex ml-3 items-center px-3 py-2 text-sm font-bold text-white bg-blue-400 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
                       <CheckCircleIcon class="h-5 w-5 mr-1" />
                       Submit Dispatch
                     </button>

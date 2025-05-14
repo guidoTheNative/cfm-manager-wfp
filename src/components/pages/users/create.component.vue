@@ -2,7 +2,7 @@
   <div>
     <button
       type="button"
-      class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+      class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
       @click="open = true"
     >
       new user
@@ -56,7 +56,7 @@
                 class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-white"
               >
                 <h5
-                  class="text-md font-medium leading-normal text-gray-800"
+                  class="text-md font-bold leading-normal text-gray-800"
                   id="formModalLabel"
                 >
                   Create User
@@ -74,7 +74,7 @@
                 <div class="col-span-6 sm:col-span-3 mx-6 my-3">
                   <label
                     for="user-role"
-                    class="block text-sm font-medium text-gray-700"
+                    class="block text-sm font-bold text-gray-700"
                   >
                     Select User Type</label
                   >
@@ -120,7 +120,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="first-name"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >First name</label
                       >
                       <input
@@ -139,7 +139,7 @@
                     <div class="col-span-6 sm:col-span-3">
                       <label
                         for="last-name"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Last name</label
                       >
                       <input
@@ -158,7 +158,7 @@
                     <div class="col-span-6 sm:col-span-5">
                       <label
                         for="email-address"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Email address</label
                       >
                       <input
@@ -176,7 +176,7 @@
                     <div class="col-span-6 sm:col-span-4">
                       <label
                         for="phone-number"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Phone</label
                       >
                       <input
@@ -203,7 +203,7 @@
                     >
                       <label
                         for="user-district"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Select District</label
                       >
                       <select
@@ -242,7 +242,7 @@
                     >
                       <label
                         for="user-activity"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Select activity they manage</label
                       >
                       <select
@@ -287,7 +287,7 @@
                     >
                       <label
                         for="privileges"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                       >
                         User Privileges
                       </label>
@@ -336,7 +336,7 @@
                     <div class="col-span-6 sm:col-span-4">
                       <label
                         for="password"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                       >
                         Password</label
                       >
@@ -354,7 +354,7 @@
                           name="show-password"
                           v-model="isPwd"
                           type="checkbox"
-                          class="ml-2 h-4 w-4 border-gray-300 text-blue-400 focus:ring-blue-400 rounded"
+                          class="ml-2 h-4 w-4 border-gray-300 text-[#096eb4] focus:ring-blue-400 rounded"
                         />
                         <label
                           for="show-password"
@@ -372,7 +372,7 @@
                   <button
                     type="submit"
                     style="background-color: #096eb4"
-                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400"
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400"
                   >
                     Save
                   </button>

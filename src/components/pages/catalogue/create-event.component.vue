@@ -1,7 +1,7 @@
 <template>
   <div>
     <button type="button"
-      class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+      class="inline-block px-6 py-2.5 bg-blue-400 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
       @click="open = true">
       Add booking
     </button>
@@ -25,7 +25,7 @@
               class="flex text-base text-left transform transition w-full md:inline-block md:max-w-2xl md:px-4 md:my-8 md:align-middle lg:max-w-2xl">
               <div
                 class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-white">
-                <h5 class="text-md font-medium leading-normal text-gray-800" id="formModalLabel">
+                <h5 class="text-md font-bold leading-normal text-gray-800" id="formModalLabel">
                   Add Booking
                 </h5>
                 <button type="button"
@@ -36,7 +36,7 @@
                 <div class="px-4 py-5 bg-white sm:p-6">
                   <div class="grid grid-cols-6 gap-2">
                     <div class="col-span-6 sm:col-span-6">
-                      <label for="firstname" class="block text-sm font-medium text-gray-700">Booking for?</label>
+                      <label for="firstname" class="block text-sm font-bold text-gray-700">Booking for?</label>
                       <input type="text" name="firstname" id="firstname" v-model="firstname" autocomplete="document-name"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                       <p class="text-red-500 text-xs italic pt-1">
@@ -46,7 +46,7 @@
 
 
                     <div class="col-span-6 sm:col-span-6">
-                      <label for="phone" class="block text-sm font-medium text-gray-700">Booker Phone:</label>
+                      <label for="phone" class="block text-sm font-bold text-gray-700">Booker Phone:</label>
                       <input type="text" name="phone" id="phone" v-model="phone" autocomplete="document-name"
                         class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                       <p class="text-red-500 text-xs italic pt-1">
@@ -74,7 +74,7 @@
                       <div class="grid grid-cols-2 gap-4">
                         <!-- First TimePicker -->
                         <div>
-                          <label for="timepicker1" class="block text-sm font-medium text-gray-700 mt-3">Available
+                          <label for="timepicker1" class="block text-sm font-bold text-gray-700 mt-3">Available
                             from:</label>
                           <div
                             class="mt-4 focus:ring-gray-500 focus:border-blue-400 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -85,7 +85,7 @@
 
                         <!-- Second TimePicker -->
                         <div>
-                          <label for="timepicker2" class="block text-sm font-medium text-gray-700 mt-3">Available
+                          <label for="timepicker2" class="block text-sm font-bold text-gray-700 mt-3">Available
                             to:</label>
                           <div
                             class="mt-4 focus:ring-gray-500 focus:border-blue-400 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -100,7 +100,7 @@
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button type="submit"
-                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                     Save
                   </button>
                 </div>

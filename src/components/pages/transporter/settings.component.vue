@@ -3,7 +3,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900 capitalize">
+          <h3 class="text-lg font-bold leading-6 text-gray-900 capitalize">
             Profile
           </h3>
           <p class="mt-1 text-sm text-gray-500">
@@ -19,7 +19,7 @@
               <div class="px-4 py-5 bg-white sm:p-6">
                 <div class="grid grid-cols-6 gap-2">
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="Transporter-Name" class="block text-sm font-medium text-gray-700">Transporter
+                    <label for="Transporter-Name" class="block text-sm font-bold text-gray-700">Transporter
                       Name</label>
                     <input type="text" Name="Transporter-Name" id="Transporter-Name" v-model="Name"
                       autocomplete="given-Name"
@@ -38,7 +38,7 @@
               </div>
               <div class="px-4 py-3 text-right sm:px-6">
                 <button type="submit"
-                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                   Update
                 </button>
               </div>
@@ -53,7 +53,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6" v-if="user.roleId == 'ADMIN1'">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">
+          <h3 class="text-lg font-bold leading-6 text-gray-900">
             Delete Transporter
           </h3>
           <p class="mt-1 text-sm text-gray-500">
@@ -63,7 +63,7 @@
         <div class="mt-5 md:mt-0 md:col-span-2">
           <div class="px-4 py-3 text-right sm:px-6">
             <button type="button"
-              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-red-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-bold text-red-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
               @click="deleteAcc()">
               Delete Transporter
             </button>

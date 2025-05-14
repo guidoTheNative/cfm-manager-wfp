@@ -12,8 +12,8 @@
         <!-- Logo and Admin Info -->
         <div class="flex items-center justify-between w-full lg:w-auto">
           <div class="flex items-center">
-            <a
-              href="#"
+            <router-link
+              to="/field/dashboard"
               class="bg-transparent rounded-md shadow-0 px-0 flex items-center"
             >
               <img
@@ -22,8 +22,9 @@
                 alt="wfp"
                 style="height: 50px"
               />
-            </a>
+            </router-link>
           </div>
+
           <button @click="toggleMobileMenu" class="lg:hidden">
             <MenuIcon class="h-6 w-6 text-white" />
           </button>
@@ -34,7 +35,7 @@
           </span>
           <div class="flex items-center ml-2 hidden lg:flex">
             <LocationMarkerIcon class="h-5 w-5 text-white mr-2" />
-            <span class="text-white font-medium text-sm">
+            <span class="text-white font-bold text-sm">
               {{ user?.district }}
             </span>
           </div>
@@ -43,10 +44,8 @@
         <span class="font-bold text-white mx-4 block lg:hidden"
           >WFP CASE TRACKER | Field Officer
           <span class="text-xs font-normal">(v1.0)</span>
-          
         </span>
-        
-       
+
         <!-- Navigation Items for Desktop -->
         <div
           class="flex flex-col lg:flex-row lg:space-x-4 mt-2 lg:mt-0 w-full lg:w-auto hidden lg:flex"
@@ -61,7 +60,7 @@
                 item.current
                   ? 'bg-white text-black'
                   : 'text-gray-50 hover:text-gray-50 hover:bg-blue-400',
-                'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                'group flex items-center px-2 py-2 text-sm font-bold rounded-md',
               ]"
               :aria-current="item.current ? 'page' : undefined"
             >
@@ -83,7 +82,7 @@
         <div class="relative hidden lg:block">
           <button
             @click="toggleNotifications"
-            class="text-gray-50 hover:text-gray-50 hover:bg-blue-400 px-2 py-2 text-sm font-medium rounded-md"
+            class="text-gray-50 hover:text-gray-50 hover:bg-blue-400 px-2 py-2 text-sm font-bold rounded-md"
           >
             <BellIcon class="h-6 w-6 text-white" aria-hidden="true" />
             <span
@@ -107,7 +106,7 @@
                 >
                   <router-link
                     :to="notification.href"
-                    class="text-blue-400 hover:underline"
+                    class="text-[#096eb4] hover:underline"
                   >
                     {{ notification.message }}
                   </router-link>
@@ -129,7 +128,7 @@
                 }}</span>
                 <span
                   style="background-color: gray"
-                  class="inline-flex items-center px-3 rounded-full text-sm font-medium text-white uppercase"
+                  class="inline-flex items-center px-3 rounded-full text-sm font-bold text-white uppercase"
                 >
                   {{ user?.username.match(/\b(\w)/g).join("") }}
                 </span>
@@ -198,7 +197,7 @@
             :key="item.name"
             @click="toggleMobileMenu()"
             :to="item.href"
-            class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-blue-400"
+            class="block px-3 py-2 rounded-md text-base font-bold text-white hover:bg-blue-400"
           >
             {{ item.name }}
           </router-link>
@@ -207,7 +206,7 @@
         <div class="relative px-2 pt-2 pb-3 sm:px-3">
           <button
             @click="toggleNotifications"
-            class="text-gray-50 hover:text-gray-50 hover:bg-blue-400 px-2 py-2 text-sm font-medium rounded-md"
+            class="text-gray-50 hover:text-gray-50 hover:bg-blue-400 px-2 py-2 text-sm font-bold rounded-md"
           >
             <BellIcon class="h-6 w-6 text-white" aria-hidden="true" />
             <span
@@ -235,7 +234,7 @@
                 >
                   <router-link
                     :to="notification.href"
-                    class="text-blue-400 hover:underline"
+                    class="text-[#096eb4] hover:underline"
                   >
                     {{ notification.message }}
                   </router-link>
@@ -257,7 +256,7 @@
                 }}</span>
                 <span
                   style="background-color: gray"
-                  class="inline-flex items-center px-3 rounded-full text-sm font-medium text-white uppercase"
+                  class="inline-flex items-center px-3 rounded-full text-sm font-bold text-white uppercase"
                 >
                   {{ user?.username.match(/\b(\w)/g).join("") }}
                 </span>
@@ -333,7 +332,7 @@
 
     <!-- Footer -->
     <footer
-      class="text-blue-400 text-center p-4"
+      class="text-[#096eb4] text-center p-4"
       style="background-color: #f9f9f9"
     >
       <span class="inline-block align-middle text-sm">
@@ -591,7 +590,7 @@ const itemClasses = (item) => [
   item.current
     ? "bg-white text-black"
     : "text-gray-50 hover:text-gray-50 hover:bg-blue-400",
-  "group flex items-center px-2 py-2 text-sm font-medium rounded-md",
+  "group flex items-center px-2 py-2 text-sm font-bold rounded-md",
 ];
 
 const onSignout = async () => {
@@ -629,7 +628,11 @@ const getCases = async () => {
     const result = await caseStore.get();
     cases.length = 0;
 
-    cases.push(...result.filter((item) => item.isRejected && item.district == user.value.district));
+    cases.push(
+      ...result.filter(
+        (item) => item.isRejected && item.district == user.value.district
+      )
+    );
 
     newRejectedCaseCount.value = cases.length;
     updateNotifications();

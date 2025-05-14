@@ -308,6 +308,8 @@ const routes = [
         component: () => import("../pages/admin/activities/manage.page.vue"),
       },
 
+      
+
       {
         path: "/admin/organisations/manage/:id",
         name: "admin-manage-organisations",
@@ -318,6 +320,18 @@ const routes = [
         path: "/admin/cases",
         name: "admin-cases",
         component: () => import("../pages/admin/cases/index.page.vue"),
+      },
+
+      {
+        path: "/admin/cases/manage/:id",
+        name: "admin-manage-cases",
+        component: () => import("../pages/admin/cases/manage.page.vue"),
+      },
+
+      {
+        path: "/admin/process/manage/:id",
+        name: "admin-manage-process",
+        component: () => import("../pages/admin/process/manage.page.vue"),
       },
 
       {
@@ -397,6 +411,12 @@ const routes = [
         name: "activitymanager-process-create",
         component: () =>
           import("../pages/activitymanager/process/create-cases.page"),
+      },
+
+      {
+        path: "/activitymanager/process/manage/:id",
+        name: "activitymanager-process-manage",
+        component: () => import("../pages/activitymanager/process/manage.page.vue"),
       },
 
       {
@@ -692,6 +712,12 @@ const routes = [
       },
 
       {
+        path: "/hop/process/manage/:id",
+        name: "hop-process-manage",
+        component: () => import("../pages/hop/process/manage.page.vue"),
+      },
+
+      {
         path: "/hop/cases",
         name: "hop-cases",
         component: () => import("../pages/hop/cases/index.page.vue"),
@@ -863,6 +889,12 @@ const routes = [
       },
 
       {
+        path: "/field/cases/create",
+        name: "field-cases-create",
+        component: () => import("../pages/field/cases/create-cases.page"),
+      },
+
+      {
         path: "/field/cases/manage/:id",
         name: "field-cases-manage",
         component: () => import("../pages/field/cases/manage.page.vue"),
@@ -891,6 +923,12 @@ const routes = [
         path: "/field/process",
         name: "field-process",
         component: () => import("../pages/field/process/index.page.vue"),
+      },
+
+      {
+        path: "/field/process/manage/:id",
+        name: "field-process-manage",
+        component: () => import("../pages/field/process/manage.page.vue"),
       },
 
       {

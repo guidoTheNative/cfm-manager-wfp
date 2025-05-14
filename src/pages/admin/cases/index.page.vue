@@ -8,22 +8,20 @@
       </div>
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
-            Cases
+          <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate">
+            CFM Cases
           </h2>
         </div>
-     
 
         <div class="mt-4 flex-shrink-0 flex md:mt-0 md:ml-4">
-          <router-link
-                :to="{ path: '/admin/cases/create/' }"
-              >
-                <a href="#"   class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
-                >
-                  New Case
-                </a>
-              </router-link>
-
+          <router-link :to="{ path: '/admin/cases/create/' }">
+            <a
+              href="#"
+              class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+            >
+              New CFM Case
+            </a>
+          </router-link>
         </div>
 
         <!-- Dropdown for Upload and Export -->
@@ -49,6 +47,7 @@
       />
 
       <!-- table -->
+
       <div
         class="align-middle inline-block min-w-full mt-5 shadow-xl rounded-table overflow-x-auto"
       >
@@ -62,12 +61,36 @@
           compactMode
         >
           <template #table-row="props">
-            <span v-if="props.column.label === 'Options'">
-              <button
-                @click="openViewDialog(props.row)"
-                class="text-green-400 text-sm hover:text-green-600 ml-2"
+            <!-- Issue Description with Ellipsis -->
+            <span
+              v-if="props.column.field === 'issueDescription'"
+              class="whitespace-normal break-words truncate max-w-xs"
+              :title="props.row.issueDescription"
+            >
+              {{ truncateText(props.row.issueDescription, 50) }}
+            </span>
+
+            <!-- Options Column with Manage and Delete -->
+            <span
+              v-if="props.column.label === 'Options'"
+              class="flex items-center space-x-2"
+            >
+              <!-- Manage Button -->
+              <router-link
+                :to="`/admin/cases/manage/${props.row.id}`"
+                class="text-blue-500 text-sm hover:text-blue-700 ml-2 flex items-center space-x-1"
               >
-                View
+                <DocumentTextIcon class="h-5 w-5" />
+                <span>Manage</span>
+              </router-link>
+
+              <!-- Delete Button -->
+              <button
+                @click="deleteCase(props.row.id)"
+                class="text-red-500 text-sm hover:text-red-700 flex items-center space-x-1"
+              >
+                <TrashIcon class="h-5 w-5" />
+                <span>Delete</span>
               </button>
             </span>
           </template>
@@ -108,7 +131,7 @@
               <button
                 style="background-color: #096eb4"
                 @click="closeDialog"
-                class="font-body inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-blue-500 focus:outline-none"
+                class="font-body inline-block px-6 py-2.5 bg-blue-400 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-blue-500 focus:outline-none"
               >
                 Close
               </button>
@@ -129,7 +152,7 @@ import createCasesForm from "../../../components/pages/cases/create.component.vu
 import { useCaseStore } from "../../../stores/case.store";
 import * as XLSX from "xlsx"; // Import the xlsx library for Excel handling
 import moment from "moment"; // Import Moment.js
-
+import { DocumentTextIcon } from "@heroicons/vue/outline";
 const $router = useRouter();
 const Swal = inject("Swal");
 const isUploadVisible = ref(false); // Flag to show the upload input field
@@ -137,16 +160,19 @@ const isUploadVisible = ref(false); // Flag to show the upload input field
 const isLoading = ref(false);
 const breadcrumbs = [
   { name: "Home", href: "/admin/dashboard", current: false },
-  { name: "Cases", href: "#", current: true },
+  { name: "CFM Cases", href: "#", current: true },
 ];
 const caseStore = useCaseStore();
 const cases = reactive([]);
 const columns = ref([
-  { label: "Agent Name", field: "submittedBy", sortable: true },
+  { label: "Intake Modality", field: "intakeModality", sortable: true },
+  { label: "Issue Description", field: "issueDescription", sortable: true },
+  { label: "Submitted By", field: "submittedBy", sortable: true },
   { label: "District", field: "district", sortable: true },
   { label: "Priority", field: "priority", sortable: true },
   { label: "Status", field: "status", sortable: true },
-  { label: "Date", field: "created", sortable: true },
+  { label: "Created", field: "created", sortable: true },
+
   { label: "Options", field: "id", sortable: false },
 ]);
 
@@ -246,7 +272,7 @@ const exportCases = () => {
   const blob = new Blob([buffer], { type: "application/octet-stream" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = "cases.xlsx"; // Filename for the exported file
+  link.download = "CFMcases.xlsx"; // Filename for the exported file
   link.click();
 };
 
@@ -363,5 +389,40 @@ const handleFileUpload = async (event) => {
   };
 
   reader.readAsBinaryString(file);
+};
+
+// Truncate long text with ellipses
+const truncateText = (text, maxLength) => {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + "...";
+  }
+  return text;
+};
+
+// Delete Case function with confirmation
+const deleteCase = async (caseId) => {
+  const result = await Swal.fire({
+    title: "Are you sure?",
+    text: "This action cannot be undone!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it!",
+  });
+
+  if (result.isConfirmed) {
+    try {
+      await caseStore.remove(caseId); // Adjust according to your case store method
+      getCases(); // Refresh the cases after deletion
+      Swal.fire("Deleted!", "The case has been deleted.", "success");
+    } catch (error) {
+      Swal.fire(
+        "Error!",
+        "Failed to delete the case: " + error.message,
+        "error"
+      );
+    }
+  }
 };
 </script>

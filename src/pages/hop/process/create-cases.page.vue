@@ -5,7 +5,7 @@
       <breadcrumb-widget v-bind:breadcrumbs="breadcrumbs" />
 
       <div class="mt-2 md:flex md:items-center md:justify-between mb-3">
-        <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
+        <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate">
           Create Monitoring Issue
         </h2>
       </div>
@@ -17,7 +17,7 @@
             <div class="col-span-6 sm:col-span-3">
               <label
                 for="district"
-                class="block text-sm font-medium text-gray-700"
+                class="block text-sm font-bold text-gray-700"
                 >District</label
               >
               <select
@@ -39,7 +39,7 @@
             <div class="col-span-6 sm:col-span-3">
               <label
                 for="cooperatingPartner"
-                class="block text-sm font-medium text-gray-700"
+                class="block text-sm font-bold text-gray-700"
                 >Cooperating Partner</label
               >
 
@@ -68,7 +68,7 @@
             <div class="col-span-6 sm:col-span-3">
               <label
                 for="reportingOrganization"
-                class="block text-sm font-medium text-gray-700"
+                class="block text-sm font-bold text-gray-700"
                 >Reporting Organization</label
               >
 
@@ -91,7 +91,7 @@
             <div class="col-span-6 sm:col-span-3">
               <label
                 for="responsibleCp"
-                class="block text-sm font-medium text-gray-700"
+                class="block text-sm font-bold text-gray-700"
                 >Responsible CP</label
               >
 
@@ -120,7 +120,7 @@
             <div class="col-span-6 sm:col-span-3">
               <label
                 for="processMonitoringActivity"
-                class="block text-sm font-medium text-gray-700"
+                class="block text-sm font-bold text-gray-700"
                 >Process Monitoring Activity</label
               >
               <input
@@ -135,7 +135,7 @@
             <div class="col-span-6 sm:col-span-3">
               <label
                 for="activity"
-                class="block text-sm font-medium text-gray-700"
+                class="block text-sm font-bold text-gray-700"
                 >Activity</label
               >
               <input
@@ -150,7 +150,7 @@
             <div class="col-span-6 sm:col-span-3">
               <label
                 for="subActivity"
-                class="block text-sm font-medium text-gray-700"
+                class="block text-sm font-bold text-gray-700"
                 >Subactivity</label
               >
               <input
@@ -165,7 +165,7 @@
             <div class="col-span-6 sm:col-span-3">
               <label
                 for="transferModality"
-                class="block text-sm font-medium text-gray-700"
+                class="block text-sm font-bold text-gray-700"
                 >Transfer Modality</label
               >
 
@@ -194,7 +194,7 @@
             <div class="col-span-6 sm:col-span-3">
               <label
                 for="macroCategory"
-                class="block text-sm font-medium text-gray-700"
+                class="block text-sm font-bold text-gray-700"
                 >Macro Category</label
               >
               <input
@@ -209,7 +209,7 @@
             <div class="col-span-6 sm:col-span-3">
               <label
                 for="monitoringDate"
-                class="block text-sm font-medium text-gray-700"
+                class="block text-sm font-bold text-gray-700"
                 >Monitoring Date</label
               >
               <input
@@ -225,7 +225,7 @@
             <div class="col-span-6 sm:col-span-3">
               <label
                 for="issueEncountered"
-                class="block text-sm font-medium text-gray-700"
+                class="block text-sm font-bold text-gray-700"
                 >Issue Encountered?</label
               >
               <select
@@ -243,7 +243,7 @@
               <div class="col-span-12">
                 <label
                   for="issueDescription"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Issue Description</label
                 >
                 <textarea
@@ -257,7 +257,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="issueSolvedOnField"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Issue Solved on Field?</label
                 >
                 <select
@@ -274,7 +274,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="proofOfIssue"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Proof of Issue</label
                 >
                 <input
@@ -289,7 +289,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="perpetrator"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Perpetrator's Name</label
                 >
                 <input
@@ -304,7 +304,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="perpetratorGender"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Perpetrator's Gender</label
                 >
                 <select
@@ -321,7 +321,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="incidentDate"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Incident Date</label
                 >
                 <input
@@ -336,7 +336,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="incidentTime"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Incident Time</label
                 >
                 <input
@@ -351,7 +351,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="incidentLocation"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Incident Location</label
                 >
                 <input
@@ -366,7 +366,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="incidentWitnesses"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Incident Witnesses</label
                 >
                 <input
@@ -381,7 +381,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="reportedToWfp"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Reported to WFP?</label
                 >
                 <select
@@ -400,7 +400,7 @@
             <button
               type="submit"
               style="background-color: #096eb4"
-              class="font-body inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-blue-700 focus:outline-none"
+              class="font-body inline-block px-6 py-2.5 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-blue-700 focus:outline-none"
             >
               Save Monitoring Issue
             </button>

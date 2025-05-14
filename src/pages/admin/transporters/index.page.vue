@@ -11,7 +11,7 @@
           <h2 class="
               font-bold
               leading-7
-              text-blue-400
+              text-[#096eb4]
               sm:text-2xl sm:truncate
             ">
             Transporters
@@ -31,7 +31,7 @@
                 rounded
                 shadow-sm
                 text-sm
-                font-medium
+                font-bold
                 text-white
                 bg-blue-400
                 hover:bg-blue-400
@@ -61,7 +61,7 @@
           <template #table-row="props">
             <span v-if="props.column.label == 'Options'">
               <router-link :to="{ path: '/admin/Transporter-management/manage/' + props.row.id }">
-                <a href="#" class="text-blue-400 text-sm hover:text-green-900">Manage </a>
+                <a href="#" class="text-[#096eb4] text-sm hover:text-green-900">Manage </a>
               </router-link>
             </span>
           </template>

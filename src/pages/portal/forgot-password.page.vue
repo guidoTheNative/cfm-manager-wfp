@@ -46,14 +46,14 @@
       <div class="mt-12 max-w-md mx-auto">
         <form @submit.prevent="handleResetPassword">
           <div class="mb-4">
-            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+            <label for="email" class="block text-sm font-bold text-gray-700">Email Address</label>
             <input type="email" id="email" v-model="email" required
               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="Enter your email address" />
           </div>
           <div class="mb-6">
             <button type="submit" style="background-color: #096eb4"
-              class="w-full py-2 px-4 bg-blue-400 text-white font-medium rounded-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              class="w-full py-2 px-4 bg-blue-400 text-white font-bold rounded-md hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Reset Password
             </button>
           </div>
@@ -63,7 +63,7 @@
         </p>
         <div class="mt-6 text-center">
           <router-link :to="{ name: 'portal-signin' }">
-            <a class="text-base font-medium text-blue-400 hover:text-gray-500 font-body">
+            <a class="text-base font-bold text-[#096eb4] hover:text-gray-500 font-body">
               Go back to sign in page<span aria-hidden="true"> &rarr;</span>
             </a>
           </router-link>

@@ -9,12 +9,12 @@
       </div>
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
+          <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate">
             Receipts
           </h2>
         </div>
         <button type="button"
-          class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+          class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
           @click="generateExcel">
           Export Data
         </button>
@@ -41,7 +41,7 @@
               <!-- Delete Button with Trash Icon -->
 
               <button @click="openDispatchDialog(props.row)"
-                class="text-blue-400 hover:text-blue-300 transition duration-300">
+                class="text-[#096eb4] hover:text-blue-300 transition duration-300">
                 <EyeIcon class="h-5 w-5 inline-block mr-1" />
                 View
               </button>

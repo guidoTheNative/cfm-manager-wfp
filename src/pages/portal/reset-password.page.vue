@@ -28,14 +28,14 @@
             <p class="text-sm text-gray-600 mb-2">
               A reset code has been sent to your email. Please enter the code below to reset your password.
             </p>
-            <label for="token" class="block text-sm font-medium text-gray-700">Reset Code</label>
+            <label for="token" class="block text-sm font-bold text-gray-700">Reset Code</label>
             <input type="text" id="token" v-model="token" required
               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="Enter your reset code" />
           </div>
 
           <div class="mb-4 relative">
-            <label for="new-password" class="block text-sm font-medium text-gray-700">New Password</label>
+            <label for="new-password" class="block text-sm font-bold text-gray-700">New Password</label>
             <input :type="showPassword ? 'text' : 'password'" id="new-password" v-model="newPassword" required
               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="Enter your new password" />
@@ -48,7 +48,7 @@
           </div>
           <div class="mb-6">
             <button type="submit" style="background-color: #096eb4"
-              class="w-full py-2 px-4 bg-blue-400 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              class="w-full py-2 px-4 bg-blue-400 text-white font-bold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Reset Password
             </button>
           </div>
@@ -58,7 +58,7 @@
         </p>
         <div class="mt-6 text-center">
           <router-link :to="{ name: 'portal-signin' }">
-            <a class="text-base font-medium text-blue-400 hover:text-gray-500 font-body">
+            <a class="text-base font-bold text-[#096eb4] hover:text-gray-500 font-body">
               Go back to sign in page<span aria-hidden="true"> &rarr;</span>
             </a>
           </router-link>

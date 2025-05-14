@@ -26,14 +26,14 @@
           <div class="mt-6 space-x-5">
             <button
               @click="onClear"
-              class="button text-base font-medium text-gray-600 hover:text-gray-500"
+              class="button text-base font-bold text-gray-600 hover:text-gray-500"
               >Clear data and go back <span aria-hidden="true">
                 &rarr;</span
               ></button
             >
             <router-link to="/">
               <a
-                class="text-base font-medium text-gray-600 hover:text-gray-500"
+                class="text-base font-bold text-gray-600 hover:text-gray-500"
                 >Go back home<span aria-hidden="true"> &rarr;</span></a
               >
             </router-link>
@@ -44,7 +44,7 @@
     <footer class="flex-shrink-0 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
       <nav class="flex justify-center space-x-4">
         <router-link to="/support">
-          <a href="https://apalis.io" class="text-sm font-medium text-gray-500 hover:text-gray-600"
+          <a href="https://apalis.io" class="text-sm font-bold text-gray-500 hover:text-gray-600"
             >Contact Support</a
           >
         </router-link>

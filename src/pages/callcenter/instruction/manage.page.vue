@@ -8,7 +8,7 @@
       </div>
       <div class="mt-2 md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate mb-3">
+          <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate mb-3">
             Manage Instruction
           </h2>
         </div>

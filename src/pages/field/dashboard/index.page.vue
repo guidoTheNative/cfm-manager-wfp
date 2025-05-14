@@ -7,7 +7,7 @@
       <!-- Header -->
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold text-3xl text-blue-400 py-4">Cases Overview</h2>
+          <h2 class="font-bold text-3xl text-[#096eb4] py-4">Cases Overview</h2>
         </div>
         <!-- Filters -->
         <div class="flex space-x-4">
@@ -57,7 +57,7 @@
    
         <!-- Cases by Category Card -->
         <div class="shadow rounded-lg p-4 bg-white">
-          <h3 class="text-lg font-medium text-yellow-600">Cases by Category</h3>
+          <h3 class="text-lg font-bold text-yellow-600">Cases by Category</h3>
           <ul class="mt-2">
             <li
               v-for="(item, index) in flattenedData"
@@ -71,7 +71,7 @@
         </div>
 
         <div class="shadow rounded-lg p-4 bg-white">
-          <h3 class="text-lg font-medium text-purple-600">Cases by Priority</h3>
+          <h3 class="text-lg font-bold text-purple-600">Cases by Priority</h3>
           <ul class="mt-2">
             <li
               v-for="(item, index) in flattenedPriorityData"
@@ -86,7 +86,7 @@
 
         <!-- Cases by Status Card -->
         <div class="shadow rounded-lg p-4 bg-white">
-          <h3 class="text-lg font-medium text-purple-600">Cases by Status</h3>
+          <h3 class="text-lg font-bold text-purple-600">Cases by Status</h3>
           <ul class="mt-2">
             <li
               v-for="(item, index) in flattenedStatusData"
@@ -101,7 +101,7 @@
 
         <!-- Cases by Month Card -->
         <div class="shadow rounded-lg p-4 bg-white">
-          <h3 class="text-lg font-medium text-teal-600">Cases by Month</h3>
+          <h3 class="text-lg font-bold text-teal-600">Cases by Month</h3>
           <ul class="mt-2">
             <li
               v-for="(item, index) in flattenedMonthData"

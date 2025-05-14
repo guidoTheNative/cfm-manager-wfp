@@ -9,12 +9,12 @@
       </div>
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
+          <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate">
             Requested Commodities
           </h2>
         </div>
         <button type="button"
-          class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+          class="font-body inline-block px-6 py-2.5 bg-gray-500 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
           @click="generateExcel">
           Export Data
         </button>
@@ -69,7 +69,7 @@ const user = ref(sessionStore.getUser);
 
 const colorMap = reactive({
   Maize: "inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-bold bg-purple-100 text-purple-500",
-  Rice: "inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-bold bg-blue-100 text-blue-400",
+  Rice: "inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-bold bg-blue-100 text-[#096eb4]",
   Beans: "inline-flex items-center px-2.5 py-0.5 rounded-full text-md font-bold bg-green-100 text-green-500",
   // Add more commodities and their respective colors here
 });

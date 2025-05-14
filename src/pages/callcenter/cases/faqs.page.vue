@@ -8,7 +8,7 @@
 
       <div class="mt-2 md:flex md:items-center md:justify-between mb-3">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
+          <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate">
             Create FAQs
           </h2>
         </div>
@@ -18,7 +18,7 @@
 
       <!-- FAQ List with Pagination -->
       <div class="mt-6 bg-white shadow-0 rounded-lg p-6">
-        <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
+        <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate">
           FAQ List
         </h2>
 
@@ -30,7 +30,7 @@
           >
             <button
               @click="toggleAccordion(index)"
-              class="w-full text-left px-4 py-2 bg-gray-100 text-gray-700 font-medium flex justify-between items-center"
+              class="w-full text-left px-4 py-2 bg-gray-100 text-gray-700 font-bold flex justify-between items-center"
             >
               <!-- Left-Aligned Text -->
               <div class="flex-1">

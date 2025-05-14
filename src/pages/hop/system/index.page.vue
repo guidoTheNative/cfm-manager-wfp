@@ -9,7 +9,7 @@
       </div>
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
+          <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate">
             Resource Panel
           </h2>
         </div>
@@ -17,11 +17,11 @@
 
       <!-- Grouped Tiles -->
       <div v-for="group in optionGroups" :key="group.title" class="mt-2">
-        <h3 class="text-lg text-blue-400 font-bold">{{ group.title }}</h3>
+        <h3 class="text-lg text-[#096eb4] font-bold">{{ group.title }}</h3>
         <div class="flex flex-wrap justify-center md:justify-start -mx-2 mt-4">
           <div v-for="option in group.options" :key="option.label" class="p-2 md:w-1/3 lg:w-1/5">
             <router-link :to="option.path" class="block">
-              <div class="flex flex-col items-center justify-center bg-[#096eb4] rounded-lg p-4 text-white shadow-xl cursor-pointer hover:bg-blue-400 transition m-2">
+              <div class="flex flex-col items-center justify-center bg-[#096eb4] rounded-lg p-4 text-white font-bold shadow-xl cursor-pointer hover:bg-blue-400 transition m-2">
                 <component :is="option.icon" class="h-6 w-6 mb-2" />
                 <span>{{ option.label }}</span>
               </div>

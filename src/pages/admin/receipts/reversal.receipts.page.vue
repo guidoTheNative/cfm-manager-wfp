@@ -9,7 +9,7 @@
         </div>
         <div class="md:flex md:items-center md:justify-between">
           <div class="flex-1 min-w-0">
-            <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
+            <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate">
               Receipts Reversals
             </h2>
           </div>
@@ -66,7 +66,7 @@
   
   
                 <button @click="openDispatchDialog(props.row)"
-                  class="text-blue-400 hover:text-blue-300 transition duration-300">
+                  class="text-[#096eb4] hover:text-blue-300 transition duration-300">
                   <EyeIcon class="h-5 w-5 inline-block ml-4 mr-1" />
                   View Receipt
                 </button>
@@ -107,7 +107,7 @@
                 <!-- Delete Button with Trash Icon -->
   
                 <button @click="openDispatchDialogEmer(props.row)"
-                  class="text-blue-400 hover:text-blue-300 transition duration-300">
+                  class="text-[#096eb4] hover:text-blue-300 transition duration-300">
                   <EyeIcon class="h-5 w-5 inline-block mr-3" />
                   View Receipt
                 </button>

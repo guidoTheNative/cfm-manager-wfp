@@ -1,7 +1,7 @@
 <template>
   <div>
     <button type="button" style="background-color: #248cd6;"
-      class="font-body inline-flex items-center px-6 py-2.5 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
+      class="font-body inline-flex items-center px-6 py-2.5 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize"
       @click="open = true">
       <PlusIcon class="h-5 w-5 mr-2" />
       Create a loading plan
@@ -26,7 +26,7 @@
               class="font-body flex text-base text-left transform transition w-full md:inline-block md:max-w-2xl md:px-4 md:my-8 md:align-middle lg:max-w-2xl">
               <div
                 class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-white">
-                <h5 class="font-body text-md font-bold leading-normal text-blue-400" id="formModalLabel">
+                <h5 class="font-body text-md font-bold leading-normal text-[#096eb4]" id="formModalLabel">
                   Create Loading Plan
                 </h5>
                 <button type="button"
@@ -122,7 +122,7 @@
 
 
 
-                       <span class="text-md text-blue-400 mb-5 text-italic text-lg"
+                       <span class="text-md text-[#096eb4] mb-5 text-italic text-lg"
                       v-if="reports.commodityId && reports.warehouseId && reports.activityId && availableBalance !== 'Not Available'"> Commodity Balance: {{
                         availableBalance
                       }}</span>
@@ -140,7 +140,7 @@
                   <div class="relative flex items-center mb-5">
                     <hr class="w-full border-gray-300" />
                     <span
-                      class="absolute left-1/2 transform -translate-x-1/2 bg-white px-4 text-sm font-semibold text-blue-400">
+                      class="absolute left-1/2 transform -translate-x-1/2 bg-white px-4 text-sm font-semibold text-[#096eb4]">
                       Stock Prepositioning
                     </span>
                   </div>
@@ -197,7 +197,7 @@
                   <!--   <div class="col-span-6 sm:col-span-3">
                     <label for="project" class="block text-sm font-bold text-gray-700 mt-5">Project</label>
 
-                    <label for="project" class="block text-xs text-italic font-medium text-gray-700 mt-5">Lean Season Response</label>
+                    <label for="project" class="block text-xs text-italic font-bold text-gray-700 mt-5">Lean Season Response</label>
 
                   <select id="project" name="project" v-model="reports.projectId" autocomplete="project-name"
                       class="mt-1 focus:ring-gray-500 focus:border-blue-300 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -251,7 +251,7 @@
               </div>
               <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <button @click="onSubmit"
-                  class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-400 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                  class="inline-flex items-center px-3 py-2 text-sm font-bold text-white bg-blue-400 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
                   <CheckIcon class="h-5 w-5 mr-2" />
                   Submit Loading Plan
                 </button>

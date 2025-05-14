@@ -3,7 +3,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900 capitalize">
+          <h3 class="text-lg font-bold leading-6 text-gray-900 capitalize">
             Profile
           </h3>
           <p class="mt-1 text-sm text-gray-500">
@@ -27,7 +27,7 @@
                   <div class="col-span-6 sm:col-span-3" v-if="roleId !== 'PROVIDER1'">
                     <label
                       for="first-name"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >First name</label
                     >
                     <input
@@ -46,7 +46,7 @@
                   <div class="col-span-6 sm:col-span-3" v-if="roleId !== 'PROVIDER1'" >
                     <label
                       for="last-name"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Last name</label
                     >
                     <input
@@ -66,7 +66,7 @@
                   <div class="col-span-6 sm:col-span-3" v-if="roleId == 'PROVIDER1'" >
                     <label
                       for="nameOfOrg"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Business Name</label
                     >
                     <input
@@ -98,7 +98,7 @@
                   <div class="col-span-6 sm:col-span-4">
                     <label
                       for="email-address"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Email address</label
                     >
                     <input
@@ -116,7 +116,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="phone-number"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Phone</label
                     >
                     <input
@@ -137,7 +137,7 @@
               <div class="px-4 py-3 text-right sm:px-6">
                 <button
                   type="submit"
-                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                 >
                   Update
                 </button>
@@ -151,7 +151,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">
+          <h3 class="text-lg font-bold leading-6 text-gray-900">
             Account status and access type
           </h3>
           <p class="mt-1 text-sm text-gray-500">
@@ -170,7 +170,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="user-role"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                     >
                       Role</label
                     >
@@ -200,7 +200,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="status"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                     >
                       Status</label
                     >
@@ -224,7 +224,7 @@
               <div class="px-4 py-3 text-right sm:px-6">
                 <button
                   type="submit"
-                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                 >
                   Update
                 </button>
@@ -238,7 +238,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">
+          <h3 class="text-lg font-bold leading-6 text-gray-900">
             Password and security
           </h3>
           <p class="mt-1 text-sm text-gray-500">
@@ -249,7 +249,7 @@
           <div class="px-4 py-3 text-right sm:px-6">
             <button
               type="button"
-              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-bold text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
               @click="toggle = true"
               v-if="toggle == false"
             >
@@ -259,7 +259,7 @@
             <button
               type="button"
               v-if="toggle == true"
-              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-bold text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
               @click="toggle = false"
             >
               Close
@@ -268,13 +268,13 @@
         </div>
 
         <div class="md:col-span-1" v-if="toggle == true">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">
+          <h3 class="text-lg font-bold leading-6 text-gray-900">
             New Password
           </h3>
           <div class="col-span-6 sm:col-span-3">
             <label
               for="password"
-              class="block text-sm font-medium text-gray-700"
+              class="block text-sm font-bold text-gray-700"
               >Password</label
             >
             <input
@@ -287,7 +287,7 @@
             />
             <button
               type="submit"
-              class="inline-flex justify-center py-2 px-4 mt-3 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              class="inline-flex justify-center py-2 px-4 mt-3 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
               @click="changepassword()"
             >
               Update
@@ -303,7 +303,7 @@
     >
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">
+          <h3 class="text-lg font-bold leading-6 text-gray-900">
             Delete account
           </h3>
           <p class="mt-1 text-sm text-gray-500">
@@ -314,7 +314,7 @@
           <div class="px-4 py-3 text-right sm:px-6">
             <button
               type="button"
-              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-red-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-bold text-red-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
               @click="deleteAcc()"
             >
               Delete user

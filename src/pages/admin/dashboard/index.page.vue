@@ -6,8 +6,10 @@
 
       <!-- Header -->
       <div class="md:flex md:items-center md:justify-between">
-        <h2 class="font-bold text-3xl text-blue-400 py-4">Dashboard</h2>
+        <h2 class="font-bold text-3xl text-[#096eb4] py-4">Dashboard</h2>
         <!-- Filters -->
+
+ 
         <div class="flex space-x-4">
           <select
             v-model="selectedPriority"
@@ -54,10 +56,10 @@
             v-for="tab in tabs"
             :key="tab.id"
             @click="activeTab = tab.id"
-            class="py-4 px-6 border-b-2 font-medium text-gray-600 focus:outline-none"
+            class="py-4 px-6 border-b-2 font-bold text-gray-600 focus:outline-none"
             :class="
               activeTab === tab.id
-                ? 'border-blue-500 text-blue-600'
+                ? 'border-blue-500 text-[#096eb4]'
                 : 'border-transparent hover:text-gray-700'
             "
           >
@@ -70,7 +72,7 @@
       <div class="mt-4">
         <!-- CFM Dashboard -->
         <div v-if="activeTab === 'cfm'" class="p-4">
-          <h3 class="text-lg font-medium text-blue-600">
+          <h3 class="text-lg font-bold text-[#096eb4]">
             Community Feedback Mechanism (CFM)
           </h3>
 
@@ -86,21 +88,21 @@
                   class="rounded-lg p-4 flex items-center justify-between bg-white hover:bg-white transition duration-200"
                 >
                   <div>
-                    <h3 class="text-lg font-medium text-blue-600">
+                    <h3 class="text-lg font-bold text-[#096eb4]">
                       Pending Actions
                     </h3>
                     <p class="text-2xl font-bold text-blue-600">
                       {{ stats.pendingActions }}
                     </p>
                   </div>
-                  <i class="fas fa-tasks text-4xl text-blue-400"></i>
+                  <i class="fas fa-tasks text-4xl text-[#096eb4]"></i>
                 </div>
               </router-link>
-              <i class="fas fa-tasks text-4xl text-blue-400"></i>
+              <i class="fas fa-tasks text-4xl text-[#096eb4]"></i>
             </div>
 
             <div class="shadow rounded-lg p-4 bg-white">
-              <h3 class="text-lg font-medium text-green-600">
+              <h3 class="text-lg font-bold text-green-600">
                 Cases by Category
               </h3>
               <ul class="mt-2">
@@ -137,7 +139,7 @@
             </div>
 
             <div class="shadow rounded-lg p-4 bg-white">
-              <h3 class="text-lg font-medium text-yellow-600">
+              <h3 class="text-lg font-bold text-yellow-600">
                 Cases by Priority
               </h3>
               <ul class="mt-2">
@@ -174,7 +176,7 @@
             </div>
 
             <div class="shadow rounded-lg p-4 bg-white">
-              <h3 class="text-lg font-medium text-red-600">Cases by Status</h3>
+              <h3 class="text-lg font-bold text-red-600">Cases by Status</h3>
               <ul class="mt-2">
                 <li
                   v-for="(count, status) in paginatedCasesByStatus"
@@ -209,7 +211,7 @@
             </div>
 
             <div class="shadow rounded-lg p-4 bg-white">
-              <h3 class="text-lg font-medium text-purple-600">
+              <h3 class="text-lg font-bold text-purple-600">
                 Cases by Month
               </h3>
 
@@ -254,7 +256,7 @@
           v-if="activeTab === 'processMonitoring'"
           class="shadow rounded-lg p-4 bg-white"
         >
-          <h3 class="text-lg font-medium text-green-600">Process Monitoring</h3>
+          <h3 class="text-lg font-bold text-[#096eb4]">Process Monitoring</h3>
           <ul class="mt-2">
             <li
               v-for="(count, process) in processMonitoringData"

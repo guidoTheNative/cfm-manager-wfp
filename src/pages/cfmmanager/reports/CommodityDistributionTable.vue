@@ -11,7 +11,7 @@
         <div class="overflow-x-auto relative bg-white p-6 rounded-lg shadow-lg mt-4">
             <div class="flex items-center space-x-4 mb-4" :class="{ 'hidden': screenshotMode }">
                 <div class="flex flex-col">
-                    <label for="district" class="text-sm font-medium text-gray-700 mb-2">District</label>
+                    <label for="district" class="text-sm font-bold text-gray-700 mb-2">District</label>
                     <select id="district" v-model="selectedDistrict"
                         class="focus:ring-gray-500 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
                         <option value="">All Districts</option>
@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="flex flex-col">
-                    <label for="commodity" class="text-sm font-medium text-gray-700 mb-2">Commodity</label>
+                    <label for="commodity" class="text-sm font-bold text-gray-700 mb-2">Commodity</label>
                     <select id="commodity" v-model="selectedCommodity"
                         class="focus:ring-gray-500 focus:border-blue-300 block shadow-sm sm:text-sm border-gray-300 rounded-md">
                         <option value="">All Commodities</option>
@@ -34,12 +34,12 @@
 
                 <div class="flex items-end mt-4">
                     <button @click="resetFilters"
-                        class="bg-gray-200 hover:bg-gray-300 text-black font-medium py-1 px-2 text-sm rounded">
+                        class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-1 px-2 text-sm rounded">
                         Reset
                     </button>
                     <div class="relative inline-block text-left mx-4">
                 <button @click.prevent="exportToExcel"
-                    class="inline-flex justify-center rounded-md border p-3 border-none shadow-sm px-2 py-1 bg-green-500 text-white text-md font-medium hover:bg-green-600 focus:outline-none"
+                    class="inline-flex justify-center rounded-md border p-3 border-none shadow-sm px-2 py-1 bg-green-500 text-white text-md font-bold hover:bg-green-600 focus:outline-none"
                     id="menu-button" aria-expanded="true" aria-haspopup="true">
                     Export
                 </button>
@@ -51,31 +51,31 @@
                 <thead class="bg-blue-50">
                     <tr>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Emergency/Disaster
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             District
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Commodity
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Required (Mt)
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Distributed (Mt)
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Balance (Mt)
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             % Distributed
                         </th>
                     </tr>
@@ -100,14 +100,14 @@
                     <ChevronLeftIcon class="w-5 h-5 mr-2" />
                     Prev
                 </button>
-                <span class="px-4 py-2 font-body font-medium">Page {{ currentPage }} of {{ totalPages }}</span>
+                <span class="px-4 py-2 font-body font-bold">Page {{ currentPage }} of {{ totalPages }}</span>
                 <button @click="nextPage" :disabled="currentPage >= totalPages"
                     class="flex items-center px-4 py-2 mx-1 text-gray-600 bg-white border border-gray-300 rounded hover:bg-gray-100 disabled:opacity-50">
                     <ChevronRightIcon class="w-5 h-5 mr-2" />
                     Next
                 </button>
 
-                <span class="mr-2 font-medium mt-2">Rows per page:</span>
+                <span class="mr-2 font-bold mt-2">Rows per page:</span>
                 <select v-model="pageSize" class="border-gray-300 rounded-md">
                     <option value="5">5</option>
                     <option value="10">10</option>

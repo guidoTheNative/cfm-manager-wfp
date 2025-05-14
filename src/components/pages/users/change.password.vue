@@ -6,7 +6,7 @@
     <div class="bg-white shadow-md px-6 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">Password and Security</h3>
+          <h3 class="text-lg font-bold leading-6 text-gray-900">Password and Security</h3>
           <p class="mt-1 text-sm text-gray-500">Change your account password securely.</p>
         </div>
         <div class="mt-5 md:mt-0 md:col-span-2">
@@ -16,7 +16,7 @@
                 <div class="grid grid-cols-6 gap-6">
                   <!-- Old Password Field -->
                   <div class="col-span-6 sm:col-span-3 relative">
-                    <label for="old-password" class="block text-sm font-medium text-gray-700">Old Password</label>
+                    <label for="old-password" class="block text-sm font-bold text-gray-700">Old Password</label>
                     <input :type="showOldPassword ? 'text' : 'password'" v-model="oldPassword" name="old-password"
                       id="old-password" autocomplete="new-password"
                       class="mt-1 focus:ring-gray-500 focus:border-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
@@ -36,7 +36,7 @@
 
                   <!-- New Password Field -->
                   <div class="col-span-6 sm:col-span-3 relative">
-                    <label for="new-password" class="block text-sm font-medium text-gray-700">New Password</label>
+                    <label for="new-password" class="block text-sm font-bold text-gray-700">New Password</label>
                     <input :type="showNewPassword ? 'text' : 'password'" v-model="newPassword" name="new-password"
                       id="new-password" autocomplete="new-password"
                       class="mt-1 focus:ring-gray-500 focus:border-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
@@ -57,7 +57,7 @@
               </div>
               <div class="px-4 py-3 text-right sm:px-6">
                 <button type="submit"
-                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600">
+                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600">
                   Update Password
                 </button>
               </div>

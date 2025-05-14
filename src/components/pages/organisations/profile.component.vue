@@ -12,7 +12,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="first-name"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >First name</label
                 >
                 <input
@@ -31,7 +31,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="last-name"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Last name</label
                 >
                 <input
@@ -50,7 +50,7 @@
               <div class="col-span-6 sm:col-span-4">
                 <label
                   for="email-address"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Email address</label
                 >
                 <input
@@ -68,7 +68,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="phone-number"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                   >Phone</label
                 >
                 <input
@@ -89,7 +89,7 @@
               <div class="col-span-6 sm:col-span-2">
                 <label
                   for="user-role"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                 >
                   User role</label
                 >
@@ -119,7 +119,7 @@
               <div class="col-span-6 sm:col-span-3">
                 <label
                   for="status"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-bold text-gray-700"
                 >
                   Account Status</label
                 >
@@ -142,7 +142,7 @@
           <div class="px-4 py-3 text-right sm:px-6">
             <button
               type="submit"
-              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
             >
               Update
             </button>

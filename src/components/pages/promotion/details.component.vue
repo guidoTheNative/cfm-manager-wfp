@@ -3,7 +3,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6 font-body ">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900 capitalize">
+          <h3 class="text-lg font-bold leading-6 text-gray-900 capitalize">
             Details
           </h3>
           <p class="mt-1 text-sm text-gray-500">
@@ -23,7 +23,7 @@
                   <div class="col-span-6 sm:col-span-6">
                     <label
                       for="name"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Name</label
                     >
                     <input
@@ -42,7 +42,7 @@
           <!--          <div class="col-span-6 sm:col-span-6" v-if="listingTypesId !== 'TYPE3'">
                       <label
                         for="Price"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block text-sm font-bold text-gray-700"
                         >Price (MWK)</label
                       >
                       <input
@@ -61,7 +61,7 @@
  <div class="col-span-6 sm:col-span-6" v-if="listingTypesId !== 'TYPE3'">
   <label
     for="location_details"
-    class="block text-sm font-medium text-gray-700"
+    class="block text-sm font-bold text-gray-700"
     >Short Description</label
   >
   <input
@@ -77,7 +77,7 @@
                   <div class="col-span-6 sm:col-span-6" v-if="listingTypesId !== 'TYPE3'">
                     <label
                       for="description"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                     >
                       Description
                     </label>
@@ -103,7 +103,7 @@
                   <!-- <div class="col-span-6 sm:col-span-4">
                     <label
                       for="publication-datee"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Publication date</label
                     >
 
@@ -151,7 +151,7 @@
               <div class="px-4 py-3 text-right sm:px-6">
                 <button
                   type="submit"
-                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                 >
                   Update
                 </button>

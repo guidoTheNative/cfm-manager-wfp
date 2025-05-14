@@ -12,7 +12,7 @@
 
             <!-- Export Button -->
             <button @click="exportToExcel"
-                class="ml-2 px-3 py-1.5 bg-green-500 text-white font-medium rounded-md shadow-md hover:bg-green-600">
+                class="ml-2 px-3 py-1.5 bg-green-500 text-white font-bold rounded-md shadow-md hover:bg-green-600">
                 Export
             </button>
 
@@ -23,21 +23,21 @@
             <table class="min-w-full divide-y divide-gray-200 text-sm">
                 <thead class="bg-blue-50">
                     <tr>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ATC
+                        <th class="px-3 py-2 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">ATC
                             Number</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th class="px-3 py-2 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             District</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th class="px-3 py-2 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Handled By</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th class="px-3 py-2 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Activity</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th class="px-3 py-2 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Transporter</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th class="px-3 py-2 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Quantity (Mt)</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total
+                        <th class="px-3 py-2 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Total
                             Dispatched (Mt)</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th class="px-3 py-2 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                             Received per Delivery Note</th>
                     </tr>
                 </thead>
@@ -84,7 +84,7 @@
                     class="px-3 py-1.5 text-gray-600 bg-white border border-gray-300 rounded hover:bg-gray-100">
                     Prev
                 </button>
-                <span class="px-3 py-1.5 font-medium">Page {{ currentPage }} of {{ totalPages }}</span>
+                <span class="px-3 py-1.5 font-bold">Page {{ currentPage }} of {{ totalPages }}</span>
                 <button @click="nextPage" :disabled="currentPage >= totalPages"
                     class="px-3 py-1.5 text-gray-600 bg-white border border-gray-300 rounded hover:bg-gray-100">
                     Next

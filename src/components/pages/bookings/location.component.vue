@@ -3,7 +3,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">Locations</h3>
+          <h3 class="text-lg font-bold leading-6 text-gray-900">Locations</h3>
           <p class="mt-1 text-sm text-gray-500">
             Note : Delete all locations added to change the location Type in
             Document Details
@@ -16,19 +16,19 @@
                 <tr>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    class="text-sm font-bold text-gray-900 px-6 py-4 text-left"
                   >
                     #
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    class="text-sm font-bold text-gray-900 px-6 py-4 text-left"
                   >
                     Name
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    class="text-sm font-bold text-gray-900 px-6 py-4 text-left"
                   >
                     Options
                   </th>
@@ -42,7 +42,7 @@
                   class="border-b"
                 >
                   <td
-                    class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                    class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900"
                   >
                     {{ index + 1 }}
                   </td>
@@ -78,7 +78,7 @@
               v-show="!open"
               @click="open = true"
               type="button"
-              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
             >
               Add
             </button>
@@ -97,7 +97,7 @@
                         <div class="col-span-5 sm:col-span-5">
                           <label
                             for="documentType"
-                            class="block text-sm font-medium text-gray-700"
+                            class="block text-sm font-bold text-gray-700"
                           >
                             Location</label
                           >
@@ -146,7 +146,7 @@
                 <div class="px-4 py-3 text-right sm:px-6">
                   <button
                     type="submit"
-                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                   >
                     Add
                   </button>

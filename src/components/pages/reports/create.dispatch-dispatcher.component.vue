@@ -22,9 +22,9 @@
 
                   <!-- Left Side: Form for Dispatch Creation -->
                   <div class="flex-grow p-4 bg-white">
-                    <h2 class="text-lg font-semibold mb-2 text-blue-400">Create a Dispatch</h2>
+                    <h2 class="text-lg font-semibold mb-2 text-[#096eb4]">Create a Dispatch</h2>
 
-                    <h2 class="text-xs font-semibold mb-5 text-blue-400"> System Delivery Note:
+                    <h2 class="text-xs font-semibold mb-5 text-[#096eb4]"> System Delivery Note:
                       {{ dispatch.DeliveryNote }}</h2>
 
 
@@ -63,7 +63,7 @@
                     <hr class="my-4">
 
 
-                    <h2 class="text-lg font-semibold mb-2 text-blue-400">Driver Details</h2>
+                    <h2 class="text-lg font-semibold mb-2 text-[#096eb4]">Driver Details</h2>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
@@ -95,12 +95,12 @@
                     </div>
 
 
-                    <h2 class="text-lg font-semibold mb-1 text-blue-400 mt-2" v-if="!loadingPlan?.IsPrepositioned">Other
+                    <h2 class="text-lg font-semibold mb-1 text-[#096eb4] mt-2" v-if="!loadingPlan?.IsPrepositioned">Other
                       Dispatch Details <p class="text-xs italic text-gray-400 mb-2">These details are optional</p>
                     </h2>
 
                     <div v-if="loadingPlan?.IsPrepositioned" class="mt-4">
-                      <h2 class="text-lg font-semibold text-blue-400 mb-3">Stock Prepositioning Details</h2>
+                      <h2 class="text-lg font-semibold text-[#096eb4] mb-3">Stock Prepositioning Details</h2>
                       <div class="text-sm text-gray-500">
                         <p class="italic">
                           <span class="font-semibold text-gray-700">From:</span> {{ loadingPlan?.warehouseFrom }}
@@ -140,11 +140,11 @@
 
                     <div class="flex justify-end mt-4">
                       <button @click="resetDispatch()"
-                        class="px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                        class="px-3 py-2 border border-transparent text-sm font-bold rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none">
                         Reset
                       </button>
                       <button @click="submitDispatch()" :disabled="loading"
-                        class="inline-flex ml-3 items-center px-3 py-2 text-sm font-medium text-white bg-blue-400 rounded-md hover:bg-blue-700 focus:outline-none">
+                        class="inline-flex ml-3 items-center px-3 py-2 text-sm font-bold text-white bg-blue-400 rounded-md hover:bg-blue-700 focus:outline-none">
                         <CheckCircleIcon class="h-5 w-5 mr-1" />
                         <span v-if="!loading">Submit Dispatch</span>
                         <span v-else>
@@ -161,7 +161,7 @@
 
                   <!-- Right Side: Loading Plan Details -->
                   <div class="flex-initial w-96 p-4 bg-white">
-                    <h2 class="text-xl font-semibold mb-4 text-blue-400">Loading Plan Details - ID
+                    <h2 class="text-xl font-semibold mb-4 text-[#096eb4]">Loading Plan Details - ID
                       {{ loadingPlan.id }}</h2>
                     <!-- ... Loading Plan Details ... -->
 
@@ -239,7 +239,7 @@
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse">
               <button type="button"
-                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 sm:w-auto sm:text-sm"
+                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white text-base font-bold text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 sm:w-auto sm:text-sm"
                 @click="closeDialog">
                 Close
               </button>

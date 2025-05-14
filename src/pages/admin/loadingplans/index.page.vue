@@ -9,14 +9,14 @@
       </div>
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-          <h2 class="font-bold leading-7 text-blue-400 sm:text-2xl sm:truncate">
+          <h2 class="font-bold leading-7 text-[#096eb4] sm:text-2xl sm:truncate">
             Loading Plans
           </h2>
         </div>
 
         <!-- Export Data Button -->
         <button type="button"
-          class="font-body inline-flex items-center px-6 py-2.5 bg-gray-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-700 transition duration-150 ease-in-out capitalize"
+          class="font-body inline-flex items-center px-6 py-2.5 bg-gray-500 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-gray-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 active:bg-gray-700 transition duration-150 ease-in-out capitalize"
           @click="generateExcel()">
           <i class="fas fa-file-export mr-2"></i> <!-- Icon (Font Awesome used as an example) -->
           Export Data
@@ -25,7 +25,7 @@
 
         <!-- Import Excel Button -->
         <button type="button"
-          class="font-body inline-flex items-center px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-700 transition duration-150 ease-in-out capitalize ml-4"
+          class="font-body inline-flex items-center px-6 py-2.5 bg-blue-400 text-white font-bold text-xs leading-tight rounded shadow-md hover:bg-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-700 transition duration-150 ease-in-out capitalize ml-4"
           @click="triggerFileInput()">
           <i class="fas fa-file-import mr-2"></i> <!-- Icon (Font Awesome used as an example) -->
           Import Data
@@ -56,7 +56,7 @@
 
 
               <button type="button" @click="openDispatchDialog(props.row)"
-                class="font-heading inline-flex items-center px-6 py-2.5 border border-blue-400 text-blue-400 font-bold text-xs rounded shadow-md hover:bg-blue-300 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:border-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize">
+                class="font-heading inline-flex items-center px-6 py-2.5 border border-blue-400 text-[#096eb4] font-bold text-xs rounded shadow-md hover:bg-blue-300 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:border-blue-400 active:shadow-lg transition duration-100 ease-in-out capitalize">
                 <TruckIcon class="h-5 w-5 mr-2" />
                 Dispatch
               </button>

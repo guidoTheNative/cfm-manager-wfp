@@ -6,7 +6,7 @@
         px-3
         py-2
         text-sm
-        font-medium
+        font-bold
         text-green-600
         hover:text-green-900
         bg-white
@@ -39,7 +39,7 @@
               class="font-body flex text-base text-left transform transition w-full md:inline-block md:max-w-2xl md:px-4 md:my-8 md:align-middle lg:max-w-2xl">
               <div
                 class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-white">
-                <h5 class="text-md font-medium leading-normal text-gray-800">
+                <h5 class="text-md font-bold leading-normal text-gray-800">
                   Rejected Instruction
                 </h5>
                 <button type="button" @click="closeDialog"
@@ -64,20 +64,20 @@
       instruction.RejectionComment }}</p>
 
                     <!-- Table for Goods List -->
-                    <h3 class="text-lg font-semibold text-blue-400 mb-3">List of Goods Required: </h3>
+                    <h3 class="text-lg font-semibold text-[#096eb4] mb-3">List of Goods Required: </h3>
 
                     <div>
                       <table class="min-w-full bg-white border border-0 rounded-lg">
                         <thead class="bg-blue-100">
                           <tr>
                             <th
-                              class="py-2 px-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b">
+                              class="py-2 px-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider border-b">
                               #</th>
                             <th
-                              class="py-2 px-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b">
+                              class="py-2 px-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider border-b">
                               Commodity</th>
                             <th
-                              class="py-2 px-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-b">
+                              class="py-2 px-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider border-b">
                               Quantity</th>
 
                           </tr>
@@ -105,7 +105,7 @@
 
                 <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse">
                   <button @click="closeDialog"
-                    class="mr-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">Close</button>
+                    class="mr-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">Close</button>
                   <button type="button" v-if="!isRejecting" @click="gotoEditInstruction(instruction.id)"
                     class="px-4 py-2 mr-3 bg-green-500 text-white rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 inline-flex items-center">
                     <CheckCircleIcon class="h-5 w-5 mr-1" />

@@ -20,7 +20,7 @@
             class="font-body flex text-base text-left transform transition w-full md:inline-block md:max-w-2xl md:px-4 md:my-8 md:align-middle lg:max-w-2xl">
             <div
               class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-white">
-              <h5 class="font-body text-md font-bold leading-normal text-blue-400" id="formModalLabel">
+              <h5 class="font-body text-md font-bold leading-normal text-[#096eb4]" id="formModalLabel">
                 Update Dispatch
               </h5>
               <!-- <button type="button"
@@ -32,7 +32,7 @@
               <div class="grid grid-cols-6 gap-2">
 
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="deliverynote" class="block text-sm font-medium text-gray-700">Delivery Note</label>
+                  <label for="deliverynote" class="block text-sm font-bold text-gray-700">Delivery Note</label>
 
                   <input type="text" name="deliverynote" v-model="Dispatch.DeliveryNote" id="deliverynote"
                     autocomplete="deliverynote" readonly
@@ -43,7 +43,7 @@
 
 
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="FinalDestinationPoint" class="block text-sm font-medium text-gray-700">Final Destination
+                  <label for="FinalDestinationPoint" class="block text-sm font-bold text-gray-700">Final Destination
                     Point</label>
 
                   <input type="text" name="FinalDestinationPoint" v-model="Dispatch.FinalDestinationPoint"
@@ -57,14 +57,14 @@
               <div class="grid grid-cols-6 gap-2">
 
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="NoBags" class="block text-sm font-medium text-gray-700 mb-2  mt-2">Number of Bags</label>
+                  <label for="NoBags" class="block text-sm font-bold text-gray-700 mb-2  mt-2">Number of Bags</label>
                   <input type="number" name="NoBags" @keypress="validateNumberInput" v-model="Dispatch.NoBags"
                     id="NoBags" autocomplete="NoBags"
                     class="mt-2 focus:ring-blue-400 focus:border-blue-400 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                 </div>
 
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="Quantity" class="block text-sm font-medium text-gray-700 mb-2  mt-2">Tonnage</label>
+                  <label for="Quantity" class="block text-sm font-bold text-gray-700 mb-2  mt-2">Tonnage</label>
                   <input type="number" name="Quantity" :value="computedTonnage" id="Quantity" autocomplete="Quantity"
                     readonly
                     class="mt-2 focus:ring-blue-400 focus:border-blue-400 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md bg-gray-100" />
@@ -74,7 +74,7 @@
 
 
               <hr>
-              <h2 class="text-xl font-semibold mb-4  mt-5 text-blue-400 ">Driver Details</h2>
+              <h2 class="text-xl font-semibold mb-4  mt-5 text-[#096eb4] ">Driver Details</h2>
 
 
               <div class="grid grid-cols-6 gap-2">
@@ -122,7 +122,7 @@
             </div>
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
               <button @click="updateDispatch" style="background-color: #329ce7;"
-                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                 Save
               </button>
             </div>

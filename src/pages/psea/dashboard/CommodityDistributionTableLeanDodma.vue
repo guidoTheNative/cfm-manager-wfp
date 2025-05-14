@@ -59,12 +59,12 @@
 
 
                     <button @click="resetFilters"
-                        class="bg-gray-200 mt-5 hover:bg-gray-300 text-black font-medium py-1 px-2 text-sm rounded">
+                        class="bg-gray-200 mt-5 hover:bg-gray-300 text-black font-bold py-1 px-2 text-sm rounded">
                         Reset
                     </button>
 
                     <button @click="exportToExcel"
-                        class="bg-green-500 mt-5 hover:bg-green-300 text-white font-medium py-1 px-2 text-sm rounded">
+                        class="bg-green-500 mt-5 hover:bg-green-300 text-white font-bold py-1 px-2 text-sm rounded">
                         Export to Excel
                     </button>
 
@@ -77,35 +77,35 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         District
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         Commodity
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         Allocation (Mt)
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         Handled By
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         Dispatched (Mt)
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         Received (Mt)
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         % dispatch
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                         % receipt
                     </th>
                 </tr>
@@ -150,14 +150,14 @@
                 <ChevronLeftIcon class="w-5 h-5 mr-2" />
                 Prev
             </button>
-            <span class="px-4 py-2 font-body font-medium">Page {{ currentPage }} of {{ totalPages }}</span>
+            <span class="px-4 py-2 font-body font-bold">Page {{ currentPage }} of {{ totalPages }}</span>
             <button @click="nextPage" :disabled="currentPage >= totalPages"
                 class="flex items-center px-4 py-2 mx-1 text-gray-600 bg-white border border-gray-300 rounded hover:bg-gray-100 disabled:opacity-50">
                 <ChevronRightIcon class="w-5 h-5 mr-2" />
                 Next
             </button>
 
-            <span class="ml-4 font-medium">Rows per page:</span>
+            <span class="ml-4 font-bold">Rows per page:</span>
             <select v-model="pageSize" class="ml-2 border-gray-300 rounded-md">
                 <option value="5">5</option>
                 <option value="10">10</option>

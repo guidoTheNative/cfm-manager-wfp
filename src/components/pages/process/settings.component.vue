@@ -3,7 +3,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900 capitalize">
+          <h3 class="text-lg font-bold leading-6 text-gray-900 capitalize">
             Case Information
           </h3>
           <p class="mt-1 text-sm text-gray-500">
@@ -20,7 +20,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="district"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >District</label
                     >
                     <select
@@ -43,7 +43,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="ta"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >T/A</label
                     >
               
@@ -58,7 +58,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="gvh"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >GVH</label
                     >
                     <input
@@ -72,7 +72,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="name_of_caller"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Name of Caller</label
                     >
                     <input
@@ -86,7 +86,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="village"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Village</label
                     >
                     <input
@@ -100,7 +100,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="id-number"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >ID Number</label
                     >
                     <input
@@ -114,7 +114,7 @@
                   <div class="col-span-6 sm:col-span-6">
                     <label
                       for="issue-description"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Issue Description</label
                     >
                  
@@ -128,7 +128,7 @@
                   <div class="col-span-6 sm:col-span-6">
                     <label
                       for="case-category"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Case Category</label
                     >
                     <input
@@ -142,7 +142,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="programme"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Programme</label
                     >
 
@@ -177,7 +177,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="priority"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Priority</label
                     >
 
@@ -201,7 +201,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="account-number"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Account Number</label
                     >
                     <input
@@ -215,7 +215,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="phone-number"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Phone Number</label
                     >
                     <input
@@ -229,7 +229,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="nationality"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Nationality</label
                     >
                     <select
@@ -257,7 +257,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="age"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Age</label
                     >
                     <input
@@ -271,7 +271,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="gender"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Gender</label
                     >
 
@@ -295,7 +295,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="disability"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Disability</label
                     >
                     <select
@@ -318,7 +318,7 @@
                   <div class="col-span-6 sm:col-span-6">
                     <label
                       for="comment"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Comment</label
                     >
                 
@@ -334,7 +334,7 @@
                   <div class="col-span-6 sm:col-span-6">
                     <label
                       for="status"
-                      class="block text-sm font-medium text-gray-700"
+                      class="block text-sm font-bold text-gray-700"
                       >Status</label
                     >
                     <select
@@ -359,7 +359,7 @@
                       <button
                         style="background-color: #096eb4"
                         type="submit"
-                        class="inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        class="inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-bold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                       >
                         Submit
                       </button>

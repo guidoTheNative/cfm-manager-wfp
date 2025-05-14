@@ -14,7 +14,7 @@
                 <div class="flex flex-col sm:flex-nowrap">
                   <!-- Left Side: Form for Dispatch Creation -->
                   <div class="flex-grow p-4 bg-white">
-                    <h2 class="text-xl font-semibold mb-4 text-blue-400">Create a Dispatch</h2>
+                    <h2 class="text-xl font-semibold mb-4 text-[#096eb4]">Create a Dispatch</h2>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
@@ -41,7 +41,7 @@
 
                     <hr class="my-4">
 
-                    <h2 class="text-xl font-semibold mb-4 mt-5 text-blue-400">Driver Details</h2>
+                    <h2 class="text-xl font-semibold mb-4 mt-5 text-[#096eb4]">Driver Details</h2>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
@@ -59,8 +59,8 @@
                     </div>
 
                     <div class="flex justify-end mt-4 space-x-2">
-                      <button @click="resetDispatch()" class="px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 active:bg-red-700 transition ease-in-out duration-150">Reset</button>
-                      <button @click="submitDispatch()" class="px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-400 hover:bg-blue-400 focus:outline-none focus:border-blue-400 focus:ring focus:ring-blue-200 active:bg-blue-400 transition ease-in-out duration-150">Submit</button>
+                      <button @click="resetDispatch()" class="px-4 py-2 border border-transparent text-sm font-bold rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 active:bg-red-700 transition ease-in-out duration-150">Reset</button>
+                      <button @click="submitDispatch()" class="px-4 py-2 border border-transparent text-sm font-bold rounded-md text-white bg-blue-400 hover:bg-blue-400 focus:outline-none focus:border-blue-400 focus:ring focus:ring-blue-200 active:bg-blue-400 transition ease-in-out duration-150">Submit</button>
                     </div>
                   </div>
 
@@ -69,7 +69,7 @@
 
                   <!-- Right Side: Loading Plan Details -->
                   <div class="flex-initial w-full sm:w-96 p-4 bg-white mt-4 sm:mt-0">
-                    <h2 class="text-xl font-semibold mb-4 text-blue-400">Loading Plan Details - ID {{ loadingPlan.id }}</h2>
+                    <h2 class="text-xl font-semibold mb-4 text-[#096eb4]">Loading Plan Details - ID {{ loadingPlan.id }}</h2>
                     
                     <div class="space-y-4">
                       <div>

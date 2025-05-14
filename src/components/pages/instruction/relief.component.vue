@@ -24,9 +24,9 @@
                 <table class="min-w-full mt-4 border border-gray-200 rounded-md">
                   <thead class="bg-gray-100">
                     <tr>
-                      <th class="px-4 py-2 text-left text-xs font-medium text-gray-600">Commodity</th>
-                      <th class="px-4 py-2 text-left text-xs font-medium text-gray-600">Requested Quantity</th>
-                      <th class="px-4 py-2 text-left text-xs font-medium text-gray-600">Storage Type</th>
+                      <th class="px-4 py-2 text-left text-xs font-bold text-gray-600">Commodity</th>
+                      <th class="px-4 py-2 text-left text-xs font-bold text-gray-600">Requested Quantity</th>
+                      <th class="px-4 py-2 text-left text-xs font-bold text-gray-600">Storage Type</th>
                     </tr>
                   </thead>
                   <tbody class="bg-white">
@@ -45,9 +45,9 @@
                 <table class="min-w-full mt-4 border border-gray-200 rounded-md">
                   <thead class="bg-gray-100">
                     <tr>
-                      <th class="px-4 py-2 text-left text-xs font-medium text-gray-600">Commodity</th>
-                      <th class="px-4 py-2 text-left text-xs font-medium text-gray-600">Assigned Quantity</th>
-                      <th class="px-4 py-2 text-left text-xs font-medium text-gray-600">Storage Type</th>
+                      <th class="px-4 py-2 text-left text-xs font-bold text-gray-600">Commodity</th>
+                      <th class="px-4 py-2 text-left text-xs font-bold text-gray-600">Assigned Quantity</th>
+                      <th class="px-4 py-2 text-left text-xs font-bold text-gray-600">Storage Type</th>
                     </tr>
                   </thead>
                   <tbody class="bg-white">

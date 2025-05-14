@@ -3,7 +3,7 @@
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">Image</h3>
+          <h3 class="text-lg font-bold leading-6 text-gray-900">Image</h3>
           <p class="mt-1 text-sm text-gray-500">Your Profile Photo</p>
         </div>
         <div class="mt-5 md:mt-0 md:col-span-2">
@@ -16,7 +16,7 @@
                   class="border-b"
                 >
                   <td
-                    class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900"
+                    class="px-6 py-2 whitespace-nowrap text-sm font-bold text-gray-900"
                   >
                     <div class="w-64 h-64 rounded-full overflow-hidden">
                       <img
@@ -67,7 +67,7 @@
               @click="open = true"
               v-if="files.length < 1"
               type="button"
-              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
             >
               Add Picture
             </button>
@@ -86,7 +86,7 @@
                         <div class="col-span-5 sm:col-span-5">
                           <label
                             for="documentType"
-                            class="block text-sm font-medium text-gray-700"
+                            class="block text-sm font-bold text-gray-700"
                           >
                             File</label
                           >
@@ -120,7 +120,7 @@
                       <div class="col-span-6 sm:col-span-4">
                         <label
                           for="publication-datee"
-                          class="block text-sm font-medium text-gray-700"
+                          class="block text-sm font-bold text-gray-700"
                           >Publication date</label
                         >
 
@@ -142,7 +142,7 @@
                 <div class="px-4 py-3 text-right sm:px-6">
                   <button
                     type="submit"
-                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-bold rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                   >
                     Add
                   </button>

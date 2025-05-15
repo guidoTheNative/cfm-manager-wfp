@@ -267,7 +267,7 @@
                     :key="macro"
                     :value="macro"
                   >
-                    {{ macro.toUpperCase() }}
+                    {{ macro }}
                   </option>
                 </select>
               </div>
@@ -291,7 +291,7 @@
                     :key="category"
                     :value="category"
                   >
-                    {{ category.toUpperCase() }}
+                    {{ category }}
                   </option>
                 </select>
               </div>
@@ -318,7 +318,7 @@
                     :key="sub"
                     :value="sub"
                   >
-                    {{ sub.toUpperCase() }}
+                    {{ sub }}
                   </option>
                 </select>
               </div>
@@ -337,7 +337,7 @@
                   class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm bg-gray-100"
                 >
                   <option :value="computedPriority">
-                    {{ computedPriority.toUpperCase() }}
+                    {{ computedPriority }}
                   </option>
                 </select>
               </div>

@@ -21,7 +21,7 @@
       <!-- Tabs -->
       <div class="flex items-center bg-gray-100 p-4 rounded-md shadow-md">
         <button
-          v-for="tab in ['view', 'edit']"
+          v-for="tab in ['View', 'Edit']"
           :key="tab"
           :class="[
             'px-6 py-2 text-sm font-semibold transition-all duration-300 ease-in-out rounded-md mr-2',
@@ -31,14 +31,14 @@
           ]"
           @click="setActiveTab(tab)"
         >
-          {{ tab.charAt(0).toUpperCase() + tab.slice(1) }} Mode
+          {{ tab.charAt(0) + tab.slice(1) }} Mode
         </button>
       </div>
 
       <!-- tabs -->
       <div
         class="align-middle inline-block min-w-full"
-        v-if="activeTab === 'view'"
+        v-if="activeTab === 'View'"
       >
         <div class="tab-content" id="tabs-case-options">
           <div class="tab-pane fade show active" id="case-settings">
@@ -710,6 +710,36 @@
                         <option :value="form.status">{{ form.status }}</option>
                       </select>
                     </div>
+
+                    <div
+                      class="col-span-12 sm:col-span-12"
+                    
+                      v-if="form.priority === 'High'"
+                    >
+                      <label
+                        for="proofOfCase"
+                        class="block text-sm font-bold text-gray-700"
+                      >
+                        Proof of Case (Attachment)
+                      </label>
+
+                      <div
+                        class="tab-pane fade show active mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm bg-gray-100"
+                        id="case-settings"
+                        role="tabpanel"
+                        aria-labelledby="tabs-case-settings"
+                        disabled
+                       >
+                        <div class="bg-white">
+                          <!-- Form -->
+                          <proof-priority-file-component
+                            :case-id="caseId"
+                            :isedit="true"
+                            :model="files"
+                          ></proof-priority-file-component>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </form>
@@ -717,7 +747,7 @@
           </div>
         </div>
       </div>
-      <div v-if="activeTab === 'edit'">
+      <div v-if="activeTab === 'Edit'">
         <editcases />
         <!-- Form -->
         <form @submit.prevent="submitForm" disabled></form>
@@ -741,6 +771,13 @@ const Swal = inject("Swal");
 import { useRoute } from "vue-router";
 
 import breadcrumbWidget from "../../../components/widgets/breadcrumbs/admin.breadcrumb.vue";
+import proofPriorityFileComponent from "../../../components/pages/cases/file-p1-proof.component.vue";
+
+import { useFileStore } from "../../../stores/file.store";
+
+const fileStore = useFileStore();
+
+const files = reactive([]);
 
 import editcases from "./edit.page.vue";
 const breadcrumbs = [
@@ -790,13 +827,30 @@ const form = ref({
 const route = useRoute();
 const caseId = route.params.id;
 
-const activeTab = ref("view");
+const activeTab = ref("View");
 
 const setActiveTab = (tab) => {
   activeTab.value = tab;
 };
 
+
+const getFiles = async () => {
+  fileStore
+    .get()
+    .then((result) => {
+      files.length = 0; //empty array
+      files.push(...result);
+    })
+    .catch((error) => {
+      // Handle error
+    })
+    .finally(() => {
+      // Finalize
+    });
+};
+
 onMounted(async () => {
+  getFiles();
   try {
     const result = await caseStore.get();
     const caseData = result.find((item) => item.id == caseId);

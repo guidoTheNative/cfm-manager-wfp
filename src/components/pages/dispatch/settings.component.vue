@@ -188,7 +188,7 @@
                         :value="role.id"
                       >
                         <span 
-                        >{{ role.name.toUpperCase() }}</span>
+                        >{{ role.name }}</span>
                       </option>
                     </select>
                     <p class="text-red-500 text-xs italic pt-1">

@@ -175,7 +175,7 @@
                         :key="district.Name"
                         :value="district.Name"
                       >
-                        <span>{{ district.Name.toUpperCase() }}</span>
+                        <span>{{ district.Name }}</span>
                       </option>
                     </select>
                     <p class="text-red-500 text-xs italic pt-1">
@@ -202,7 +202,7 @@
                         :key="role.id"
                         :value="role.id"
                       >
-                        <span>{{ role.name.toUpperCase() }}</span>
+                        <span>{{ role.name }}</span>
                       </option>
                     </select>
                     <p class="text-red-500 text-xs italic pt-1">

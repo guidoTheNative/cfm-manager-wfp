@@ -19,7 +19,7 @@
       <!-- Tabs -->
       <div class="flex items-center bg-gray-100 p-4 rounded-md shadow-md">
         <button
-          v-for="tab in ['view', 'edit']"
+          v-for="tab in ['View', 'Edit']"
           :key="tab"
           :class="[
             'px-6 py-2 text-sm font-semibold transition-all duration-300 ease-in-out rounded-md mr-2',
@@ -29,13 +29,13 @@
           ]"
           @click="setActiveTab(tab)"
         >
-          {{ tab.charAt(0).toUpperCase() + tab.slice(1) }} Mode
+          {{ tab.charAt(0) + tab.slice(1) }} Mode
         </button>
       </div>
 
       <div
         class="align-middle inline-block min-w-full"
-        v-if="activeTab === 'view'"
+        v-if="activeTab === 'View'"
       >
         <div class="bg-white">
           <form @submit.prevent="submitForm">
@@ -305,7 +305,7 @@
                       :key="macro"
                       :value="macro"
                     >
-                      {{ macro.toUpperCase() }}
+                      {{ macro }}
                     </option>
                   </select>
                 </div>
@@ -330,7 +330,7 @@
                       :key="category"
                       :value="category"
                     >
-                      {{ category.toUpperCase() }}
+                      {{ category }}
                     </option>
                   </select>
                 </div>
@@ -358,7 +358,7 @@
                       :key="sub"
                       :value="sub"
                     >
-                      {{ sub.toUpperCase() }}
+                      {{ sub }}
                     </option>
                   </select>
                 </div>
@@ -655,6 +655,31 @@
                     </select>
                   </div>
                 </template>
+
+                <div class="col-span-12 sm:col-span-12">
+                 <label
+                  for="proofOfIssue"
+                  class="block text-sm font-bold text-gray-700"
+                 >
+                   Proof of Issue (Attachment)
+                 </label>
+
+                 <div
+                  class="tab-pane fade show active"
+                  id="case-settings"
+                  role="tabpanel"
+                  aria-labelledby="tabs-case-settings"
+                 >
+                  <div class="bg-white">
+                    <!-- Form -->
+                    <proof-file-component
+                      :issue-id="issueId"
+                      :isedit="true"
+                      :model="files"
+                    ></proof-file-component>
+                  </div>
+                </div>
+              </div>
               </div>
             </div>
 
@@ -664,7 +689,7 @@
       </div>
       <div
         class="align-middle inline-block min-w-full"
-        v-if="activeTab === 'edit'"
+        v-if="activeTab === 'Edit'"
       >
       <editissues />
       </div>
@@ -714,7 +739,7 @@ const fileStore = useFileStore();
 const route = useRoute();
 const issueId = route.params.id;
 
-const activeTab = ref("view");
+const activeTab = ref("View");
 
 const setActiveTab = (tab) => {
   activeTab.value = tab;

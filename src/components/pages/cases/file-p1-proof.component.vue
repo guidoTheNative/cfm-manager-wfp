@@ -34,9 +34,7 @@
                   class="border-b"
                 >
                   <td class="px-4 py-2 text-gray-900 border border-gray-300">
-                    <span class="text-gray-700 font-bold">{{
-                      file.name
-                    }}</span>
+                    <span class="text-gray-700 font-bold">{{ file.name }}</span>
                   </td>
                   <td class="px-4 py-2 text-gray-900 border border-gray-300">
                     {{ getFileType(file.mimetype) }}
@@ -56,7 +54,7 @@
                     </button>
                     <button
                       @click="remove(file.id)"
-                      v-if="!isedit"
+                       v-if="!isedit"
                       class="text-red-600 hover:underline"
                     >
                       Delete
@@ -67,7 +65,7 @@
             </table>
           </div>
 
-          <div class="px-4 text-right sm:px-6 pt-2" v-if="!isedit">
+          <div class="px-4 text-right sm:px-6 pt-2"  v-if="!isedit">
             <button
               v-show="!open"
               @click="open = true"
@@ -146,7 +144,7 @@ const system = reactive({
 });
 
 const fileStore = useFileStore();
-const props = defineProps({ model: Object, issueId: String , isedit: Boolean });
+const props = defineProps({ model: Object, caseId: String, isedit: Boolean });
 const emit = defineEmits(["update"]);
 const open = ref(false);
 const files = reactive([]);
@@ -164,8 +162,9 @@ const handleFileUpload = (e) => {
 
 // Fetch files
 const getFiles = async () => {
+  console.log("Fetching files for case ID:", props.caseId);
   fileStore
-    .getByReference({ id: props.issueId, type: "PROOFS" })
+    .getByReference({ id: props.caseId, type: "P1-PROOFS" })
     .then((result) => {
       files.length = 0;
       files.push(...result);
@@ -176,9 +175,10 @@ const getFiles = async () => {
 
 // Upload files
 const onSubmit = async () => {
-  if (!props.issueId) {
+  console.log("Uploading files:", props.caseId);
+  if (!props.caseId) {
     attachmentError.value =
-      "Please save the issue first before uploading files.";
+      "Please save the case first before uploading files.";
     return;
   }
 
@@ -189,8 +189,8 @@ const onSubmit = async () => {
   for (const file of attachments.value) {
     const data = {
       attachment: file,
-      referenceId: props.issueId,
-      type: "PROOFS",
+      referenceId: props.caseId,
+      type: "P1-PROOFS",
       name: fileName.value, // Use user-defined name
       metadata: {
         publicationDate: new Date().toISOString().split("T")[0],

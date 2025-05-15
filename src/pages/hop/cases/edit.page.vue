@@ -357,7 +357,7 @@
                           :key="partner"
                           :value="partner"
                         >
-                          {{ partner.toUpperCase() }}
+                          {{ partner }}
                         </option>
                       </select>
                     </div>
@@ -430,7 +430,7 @@
                           :key="macro"
                           :value="macro"
                         >
-                          {{ macro.toUpperCase() }}
+                          {{ macro }}
                         </option>
                       </select>
                     </div>
@@ -455,7 +455,7 @@
                           :key="category"
                           :value="category"
                         >
-                          {{ category.toUpperCase() }}
+                          {{ category }}
                         </option>
                       </select>
                     </div>
@@ -484,7 +484,7 @@
                           :key="sub"
                           :value="sub"
                         >
-                          {{ sub.toUpperCase() }}
+                          {{ sub }}
                         </option>
                       </select>
                     </div>
@@ -520,7 +520,7 @@
                           :key="programme"
                           :value="programme"
                         >
-                          {{ programme.toUpperCase() }}
+                          {{ programme }}
                         </option>
                       </select>
                     </div>
@@ -541,7 +541,7 @@
                         class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm bg-gray-100"
                       >
                         <option :value="computedPriority">
-                          {{ computedPriority.toUpperCase() }}
+                          {{ computedPriority }}
                         </option>
                       </select>
                     </div>
@@ -595,7 +595,7 @@
                           :key="nationality"
                           :value="nationality"
                         >
-                          {{ nationality.toUpperCase() }}
+                          {{ nationality }}
                         </option>
                       </select>
                     </div>
@@ -661,7 +661,7 @@
                           :key="disability"
                           :value="disability"
                         >
-                          {{ disability.toUpperCase() }}
+                          {{ disability }}
                         </option>
                       </select>
                     </div>
@@ -729,6 +729,33 @@
                         <option value="Closed">Closed</option>
                       </select>
                     </div>
+
+                    <div
+                      class="col-span-12 sm:col-span-12"
+                      v-if="computedPriority === 'High'"
+                    >
+                      <label
+                        for="proofOfCase"
+                        class="block text-sm font-bold text-gray-700"
+                      >
+                        Proof of Case (Attachment)
+                      </label>
+
+                      <div
+                        class="tab-pane fade show active"
+                        id="case-settings"
+                        role="tabpanel"
+                        aria-labelledby="tabs-case-settings"
+                      >
+                        <div class="bg-white">
+                          <!-- Form -->
+                          <proof-priority-file-component
+                            :case-id="caseId"
+                            :model="files"
+                          ></proof-priority-file-component>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -765,7 +792,16 @@ const Swal = inject("Swal");
 
 import { useRoute } from "vue-router";
 import breadcrumbWidget from "../../../components/widgets/breadcrumbs/admin.breadcrumb.vue";
+import proofPriorityFileComponent from "../../../components/pages/cases/file-p1-proof.component.vue";
+
 const districtStore = usedistrictstore();
+
+import { useFileStore } from "../../../stores/file.store";
+
+const fileStore = useFileStore();
+
+const files = reactive([]);
+
 import {
   activitysite,
   activities,
@@ -791,7 +827,7 @@ const roles = [
   // Add other roles...
 ];
 const breadcrumbs = [
-  { name: "Home", href: "/admin/dashboard", current: false },
+  { name: "Home", href: "/hop/dashboard", current: false },
   { name: "CFM Cases", href: "#", current: true },
   { name: "Create", href: "#", current: true },
 ];
@@ -845,6 +881,23 @@ const form = ref({
 const selectedMacro = ref("");
 const selectedCategory = ref("");
 const selectedSubCategory = ref("");
+
+
+const getFiles = async () => {
+  fileStore
+    .get()
+    .then((result) => {
+      files.length = 0; //empty array
+      files.push(...result);
+    })
+    .catch((error) => {
+      // Handle error
+    })
+    .finally(() => {
+      // Finalize
+    });
+};
+
 
 // Computed property to get the priority
 const computedPriority = computed(() => {
@@ -902,6 +955,7 @@ const handleIssueAffectingChange = () => {
 };
 
 onMounted(async () => {
+  getFiles()
   getDistricts();
   try {
     const result = await caseStore.get();

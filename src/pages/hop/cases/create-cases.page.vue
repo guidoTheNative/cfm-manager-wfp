@@ -53,7 +53,7 @@
                           :key="district"
                           :value="district"
                         >
-                          {{ district.toUpperCase() }}
+                          {{ district }}
                         </option>
                       </select>
                     </div>
@@ -190,7 +190,7 @@
                           :key="category"
                           :value="category"
                         >
-                          {{ category.toUpperCase() }}
+                          {{ category }}
                         </option>
                       </select>
                     </div>
@@ -226,7 +226,7 @@
                           :key="programme"
                           :value="programme"
                         >
-                          {{ programme.toUpperCase() }}
+                          {{ programme }}
                         </option>
                       </select>
                     </div>
@@ -303,7 +303,7 @@
                           :key="nationality"
                           :value="nationality"
                         >
-                          {{ nationality.toUpperCase() }}
+                          {{ nationality }}
                         </option>
                       </select>
                     </div>
@@ -369,7 +369,7 @@
                           :key="disability"
                           :value="disability"
                         >
-                          {{ disability.toUpperCase() }}
+                          {{ disability }}
                         </option>
                       </select>
                     </div>

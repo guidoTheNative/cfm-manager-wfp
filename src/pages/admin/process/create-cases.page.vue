@@ -267,7 +267,7 @@
                     :key="macro"
                     :value="macro"
                   >
-                    {{ macro.toUpperCase() }}
+                    {{ macro }}
                   </option>
                 </select>
               </div>
@@ -291,7 +291,7 @@
                     :key="category"
                     :value="category"
                   >
-                    {{ category.toUpperCase() }}
+                    {{ category }}
                   </option>
                 </select>
               </div>
@@ -318,7 +318,7 @@
                     :key="sub"
                     :value="sub"
                   >
-                    {{ sub.toUpperCase() }}
+                    {{ sub }}
                   </option>
                 </select>
               </div>
@@ -337,7 +337,7 @@
                   class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm bg-gray-100"
                 >
                   <option :value="computedPriority">
-                    {{ computedPriority.toUpperCase() }}
+                    {{ computedPriority }}
                   </option>
                 </select>
               </div>
@@ -561,30 +561,6 @@
                   </div>
                 </transition>
 
-                <!-- Proof of Issue -->
-                <div class="col-span-12 sm:col-span-12">
-                  <label
-                    for="proofOfIssue"
-                    class="block text-sm font-bold text-gray-700"
-                  >
-                    Proof of Issue (Attachment)
-                  </label>
-
-                  <div
-                    class="tab-pane fade show active"
-                    id="case-settings"
-                    role="tabpanel"
-                    aria-labelledby="tabs-case-settings"
-                  >
-                    <div class="bg-white">
-                      <!-- Form -->
-                      <proof-file-component
-                        :issue-id="files.issueId"
-                        :model="files"
-                      ></proof-file-component>
-                    </div>
-                  </div>
-                </div>
                 <!-- Incident Reported to WFP -->
                 <div class="col-span-6 sm:col-span-3">
                   <label
@@ -602,6 +578,31 @@
                   </select>
                 </div>
               </template>
+
+              <!-- Proof of Issue -->
+              <div class="col-span-12 sm:col-span-12">
+                <label
+                  for="proofOfIssue"
+                  class="block text-sm font-bold text-gray-700"
+                >
+                  Proof of Issue (Attachment)
+                </label>
+
+                <div
+                  class="tab-pane fade show active"
+                  id="case-settings"
+                  role="tabpanel"
+                  aria-labelledby="tabs-case-settings"
+                >
+                  <div class="bg-white">
+                    <!-- Form -->
+                    <proof-file-component
+                      :issue-id="files.issueId"
+                      :model="files"
+                    ></proof-file-component>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -637,7 +638,6 @@ const Swal = inject("Swal");
 import breadcrumbWidget from "../../../components/widgets/breadcrumbs/admin.breadcrumb.vue";
 import proofFileComponent from "../../../components/pages/cases/file-proof.component.vue";
 
-
 import {
   activitysite,
   activities,
@@ -646,7 +646,6 @@ import {
   cooperatingPartner,
   categoriesData,
 } from "@/composables/useConstants";
-
 
 const districtStore = usedistrictstore();
 
@@ -683,8 +682,6 @@ const priorities = [
   { id: "Low", name: "Low" },
 ];
 
-
-
 const form = ref({
   district: "",
   cooperatingPartner: "",
@@ -712,8 +709,6 @@ const form = ref({
   divertedQuantity: 0, // Number field
   priority: "Low",
 });
-
-
 
 onMounted(() => {
   getDistricts();
@@ -748,8 +743,14 @@ const submitForm = async () => {
   form.value.district = selectedDistrict.value;
   form.value.TA = selectedTA.value;
   form.value.priority = computedPriority.value;
+
   try {
-    await caseStore.create(form.value);
+    // Create the case and store the result
+    const result = await processStore.create(form.value);
+
+    // Set the issue ID from the result
+    files.issueId = result.id;
+
     Swal.fire({
       position: "top-end", // Position to the top right
       title: "Success",
@@ -765,11 +766,11 @@ const submitForm = async () => {
         text: "Go to case list?",
         icon: "question",
         showCancelButton: true,
-        confirmButtonText: "Yes Go Back",
+        confirmButtonText: "Yes, Go Back",
         cancelButtonText: "No",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // Redirect to /admin/cases
+      }).then((response) => {
+        if (response.isConfirmed) {
+          // Redirect to /admin/process
           router.push("/admin/process");
         }
       });
@@ -786,7 +787,6 @@ const submitForm = async () => {
     });
   }
 };
-
 
 const getDistricts = async () => {
   districtStore
@@ -880,8 +880,6 @@ watch(
 const updateActivitySites = () => {
   form.value.activitySite = ""; // Reset activity site selection when filters change
 };
-
-
 
 const selectedMacro = ref("");
 const selectedCategory = ref("");

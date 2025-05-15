@@ -32,7 +32,7 @@ export const generateExcel = async (data, sheets = []) => {
     worksheet = buildWorksheet(worksheet, sheetData)
   } else
     sheets.forEach(sheet => {
-      var worksheet = workbook.addWorksheet(sheet.toUpperCase())
+      var worksheet = workbook.addWorksheet(sheet)
       let sheetData = data.filter(row => row.sheet == sheet)
       worksheet = buildWorksheet(worksheet, sheetData)
     })
@@ -50,7 +50,7 @@ export const generateTAGVHExcel = async (data, sheets = []) => {
     worksheet = buildWorksheet(worksheet, sheetData)
   } else
     sheets.forEach(sheet => {
-      var worksheet = workbook.addWorksheet(sheet.toUpperCase())
+      var worksheet = workbook.addWorksheet(sheet)
 
       let sheetData = data.filter(row => row.sheet == sheet)
       worksheet = buildWorksheet(worksheet, sheetData)
@@ -223,7 +223,7 @@ export const generateTAGVHExcel = async (data, sheets = []) => {
 }
 
 const checkSector = (cell, val) => {
-  return cell._column._header.toUpperCase().includes(val.toUpperCase())
+  return cell._column._header.includes(val)
 }
 
 const buildWorksheet = (worksheet, sheetData) => {
@@ -232,7 +232,7 @@ const buildWorksheet = (worksheet, sheetData) => {
   Object.keys(sheetData[0]).forEach(item =>
     item != 'sheet'
       ? sheetHeaders.push({
-          header: item.toUpperCase(),
+          header: item,
           key: item,
           width: item.length + 1
         })

@@ -31,7 +31,7 @@
           ]"
           @click="setActiveTab(tab)"
         >
-          {{ tab.charAt(0).toUpperCase() + tab.slice(1) }} Mode
+          {{ tab.charAt(0) + tab.slice(1) }} Mode
         </button>
       </div>
 

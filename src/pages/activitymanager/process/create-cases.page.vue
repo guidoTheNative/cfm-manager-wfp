@@ -267,7 +267,7 @@
                     :key="macro"
                     :value="macro"
                   >
-                    {{ macro.toUpperCase() }}
+                    {{ macro }}
                   </option>
                 </select>
               </div>
@@ -291,7 +291,7 @@
                     :key="category"
                     :value="category"
                   >
-                    {{ category.toUpperCase() }}
+                    {{ category }}
                   </option>
                 </select>
               </div>
@@ -318,7 +318,7 @@
                     :key="sub"
                     :value="sub"
                   >
-                    {{ sub.toUpperCase() }}
+                    {{ sub }}
                   </option>
                 </select>
               </div>
@@ -337,7 +337,7 @@
                   class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm bg-gray-100"
                 >
                   <option :value="computedPriority">
-                    {{ computedPriority.toUpperCase() }}
+                    {{ computedPriority }}
                   </option>
                 </select>
               </div>
@@ -746,7 +746,7 @@ const submitForm = async () => {
   form.value.TA = selectedTA.value;
   form.value.priority = computedPriority.value;
   try {
-    await caseStore.create(form.value);
+    await processStore.create(form.value);
     Swal.fire({
       position: "top-end", // Position to the top right
       title: "Success",
@@ -767,7 +767,7 @@ const submitForm = async () => {
       }).then((result) => {
         if (result.isConfirmed) {
           // Redirect to /admin/cases
-          router.push("/field/process");
+          router.push("/activitymanager/process");
         }
       });
     });

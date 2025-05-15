@@ -306,7 +306,7 @@ const closeDialog = () => {
 // Function to generate a unique delivery note
 const generateUniqueDeliveryNote = () => {
   const timestamp = new Date().getTime().toString(12); // Base36 timestamp
-  const uniqueString = Math.random().toString(12).substr(2, 5).toUpperCase(); // Random 5-character string
+  const uniqueString = Math.random().toString(12).substr(2, 5); // Random 5-character string
   DeliveryNote.value = `DODMA-EMR-${timestamp}-${uniqueString}`;
 };
 

@@ -232,7 +232,7 @@ const getWarehouses = async () => {
 const onSubmit = useSubmitForm((values, actions) => {
   let approvedBy = user.value.username.replace('.', ' ')
     .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .map(word => word.charAt(0) + word.slice(1))
     .join(' ');
 
   // Add (d) if the user is delegated

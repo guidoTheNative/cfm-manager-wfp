@@ -426,8 +426,7 @@ const selectedPrivilege = ref("");
 const privilegeError = ref("");
 const availablePrivileges = [
   "All",
-  "Warehouse management",
-  "Lean season responses",
+ 
 ];
 
 //FORM

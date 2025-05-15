@@ -335,7 +335,7 @@ const validateNumberInput = (event) => {
 
 const generateUniqueDeliveryNote = () => {
   const timestamp = new Date().getTime().toString(36);
-  const uniqueString = Math.random().toString(36).substr(2, 5).toUpperCase();
+  const uniqueString = Math.random().toString(36).substr(2, 5);
   dispatch.value.DeliveryNote = `DODMA-LSR-${timestamp}-${uniqueString}`;
 };
 

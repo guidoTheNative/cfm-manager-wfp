@@ -4,7 +4,7 @@ export const capitalizeArrayOfObjectsKeysAndClean = data => {
       if (key.indexOf('__') !== -1)
         accumulator[key.replace(/_/g, ' ').replace(/_/g, ' ')] = item[key]
       else {
-        accumulator[key.toUpperCase().replace(/_/g, ' ')] = item[key]
+        accumulator[key.replace(/_/g, ' ')] = item[key]
       }
       return accumulator
     }, {})

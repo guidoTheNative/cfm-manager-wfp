@@ -139,7 +139,7 @@
                       <tr>
                         <td class="border border-gray-400 p-2">{{ model.ApprovedBy }}</td>
                         <td class="border border-gray-400 p-2">{{ model.ApprovedBy.split(/\s+/).map(word =>
-      word.charAt(0).toUpperCase()).join('') }}</td>
+      word.charAt(0)).join('') }}</td>
                         <td class="border border-gray-400 p-2">{{
       moment(model.UpdatedOn).format("MM-DD-YYYY")
     }}

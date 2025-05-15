@@ -236,7 +236,7 @@ const sendEmail = (data) => {
         "The status of the enquiry you made for \b" +
         model.value.listings.name +
         " is as follows:\n\bStatus of enquiry:\b" +
-        data.status.toUpperCase(),
+        data.status,
 
       html: {
         name: model.value.firstname,
@@ -245,7 +245,7 @@ const sendEmail = (data) => {
           model.value.listings.name +
            +
           " is " +
-          model.value.status.toUpperCase().bold(),
+          model.value.status.bold(),
         otherinfo: data.comment,
       },
     };
@@ -267,7 +267,7 @@ const sendEmail = (data) => {
         "The status of the enquiry you made for \b" +
         model.value.listings.name +
         " is as follows:\n\bStatus of enquiry:\b" +
-        data.status.toUpperCase() +
+        data.status +
         "\n",
 
       html: {
@@ -277,7 +277,7 @@ const sendEmail = (data) => {
           model.value.listings.name +
           " " +
           " is " +
-          model.value.status.toUpperCase().bold(),
+          model.value.status.bold(),
         otherinfo: data.comment,
       },
     };

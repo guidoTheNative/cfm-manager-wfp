@@ -7,7 +7,7 @@ export const generateCSV = (newdata, columns) => {
   data = capitalizeArrayOfObjectsKeysAndClean(data)
   columns =
     columns && columns.length > 0
-      ? columns.map(item => item.toUpperCase().replace(/_/g, ' '))
+      ? columns.map(item => item.replace(/_/g, ' '))
       : undefined
   data = d3.csvFormat(data, columns)
   if (!data.match(/^data:text\/csv/i)) {

@@ -259,7 +259,7 @@
                     :key="macro"
                     :value="macro"
                   >
-                    {{ macro.toUpperCase() }}
+                    {{ macro }}
                   </option>
                 </select>
               </div>
@@ -283,7 +283,7 @@
                     :key="category"
                     :value="category"
                   >
-                    {{ category.toUpperCase() }}
+                    {{ category }}
                   </option>
                 </select>
               </div>
@@ -310,7 +310,7 @@
                     :key="sub"
                     :value="sub"
                   >
-                    {{ sub.toUpperCase() }}
+                    {{ sub }}
                   </option>
                 </select>
               </div>
@@ -329,7 +329,7 @@
                   class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring-gray-500 focus:border-blue-300 sm:text-sm bg-gray-100"
                 >
                   <option :value="computedPriority">
-                    {{ computedPriority.toUpperCase() }}
+                    {{ computedPriority }}
                   </option>
                 </select>
               </div>
@@ -592,6 +592,33 @@
                     <option :value="false">No</option>
                   </select>
                 </div>
+                
+
+                
+
+                <div class="col-span-12 sm:col-span-12">
+                 <label
+                  for="proofOfIssue"
+                  class="block text-sm font-bold text-gray-700"
+                 >
+                   Proof of Issue (Attachment)
+                 </label>
+
+                 <div
+                  class="tab-pane fade show active"
+                  id="case-settings"
+                  role="tabpanel"
+                  aria-labelledby="tabs-case-settings"
+                 >
+                  <div class="bg-white">
+                    <!-- Form -->
+                    <proof-file-component
+                      :issue-id="issueId"
+                      :model="files"
+                    ></proof-file-component>
+                  </div>
+                </div>
+                </div>
               </template>
             </div>
           </div>
@@ -665,7 +692,7 @@ const roles = [
   // Add other roles...
 ];
 const breadcrumbs = [
-  { name: "Home", href: "/field/dashboard", current: false },
+  { name: "Home", href: "/process/dashboard", current: false },
   { name: "Process Monitoring", href: "#", current: true },
   { name: "Issue", href: "#", current: true },
   { name: "Create", href: "#", current: true },

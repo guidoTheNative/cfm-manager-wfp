@@ -217,7 +217,7 @@ const fetchInitialData = async () => {
 };
 
 const generateGoodsReceiveNote = () => {
-  const timestamp = Date.now().toString(36).toUpperCase();
+  const timestamp = Date.now().toString(36);
   donation.GoodsReceiveNote = `DODMA-${timestamp}`;
 };
 

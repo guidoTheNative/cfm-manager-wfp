@@ -131,7 +131,7 @@
                       <label class="block text-sm font-bold text-gray-700">Received By:</label>
                       <p class="text-sm text-gray-600">
                         {{ receipt?.receipts[0]?.Recipient?.username?.split('.')
-                          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                          .map(word => word.charAt(0) + word.slice(1))
                         .join(' ') }}
                       </p>
                     </div>

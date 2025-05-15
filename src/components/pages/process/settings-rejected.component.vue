@@ -35,7 +35,7 @@
                         :key="district.name"
                         :value="district.name"
                       >
-                        <span>{{ district.name.toUpperCase() }}</span>
+                        <span>{{ district.name }}</span>
                       </option>
                     </select>
                   </div>
@@ -153,7 +153,7 @@
                         :key="programme"
                         :value="programme"
                       >
-                        {{ programme.toUpperCase() }}
+                        {{ programme }}
                       </option>
                     </select>
                   </div>
@@ -224,7 +224,7 @@
                         :key="nationality"
                         :value="nationality"
                       >
-                        {{ nationality.toUpperCase() }}
+                        {{ nationality }}
                       </option>
                     </select>
                   </div>
@@ -261,7 +261,7 @@
                         :key="gender"
                         :value="gender"
                       >
-                        {{ gender.toUpperCase() }}
+                        {{ gender }}
                       </option>
                     </select>
                   </div>
@@ -285,7 +285,7 @@
                         :key="disability"
                         :value="disability"
                       >
-                        {{ disability.toUpperCase() }}
+                        {{ disability }}
                       </option>
                     </select>
                   </div>
@@ -323,7 +323,7 @@
                         :key="status"
                         :value="status"
                       >
-                        {{ status.toUpperCase() }}
+                        {{ status }}
                       </option>
                     </select>
                   </div>

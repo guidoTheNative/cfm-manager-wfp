@@ -553,30 +553,7 @@
                   </div>
                 </transition>
 
-                <!-- Proof of Issue -->
-         <!--        <div class="col-span-12 sm:col-span-12">
-                  <label
-                    for="proofOfIssue"
-                    class="block text-sm font-bold text-gray-700"
-                  >
-                    Proof of Issue (Attachment)
-                  </label>
-
-                  <div
-                    class="tab-pane fade show active"
-                    id="case-settings"
-                    role="tabpanel"
-                    aria-labelledby="tabs-case-settings"
-                  >
-                    <div class="bg-white">
-                      <proof-file-component
-                        :issue-id="files.issueId"
-                        :model="files"
-                      ></proof-file-component>
-                    </div>
-                  </div>
-                </div> -->
-                <!-- Incident Reported to WFP -->
+              
                 <div class="col-span-6 sm:col-span-3">
                   <label
                     for="reportedToWfp"
@@ -592,7 +569,36 @@
                     <option :value="false">No</option>
                   </select>
                 </div>
-              </template>
+                
+
+      
+                </template>
+                        
+
+              <div class="col-span-12 sm:col-span-12">
+                 <label
+                  for="proofOfIssue"
+                  class="block text-sm font-bold text-gray-700"
+                 >
+                   Proof of Issue (Attachment)
+                 </label>
+
+                 <div
+                  class="tab-pane fade show active"
+                  id="case-settings"
+                  role="tabpanel"
+                  aria-labelledby="tabs-case-settings"
+                 >
+                  <div class="bg-white">
+                    <!-- Form -->
+                    <proof-file-component
+                      :issue-id="issueId"
+                      :model="files"
+                    ></proof-file-component>
+                  </div>
+                </div>
+              </div>
+           
             </div>
           </div>
 
@@ -665,7 +671,7 @@ const roles = [
   // Add other roles...
 ];
 const breadcrumbs = [
-  { name: "Home", href: "/field/dashboard", current: false },
+  { name: "Home", href: "/hop/dashboard", current: false },
   { name: "Process Monitoring", href: "#", current: true },
   { name: "Issue", href: "#", current: true },
   { name: "Create", href: "#", current: true },
